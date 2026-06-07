@@ -4,8 +4,8 @@
 
 :root {
   color-scheme: light;
-  --background: #f6f8f7;
-  --foreground: #18201d;
+  --background: #fff6e8;
+  --foreground: #2f174f;
 }
 
 * {
@@ -18,7 +18,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 26, 0.16), transparent 32rem),
+    var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Termos de uso",
   description:
-    "Placeholder organizado para os futuros termos de uso do Aumigao Walk.",
+    "Placeholder organizado para os futuros termos de uso do Aumigão Walk.",
 };
 
 export default function TermosPage() {
   return (
     <section className="px-5 py-16 lg:px-8">
       <article className="mx-auto max-w-4xl rounded bg-white p-8 shadow-soft">
-        <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-forest">
+        <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
           Termos
         </p>
         <h1 className="mt-3 text-4xl font-black text-brand-ink">Termos de uso</h1>

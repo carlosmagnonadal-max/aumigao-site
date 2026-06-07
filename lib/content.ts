@@ -3,31 +3,31 @@ export const demoHref = "/demo-white-label";
 
 export const benefits = [
   {
-    title: "Seguranca",
+    title: "Cuidado de verdade",
     description:
-      "Fluxos pensados para dar previsibilidade ao tutor, ao passeador e a operacao.",
+      "Cada passeio nasce da confiança entre tutor, pet e passeador.",
   },
   {
-    title: "Facilidade",
+    title: "Rotina mais leve",
     description:
-      "Uma experiencia simples para solicitar, acompanhar e avaliar passeios.",
+      "O tutor resolve o passeio no app e ganha tempo para aproveitar melhor o dia.",
   },
   {
     title: "Passeadores avaliados",
     description:
-      "Rede preparada para operar com reputacao, historico e melhoria continua.",
+      "Histórico e avaliações ajudam a escolher quem vai caminhar com o pet.",
   },
   {
-    title: "Gestao inteligente",
+    title: "Pet feliz, tutor tranquilo",
     description:
-      "Base comercial pronta para evoluir com indicadores, operacao e unidades.",
+      "Uma experiência pensada para dar segurança antes, durante e depois do passeio.",
   },
 ];
 
 export const whiteLabelFeatures = [
-  "Aplicativo com marca propria",
-  "Painel administrativo",
-  "Gestao operacional",
+  "Experiência com a sua marca",
+  "Canais digitais para tutores",
+  "Operação de passeios organizada",
   "Multiunidades",
-  "Rede de passeadores",
+  "Comunidade de passeadores",
 ];

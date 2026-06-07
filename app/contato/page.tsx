@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Entre em contato com o Aumigao Walk para demonstracao comercial e futuras integracoes.",
+    "Entre em contato com o Aumigão Walk para demonstração comercial e futuras integrações.",
 };
 
 export default function ContatoPage() {
@@ -12,15 +12,15 @@ export default function ContatoPage() {
     <section className="px-5 py-16 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-forest">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
             Contato
           </p>
           <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-            Fale com o time Aumigao Walk.
+            Fale com o time Aumigão Walk.
           </h1>
           <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-            Conte um pouco sobre o seu negocio e deixe os dados preparados para
-            a futura integracao do fluxo comercial.
+            Conte um pouco sobre o seu negócio e deixe os dados preparados para
+            a futura integração do fluxo comercial.
           </p>
         </div>
         <ContactForm />

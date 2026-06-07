@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politica de privacidade",
+  title: "Política de privacidade",
   description:
-    "Placeholder organizado para a futura politica de privacidade do Aumigao Walk.",
+    "Placeholder organizado para a futura política de privacidade do Aumigão Walk.",
 };
 
 export default function PrivacidadePage() {
   return (
     <section className="px-5 py-16 lg:px-8">
       <article className="mx-auto max-w-4xl rounded bg-white p-8 shadow-soft">
-        <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-forest">
+        <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
           Privacidade
         </p>
         <h1 className="mt-3 text-4xl font-black text-brand-ink">
-          Politica de privacidade
+          Política de privacidade
         </h1>
         <div className="mt-8 grid gap-6 text-brand-ink/70">
           <section>

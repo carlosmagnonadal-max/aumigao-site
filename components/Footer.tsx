@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const links = [
   { href: "/como-funciona", label: "Como funciona" },
@@ -12,13 +13,15 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-black/5 bg-white">
+    <footer className="border-t border-brand-purple/10 bg-brand-ink text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-[1fr_2fr] lg:px-8">
         <div>
-          <p className="text-lg font-bold text-brand-ink">Aumigao Walk</p>
-          <p className="mt-3 max-w-sm text-sm leading-6 text-brand-ink/65">
-            Plataforma institucional para tutores, passeadores e operacoes pet
-            que desejam escalar com tecnologia.
+          <div className="[&_span]:text-white">
+            <BrandLogo compact />
+          </div>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">
+            Passeios com carinho, tutores mais tranquilos e negócios pet prontos
+            para crescer com uma experiência que tem afeto no centro.
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -26,7 +29,7 @@ export function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-brand-ink/70 hover:text-brand-forest"
+              className="text-sm font-medium text-white/70 hover:text-brand-peach"
             >
               {link.label}
             </Link>

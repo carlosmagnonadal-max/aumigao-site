@@ -9,16 +9,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          ink: "#18201d",
-          forest: "#176b55",
-          mint: "#bfe8d5",
-          coral: "#f9735b",
-          amber: "#f4b942",
-          cloud: "#f6f8f7",
+          ink: "#2f174f",
+          purple: "#6d2bbd",
+          violet: "#8f45dd",
+          orange: "#ff7a1a",
+          peach: "#ffb36b",
+          cream: "#fff6e8",
+          cloud: "#fffaf2",
+          blush: "#fde6d2",
         },
       },
       boxShadow: {
-        soft: "0 18px 50px rgba(24, 32, 29, 0.08)",
+        soft: "0 18px 50px rgba(109, 43, 189, 0.13)",
       },
     },
   },

@@ -4,23 +4,23 @@ export function ContactForm() {
       {/* TODO: integrar com n8n. */}
       <label className="grid gap-2 text-sm font-bold text-brand-ink">
         Nome
-        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest" />
+        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink">
         Empresa
-        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest" />
+        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink">
         E-mail
-        <input type="email" className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest" />
+        <input type="email" className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink">
         Telefone
-        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest" />
+        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
-        Tipo de negocio
-        <select className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest">
+        Tipo de negócio
+        <select className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange">
           <option>Pet shop</option>
           <option>Clinica veterinaria</option>
           <option>Creche ou hotel pet</option>
@@ -30,12 +30,12 @@ export function ContactForm() {
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
         Mensagem
-        <textarea rows={6} className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-forest" />
+        <textarea rows={6} className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
       <div className="md:col-span-2">
         <button
           type="button"
-          className="w-full rounded bg-brand-forest px-6 py-3 font-bold text-white transition hover:bg-brand-ink sm:w-auto"
+          className="w-full rounded bg-brand-purple px-6 py-3 font-bold text-white transition hover:bg-brand-orange sm:w-auto"
         >
           Enviar interesse
         </button>
