@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+*.log
+next-dev-3000.log
+next-dev-3000.err.log
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.DS_Store
+*.pem
+.vercel
+*.tsbuildinfo
