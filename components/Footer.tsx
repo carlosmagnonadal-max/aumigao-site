@@ -20,8 +20,9 @@ export function Footer() {
             <BrandLogo compact />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">
-            Passeios com carinho, tutores mais tranquilos e negócios pet prontos
-            para crescer com uma experiência que tem afeto no centro.
+            Plataforma de passeios pet com operação auditável, conectando
+            tutores, passeadores verificados e negócios pet em uma experiência
+            segura, organizada e escalável.
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

@@ -5,25 +5,63 @@ import { appDownloadHref } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Seja passeador",
   description:
-    "Conheça as vantagens, requisitos e ganhos para passeadores no Aumigão Walk.",
+    "Seja um Aumigo parceiro: cadastro, credenciamento, kit operacional, ganhos e reputação no Aumigão Walk.",
 };
 
 const sections = [
   {
     title: "Como funciona",
-    items: ["Veja oportunidades no app", "Confirme sua disponibilidade", "Realize passeios com cuidado e presença"],
+    items: [
+      "Cadastre-se pelo aplicativo",
+      "Envie dados e documentos",
+      "Passe pela aprovação",
+      "Receba solicitações organizadas",
+    ],
   },
   {
     title: "Requisitos",
-    items: ["Responsabilidade com animais", "Pontualidade", "Boa comunicação com tutores"],
+    items: [
+      "Responsabilidade com pets",
+      "Pontualidade",
+      "Comunicação com tutores",
+      "Compromisso com segurança",
+    ],
   },
   {
-    title: "Vantagens",
-    items: ["Rotina flexível", "Histórico de avaliações", "Acesso a uma rede em crescimento"],
+    title: "Documentos e aprovação",
+    items: [
+      "Dados pessoais",
+      "Documentos de validação",
+      "Análise de cadastro",
+      "Ativação conforme operação",
+    ],
+  },
+  {
+    title: "Kit básico",
+    items: [
+      "Identificação operacional",
+      "Orientações de atendimento",
+      "Padronização da experiência",
+      "Validação em fase de ativação",
+    ],
   },
   {
     title: "Ganhos",
-    items: ["Receba por passeios realizados", "Aumente sua demanda", "Cresça com recorrência"],
+    items: [
+      "Solicitações pelo app",
+      "Agenda organizada",
+      "Controle de passeios",
+      "Repasses conforme operação ativa",
+    ],
+  },
+  {
+    title: "Reputação e evolução",
+    items: [
+      "Avaliações",
+      "Histórico de atendimento",
+      "Score e qualidade",
+      "Evolução profissional",
+    ],
   },
 ];
 
@@ -37,17 +75,18 @@ export default function SejaPasseadorPage() {
               Seja passeador
             </p>
             <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-              Ganhe caminhando com quem deixa o dia melhor.
+              Seja um Aumigo parceiro.
             </h1>
             <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-              O Aumigão Walk aproxima passeadores de tutores que buscam alguém
-              de confiança para cuidar do pet com carinho, atenção e movimento.
+              Transforme cuidado com pets em oportunidade profissional, com
+              agenda, solicitações, credenciamento, kit operacional, segurança
+              e reputação.
             </p>
             <Link
               href={appDownloadHref}
               className="mt-8 inline-flex rounded bg-brand-purple px-6 py-3 font-bold text-white shadow-soft transition hover:bg-brand-orange"
             >
-              Baixar aplicativo
+              Quero me cadastrar
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">

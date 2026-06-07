@@ -28,6 +28,25 @@ export function Header() {
         >
           Solicitar demo
         </Link>
+
+        <details className="group relative md:hidden">
+          <summary className="list-none rounded bg-white px-4 py-2 text-sm font-black text-brand-purple shadow-soft">
+            Menu
+          </summary>
+          <div className="absolute right-0 mt-3 grid w-56 gap-2 rounded bg-white p-4 shadow-soft">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href} className="font-bold text-brand-ink">
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/demo-white-label"
+              className="rounded bg-brand-orange px-4 py-2 text-center font-bold text-white"
+            >
+              Solicitar demo
+            </Link>
+          </div>
+        </details>
       </div>
     </header>
   );

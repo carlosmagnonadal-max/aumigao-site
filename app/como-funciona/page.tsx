@@ -3,35 +3,35 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Como funciona",
   description:
-    "Entenda como o Aumigão Walk transforma pedidos de passeio em cuidado real para pets e tutores.",
+    "Entenda como o Aumigão Walk conecta tutores, passeadores verificados e operação auditável.",
 };
 
 const timelines = [
   {
     title: "Fluxo do tutor",
     items: [
-      "Escolhe o passeio ideal para a rotina do pet",
-      "Envia a solicitação pelo aplicativo",
-      "Acompanha o cuidado com mais tranquilidade",
-      "Avalia a experiência e fortalece a confiança",
+      "Agenda o passeio pelo aplicativo",
+      "Escolhe pet, duração e modalidade",
+      "Acompanha o status da jornada",
+      "Avalia a experiência ao final",
     ],
   },
   {
     title: "Fluxo do passeador",
     items: [
-      "Recebe oportunidades próximas e compatíveis",
-      "Confirma o atendimento com responsabilidade",
-      "Cuida do pet durante a caminhada",
-      "Constrói reputação com carinho e boas avaliações",
+      "Passa por cadastro e credenciamento",
+      "Mantém documentos e kit operacional validados",
+      "Recebe solicitações e acompanha agenda",
+      "Evolui com score, reputação e histórico",
     ],
   },
   {
-    title: "Fluxo da marca parceira",
+    title: "Fluxo operacional",
     items: [
-      "Organiza a demanda da comunidade local",
-      "Acompanha unidades e passeadores ativos",
-      "Cuida da qualidade da experiência",
-      "Expande relacionamento e receita recorrente",
+      "Monitora matching e passeios",
+      "Acompanha alertas e qualidade",
+      "Apoia suporte e recovery operacional",
+      "Fortalece a rede com reputação e melhoria contínua",
     ],
   },
 ];
@@ -45,11 +45,11 @@ export default function ComoFuncionaPage() {
             Como funciona
           </p>
           <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-            Um passeio bem cuidado começa antes da coleira.
+            Segurança e carinho com operação por trás.
           </h1>
           <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-            O Aumigão Walk conecta tutores, passeadores e marcas parceiras em
-            uma jornada simples, humana e feita para o pet se sentir bem.
+            O Aumigão Walk organiza a jornada de tutores, passeadores e operação
+            para que cada passeio seja mais previsível, auditável e feliz.
           </p>
         </div>
 

@@ -1,7 +1,14 @@
+const interests = [
+  "Quero contratar White Label",
+  "Quero ser passeador",
+  "Quero suporte",
+  "Quero parceria comercial",
+];
+
 export function ContactForm() {
   return (
     <form className="grid gap-5 rounded border border-black/5 bg-white p-6 shadow-soft md:grid-cols-2">
-      {/* TODO: integrar com n8n. */}
+      {/* TODO: integrar com n8n para envio automático para negocios@aumigaowalk.com.br */}
       <label className="grid gap-2 text-sm font-bold text-brand-ink">
         Nome
         <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
@@ -18,14 +25,26 @@ export function ContactForm() {
         Telefone
         <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
       </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
+      <label className="grid gap-2 text-sm font-bold text-brand-ink">
+        Cidade
+        <input className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange" />
+      </label>
+      <label className="grid gap-2 text-sm font-bold text-brand-ink">
         Tipo de negócio
         <select className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange">
           <option>Pet shop</option>
-          <option>Clinica veterinaria</option>
+          <option>Clínica veterinária</option>
           <option>Creche ou hotel pet</option>
           <option>Rede ou franquia</option>
           <option>Outro</option>
+        </select>
+      </label>
+      <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
+        Interesse principal
+        <select className="rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange">
+          {interests.map((interest) => (
+            <option key={interest}>{interest}</option>
+          ))}
         </select>
       </label>
       <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
@@ -39,6 +58,9 @@ export function ContactForm() {
         >
           Enviar interesse
         </button>
+        <p className="mt-3 text-sm font-semibold text-brand-ink/60">
+          Retornamos normalmente em até 1 dia útil.
+        </p>
       </div>
     </form>
   );

@@ -1,5 +1,15 @@
 import Link from "next/link";
-import { whiteLabelFeatures } from "@/lib/content";
+
+const benefits = [
+  "Nova fonte de receita",
+  "Fidelização de clientes",
+  "Operação pronta",
+  "Marca própria",
+  "Painel administrativo",
+  "Rede de passeadores",
+  "Implantação assistida",
+  "Multiunidades",
+];
 
 export function WhiteLabelCTA() {
   return (
@@ -7,25 +17,25 @@ export function WhiteLabelCTA() {
       <div className="mx-auto grid max-w-7xl gap-10 rounded bg-brand-purple p-8 text-white md:grid-cols-[1fr_0.9fr] md:p-10">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-peach">
-            Expansão para negócios pet
+            White Label
           </p>
           <h2 className="mt-3 text-3xl font-black md:text-4xl">
-            Sua marca pode levar cuidado para muito mais pets.
+            Leve a operação Aumigão para a sua marca.
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-white/75">
-            O White Label do Aumigão Walk ajuda pet shops, clínicas, hotéis e
-            redes a criarem uma frente de passeios com identidade própria,
-            comunidade local e relacionamento mais próximo com tutores.
+            Pet shops, clínicas veterinárias, hotéis pet, creches e redes podem
+            oferecer passeios com marca própria usando app, painel
+            administrativo e estrutura operacional preparada para crescer.
           </p>
           <Link
-            href="/white-label"
+            href="/demo-white-label"
             className="mt-8 inline-flex rounded bg-brand-orange px-6 py-3 font-bold text-white transition hover:bg-brand-peach hover:text-brand-ink"
           >
-            Conhecer a expansão
+            Solicitar demonstração
           </Link>
         </div>
-        <div className="grid gap-3">
-          {whiteLabelFeatures.map((feature) => (
+        <div className="grid gap-3 sm:grid-cols-2">
+          {benefits.map((feature) => (
             <div key={feature} className="rounded bg-white/10 px-4 py-3 font-semibold">
               {feature}
             </div>

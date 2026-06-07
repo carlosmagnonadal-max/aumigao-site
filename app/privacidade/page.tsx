@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Política de privacidade",
   description:
-    "Placeholder organizado para a futura política de privacidade do Aumigão Walk.",
+    "Política de privacidade do Aumigão Walk em fase de revisão jurídica.",
 };
 
 export default function PrivacidadePage() {
@@ -16,25 +16,30 @@ export default function PrivacidadePage() {
         <h1 className="mt-3 text-4xl font-black text-brand-ink">
           Política de privacidade
         </h1>
+        <p className="mt-5 leading-7 text-brand-ink/70">
+          Esta página está em fase de revisão jurídica para publicação da
+          política final de privacidade do Aumigão Walk.
+        </p>
         <div className="mt-8 grid gap-6 text-brand-ink/70">
           <section>
-            <h2 className="text-xl font-black text-brand-ink">1. Dados coletados</h2>
+            <h2 className="text-xl font-black text-brand-ink">1. Dados e finalidade</h2>
             <p className="mt-2 leading-7">
-              Conteudo reservado para detalhar dados pessoais, finalidade e base
-              legal em versao futura.
+              A versão final explicará quais dados podem ser tratados e para
+              quais finalidades.
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-black text-brand-ink">2. Uso das informacoes</h2>
+            <h2 className="text-xl font-black text-brand-ink">2. Segurança</h2>
             <p className="mt-2 leading-7">
-              Espaco reservado para explicar tratamento, comunicacao e melhoria
-              de servicos.
+              As práticas de proteção e governança de dados serão descritas nos
+              canais oficiais.
             </p>
           </section>
           <section>
             <h2 className="text-xl font-black text-brand-ink">3. Direitos do titular</h2>
             <p className="mt-2 leading-7">
-              Espaco reservado para direitos, canais de contato e solicitacoes.
+              Solicitações e dúvidas sobre privacidade terão canal indicado na
+              versão final.
             </p>
           </section>
         </div>

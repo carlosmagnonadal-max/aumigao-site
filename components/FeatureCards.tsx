@@ -6,10 +6,10 @@ export function FeatureCards() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-2xl">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
-            Por que os tutores sentem diferença
+            Plataforma completa
           </p>
           <h2 className="mt-3 text-3xl font-black text-brand-ink md:text-4xl">
-            Mais passeio, mais vínculo, mais tranquilidade.
+            App, operação e reputação trabalhando juntos.
           </h2>
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">

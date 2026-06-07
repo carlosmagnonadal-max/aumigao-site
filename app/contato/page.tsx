@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Entre em contato com o Aumigão Walk para demonstração comercial e futuras integrações.",
+    "Entre em contato com o Aumigão Walk para White Label, passeadores, suporte ou parceria comercial.",
 };
 
 export default function ContatoPage() {
@@ -19,8 +19,11 @@ export default function ContatoPage() {
             Fale com o time Aumigão Walk.
           </h1>
           <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-            Conte um pouco sobre o seu negócio e deixe os dados preparados para
-            a futura integração do fluxo comercial.
+            Conte sobre sua empresa, cidade e interesse principal. O formulário
+            já está preparado para futura integração comercial automatizada.
+          </p>
+          <p className="mt-4 rounded bg-brand-blush px-4 py-3 text-sm font-bold text-brand-purple">
+            Retornamos normalmente em até 1 dia útil.
           </p>
         </div>
         <ContactForm />

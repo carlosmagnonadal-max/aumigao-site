@@ -3,24 +3,24 @@ export const demoHref = "/demo-white-label";
 
 export const benefits = [
   {
-    title: "Cuidado de verdade",
+    title: "Passeadores verificados",
     description:
-      "Cada passeio nasce da confiança entre tutor, pet e passeador.",
+      "Credenciamento, validações e reputação ajudam a fortalecer a confiança.",
   },
   {
-    title: "Rotina mais leve",
+    title: "Operação auditável",
     description:
-      "O tutor resolve o passeio no app e ganha tempo para aproveitar melhor o dia.",
+      "Fluxos organizados para acompanhar matching, passeios, alertas e qualidade.",
   },
   {
-    title: "Passeadores avaliados",
+    title: "Rotina do pet",
     description:
-      "Histórico e avaliações ajudam a escolher quem vai caminhar com o pet.",
+      "Planos, modalidades e histórico ajudam tutores a cuidar melhor do dia a dia.",
   },
   {
-    title: "Pet feliz, tutor tranquilo",
+    title: "Crescimento White Label",
     description:
-      "Uma experiência pensada para dar segurança antes, durante e depois do passeio.",
+      "Negócios pet podem levar a operação Aumigão para sua própria marca.",
   },
 ];
 
