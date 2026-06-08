@@ -8,6 +8,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        viva: {
+          bg: "#140F1B",
+          bg2: "#1A1422",
+          surface: "#221A2D",
+          surface2: "#2A2137",
+          text: "#F6F1F8",
+          ember: "#FF6A2B",
+          ember2: "#FFA24D",
+          emberDeep: "#E2490F",
+          bone: "#F2EADC",
+          bone2: "#FBF6EC",
+          ink: "#1B1320",
+          ink2: "#5C5468",
+          ok: "#4FD69C",
+        },
         brand: {
           ink: "#2f174f",
           night: "#221039",

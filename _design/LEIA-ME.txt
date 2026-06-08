@@ -1,0 +1,18 @@
+AUMIGÃO WALK — PACOTE DE MARCA
+==============================
+Extraído em alta resolução a partir do material original.
+
+LOGO (transparente):
+  au-mark.png ................ monograma AU + coração (header, selos)
+  aumigao-walk-lockup.png .... lockup completo AUmigão walk
+  aumigao-walk-lockup-roxo.png lockup no roxo da marca (#8C52FF)
+
+ÍCONES / FAVICON (vão em app/site/public/):
+  favicon.ico (16/32/48) · favicon-16.png · favicon-32.png
+  apple-touch-icon-180.png · icon-192.png · icon-512.png · icon-rounded-512.png
+
+USO:
+  - favicons-head.html .... cole as tags no <head> (app/layout.tsx)
+  - site.webmanifest ...... vai em app/site/public/
+
+Obs.: arquivos raster (web/app/tela ok). Para impressão grande, vetorizar depois.
