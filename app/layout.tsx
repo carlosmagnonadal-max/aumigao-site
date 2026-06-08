@@ -6,15 +6,15 @@ import { Header } from "@/components/Header";
 export const metadata: Metadata = {
   metadataBase: new URL("https://aumigao-walk.vercel.app"),
   title: {
-    default: "Aumigão Walk | Passeios pet com operação auditável",
+    default: "Aumigão Walk | Plataforma tecnológica pet",
     template: "%s | Aumigão Walk",
   },
   description:
-    "Aumigão Walk é uma plataforma de passeios pet com operação auditável, conectando tutores, passeadores verificados e negócios pet.",
+    "Aumigão Walk é uma plataforma de passeios pet com app para tutores, app para passeadores, painel administrativo e operação White Label.",
   openGraph: {
     title: "Aumigão Walk",
     description:
-      "Mais que um passeio, um momento de felicidade com segurança, carinho e operação organizada.",
+      "Passeios pet com segurança, tecnologia, operação auditável e proposta White Label.",
     type: "website",
     locale: "pt_BR",
   },

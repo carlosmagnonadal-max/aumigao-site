@@ -10,17 +10,19 @@ const config: Config = {
       colors: {
         brand: {
           ink: "#2f174f",
+          night: "#221039",
           purple: "#6d2bbd",
           violet: "#8f45dd",
           orange: "#ff7a1a",
           peach: "#ffb36b",
-          cream: "#fff6e8",
-          cloud: "#fffaf2",
+          cream: "#fff8ef",
+          cloud: "#fffdf8",
           blush: "#fde6d2",
         },
       },
       boxShadow: {
         soft: "0 18px 50px rgba(109, 43, 189, 0.13)",
+        premium: "0 30px 90px rgba(34, 16, 57, 0.18)",
       },
     },
   },
