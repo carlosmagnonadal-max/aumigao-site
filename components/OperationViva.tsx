@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -225,20 +226,138 @@ export function LiveOperationCard() {
   );
 }
 
+function HeroPhotoRoute() {
+  return (
+    <svg className="ov-photo-route" viewBox="0 0 640 720" aria-hidden="true">
+      <path
+        className="ov-photo-route-glow"
+        d="M338 708 C 302 594 250 556 285 456 S 356 344 302 274 160 194 86 88"
+      />
+      <path
+        id="ov-photo-route-path"
+        className="ov-photo-route-line"
+        d="M338 708 C 302 594 250 556 285 456 S 356 344 302 274 160 194 86 88"
+      />
+      <circle cx="86" cy="88" r="8" className="ov-photo-route-end" />
+      <circle cx="86" cy="88" r="17" className="ov-photo-route-end-ring" />
+      <circle r="6.5" className="ov-photo-route-dot">
+        <animateMotion dur="3.8s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#ov-photo-route-path" />
+        </animateMotion>
+      </circle>
+      <circle r="15" className="ov-photo-route-ring">
+        <animateMotion dur="3.8s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#ov-photo-route-path" />
+        </animateMotion>
+      </circle>
+    </svg>
+  );
+}
+
+function HeroPhotoGlassCard() {
+  return (
+    <div className="ov-photo-card">
+      <div className="ov-photo-card-head">
+        <span>{"OPERA\u00C7\u00C3O AO VIVO"}</span>
+        <span><LiveDot /> agora</span>
+      </div>
+      <div className="ov-photo-mini-route" aria-hidden="true">
+        <svg viewBox="0 0 230 52">
+          <path d="M12 42 C 58 42 70 14 120 14 S 190 28 218 6" />
+          <circle cx="12" cy="42" r="3.5" />
+          <circle cx="218" cy="6" r="4.5" />
+          <circle cx="218" cy="6" r="9" />
+        </svg>
+      </div>
+      <div className="ov-photo-card-row"><span>Status</span><b className="ov-photo-ok"><LiveDot /> Em rota</b></div>
+      <div className="ov-photo-card-row"><span>Passeador</span><b>Verificado ✓</b></div>
+      <div className="ov-photo-card-row"><span>Score</span><b className="ov-photo-ember">4.9/5</b></div>
+    </div>
+  );
+}
+
+function PhotoTreatment({ variant = "standard" }: { variant?: "standard" | "cta" }) {
+  return (
+    <>
+      <span className={`ov-img-aubergine ${variant === "cta" ? "is-cta" : ""}`} />
+      <span className="ov-img-grain" />
+      <span className={`ov-img-vignette ${variant === "cta" ? "is-cta" : ""}`} />
+    </>
+  );
+}
+
+function JourneyPhoto({ role }: { role: string }) {
+  const photos: Record<string, { src: string; alt: string }> = {
+    Tutor: { src: "/tutor-laptop.jpg", alt: "Tutora usando notebook com cachorro ao lado" },
+    Passeador: { src: "/dog-walk-street.jpg", alt: "Passeador conduzindo cachorro em uma rua" },
+  };
+  const photo = photos[role];
+
+  if (!photo) return null;
+
+  return (
+    <div className="ov-journey-photo">
+      <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 840px) 100vw, 33vw" className="ov-journey-photo-img" />
+      <span className="ov-journey-photo-tint" />
+      <PhotoTreatment />
+    </div>
+  );
+}
+
+function WalkerRotatingBadge() {
+  return (
+    <div className="ov-walker-badge" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs>
+          <path id="ov-walker-badge-path" d="M60 60 m -43 0 a43 43 0 1 1 86 0 a43 43 0 1 1 -86 0" />
+        </defs>
+        <text>
+          <textPath href="#ov-walker-badge-path">passeador credenciado · aumigão walk ·</textPath>
+        </text>
+      </svg>
+      <span />
+    </div>
+  );
+}
+
 export function EcosystemHero() {
   return (
-    <section className="ov-hero ov-grain">
+    <section className="ov-hero ov-photo-hero">
+      <div className="ov-photo-hero-bg">
+        <Image
+          src="/walker-hero.jpg"
+          alt="Passeadora da Aumigao caminhando com cachorro em uma rua arborizada"
+          fill
+          priority={true}
+          sizes="100vw"
+          className="ov-photo-hero-img"
+        />
+      </div>
+      <div className="ov-photo-scrim-top" />
+      <div className="ov-photo-scrim-left" />
+      <div className="ov-photo-scrim-bottom" />
+      <div className="ov-photo-noise" />
+      <HeroPhotoRoute />
+      <HeroPhotoGlassCard />
+      <div className="ov-photo-chip ov-photo-chip-one"><LiveDot tone="ember" /> Recovery monitorado</div>
+      <div className="ov-photo-chip ov-photo-chip-two">✓ Passeador credenciado</div>
       <div className="ov-hero-grid" />
-      <div className="ov-glow" />
       <div className="ov-wrap ov-hero-wrap">
         <div className="ov-reveal">
+          <div className="ov-photo-eyebrow"><span>{"OPERA\u00C7\u00C3O VIVA"}</span><i /></div>
+          <h1 className="ov-photo-title">
+            <span className="ov-word ov-word-1">Cada</span>{" "}
+            <span className="ov-word ov-word-2">passeio,</span><br />
+            <span className="ov-word ov-word-3">uma</span>{" "}
+            <span className="ov-word ov-word-4 ov-word-gradient">{"opera\u00E7\u00E3o."}</span>
+          </h1>
           <SectionEyebrow live="ember">Infraestrutura de passeios pet</SectionEyebrow>
           <h1>A operação que cuida do passeio <em>de ponta a ponta</em>.</h1>
-          <p className="ov-lead">
+          <p className="ov-lead ov-photo-fade ov-photo-fade-sub">
             Aumigão conecta tutores, passeadores e empresas em uma operação auditável:
             matching, score, credenciamento, recovery e White Label, em uma só plataforma.
           </p>
-          <div className="ov-cta-row">
+          <div className="ov-cta-row ov-photo-fade ov-photo-fade-cta">
             <Link href="/#cta" className="ov-btn ov-btn-primary">
               Solicitar diagnóstico White Label <span className="ov-arr">→</span>
             </Link>
@@ -246,13 +365,12 @@ export function EcosystemHero() {
               Ver como funciona
             </Link>
           </div>
-          <div className="ov-trust-pills">
+          <div className="ov-trust-pills ov-photo-fade ov-photo-fade-pills">
             <StatusPill>Credenciamento verificado</StatusPill>
             <MetricChip label="Trilha de auditoria" />
             <MetricChip label="Recovery monitorado" />
           </div>
         </div>
-        <LiveOperationCard />
       </div>
     </section>
   );
@@ -408,6 +526,7 @@ export function ParticipantJourney() {
         <div className="ov-tracks">
           {journeys.map(([role, title, text, bullets]) => (
             <article key={role as string} className="ov-track ov-reveal">
+              <JourneyPhoto role={role as string} />
               <span className="ov-track-icon">⌾</span>
               <span className="ov-role">{role as string}</span>
               <h3>{title as string}</h3>
@@ -425,10 +544,16 @@ export function ParticipantJourney() {
 
 export function WalkerOpportunity() {
   return (
-    <section className="ov-section ov-walker ov-grain" id="passeadores">
-      <div className="ov-glow" />
+    <section className="ov-section ov-walker ov-walker-editorial ov-grain" id="passeadores">
       <div className="ov-wrap ov-walker-wrap">
-        <div className="ov-reveal">
+        <div className="ov-walker-photo-panel ov-reveal">
+          <Image src="/dog-walk-street.jpg" alt="Cachorro em passeio na rua" fill sizes="(max-width: 840px) 100vw, 55vw" className="ov-walker-photo-img" />
+          <PhotoTreatment />
+          <span className="ov-walker-dissolve" />
+          <WalkerRotatingBadge />
+        </div>
+        <div className="ov-reveal ov-walker-copy">
+          <span className="ov-ghost-rs" aria-hidden="true">+R$</span>
           <SectionEyebrow live="ember">Para quem passeia</SectionEyebrow>
           <h2>Transforme passeios em <em>renda recorrente</em>.</h2>
           <p className="ov-lead">
@@ -463,7 +588,7 @@ export function WalkerOpportunity() {
           </div>
           <div className="ov-earn-foot">
             <span>Ganhos crescem com recorrência, agenda e reputação.</span>
-            <div><MetricChip label="+ score" /><MetricChip label="+ demanda" /><MetricChip label="+ renda" /></div>
+            <div><MetricChip label="+ score" /><MetricChip label="+ demanda" /><MetricChip label="dados demonstrativos" /></div>
           </div>
         </div>
       </div>
@@ -562,9 +687,14 @@ export function Faq() {
 
 export function EnterpriseCTA() {
   return (
-    <section className="ov-section ov-finalcta ov-grain" id="cta">
-      <div className="ov-glow" />
+    <section className="ov-section ov-finalcta ov-final-photo ov-grain" id="cta">
+      <div className="ov-final-photo-bg">
+        <Image src="/dog-happy.jpg" alt="Cachorro feliz ao ar livre" fill sizes="100vw" className="ov-final-photo-img" />
+        <PhotoTreatment variant="cta" />
+      </div>
+      <div className="ov-final-photo-scrim" />
       <div className="ov-wrap ov-reveal">
+        <h2 className="ov-final-photo-title"><i>A operação de passeios pet,</i> <span>com tecnologia e confiança.</span></h2>
         <SectionEyebrow live="ember">Comece agora</SectionEyebrow>
         <h2>A operação de passeios pet, com tecnologia e confiança.</h2>
         <p className="ov-lead">
