@@ -323,7 +323,7 @@ img, svg { display: block; max-width: 100%; }
 
 .ov-photo-hero-img {
   object-fit: cover;
-  object-position: 60% 38%;
+  object-position: 62% 8%;
   filter: contrast(1.15) brightness(.94) saturate(.94);
   transform-origin: 62% 48%;
   animation: ov-photo-ken 28s ease-in-out infinite alternate;
@@ -1862,3 +1862,168 @@ img, svg { display: block; max-width: 100%; }
   .ov-modgrid { grid-template-columns: 1fr; }
   .ov-earn-bars { gap: 8px; height: 220px; }
 }
+
+/* ---- Formulários premium (contato e afins) ---- */
+.ov-formcard {
+  border: 1px solid var(--ov-line);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .012));
+  padding: 26px;
+  box-shadow: 0 50px 90px -55px #000;
+}
+
+.ov-form { display: grid; gap: 16px; }
+
+.ov-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ov-field { display: grid; gap: 7px; }
+.ov-field.is-full { grid-column: 1 / -1; }
+
+.ov-field > span {
+  color: var(--ov-text-2);
+  font-family: var(--ov-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.ov-input,
+.ov-textarea,
+.ov-select {
+  width: 100%;
+  border: 1px solid var(--ov-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .04);
+  padding: 13px 14px;
+  color: var(--ov-text);
+  font: inherit;
+  transition: border-color .2s, background .2s;
+}
+
+.ov-textarea { min-height: 132px; resize: vertical; }
+.ov-select { cursor: pointer; }
+
+.ov-input::placeholder,
+.ov-textarea::placeholder { color: var(--ov-text-3); }
+
+.ov-input:focus,
+.ov-textarea:focus,
+.ov-select:focus {
+  outline: none;
+  border-color: rgba(255, 106, 43, .55);
+  background: rgba(255, 255, 255, .07);
+}
+
+.ov-select option { color: #1b1320; }
+
+.ov-form-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ov-form-note {
+  color: var(--ov-text-3);
+  font-family: var(--ov-mono);
+  font-size: 11.5px;
+}
+
+.ov-form-err {
+  color: #ff8a6b;
+  font-family: var(--ov-mono);
+  font-size: 12px;
+}
+
+.ov-form-ok {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(79, 214, 156, .3);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(79, 214, 156, .08), rgba(255, 255, 255, .01));
+  padding: 34px 28px;
+  text-align: center;
+}
+
+.ov-form-ok h3 { font-family: var(--ov-display); font-size: 1.5rem; }
+.ov-form-ok p { color: var(--ov-text-2); }
+
+.ov-btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; }
+
+/* Aside de contato (highlights + canais) */
+.ov-contact-list {
+  display: grid;
+  gap: 14px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ov-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  color: var(--ov-text-2);
+  font-size: .96rem;
+}
+
+.ov-contact-list li b { color: var(--ov-text); font-weight: 700; }
+
+.ov-contact-ico {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--ov-ember-soft);
+  color: var(--ov-ember);
+  font-size: 16px;
+}
+
+.ov-contact-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 26px;
+  border: 1px solid var(--ov-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .03);
+  padding: 13px 16px;
+  color: var(--ov-text);
+  font-family: var(--ov-mono);
+  font-size: 13px;
+}
+
+.ov-contact-channel b { color: var(--ov-ember); }
+
+.ov-contact-grid {
+  display: grid;
+  grid-template-columns: .82fr 1.18fr;
+  gap: 46px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .ov-contact-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+@media (max-width: 620px) {
+  .ov-form-grid { grid-template-columns: 1fr; }
+}
+
+/* Título de páginas secundárias (contato, seja-passeador, etc.) */
+.ov-ptitle {
+  margin: 18px 0;
+  font-family: var(--ov-display);
+  font-weight: 800;
+  line-height: 1.05;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+}
+
+.ov-ptitle em { color: var(--ov-ember); font-style: normal; }

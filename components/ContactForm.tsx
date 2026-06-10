@@ -43,9 +43,6 @@ const EMPTY: FormState = {
   message: "",
 };
 
-const inputClass =
-  "rounded border border-black/10 px-4 py-3 font-normal outline-none focus:border-brand-orange";
-
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -80,17 +77,11 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="grid gap-3 rounded border border-black/5 bg-white p-8 text-center shadow-soft">
-        <p className="text-2xl font-black text-brand-ink">Recebemos seu interesse! 🐾</p>
-        <p className="font-semibold text-brand-ink/70">
-          Nossa equipe retorna normalmente em até 1 dia útil.
-        </p>
+      <div className="ov-form-ok">
+        <h3>Recebemos seu interesse 🐾</h3>
+        <p>Nossa equipe comercial retorna normalmente em até 1 dia útil.</p>
         <div>
-          <button
-            type="button"
-            onClick={() => setStatus("idle")}
-            className="mt-2 rounded bg-brand-purple px-6 py-3 font-bold text-white transition hover:bg-brand-orange"
-          >
+          <button type="button" className="ov-btn ov-btn-ghost" onClick={() => setStatus("idle")}>
             Enviar outra mensagem
           </button>
         </div>
@@ -99,76 +90,62 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="grid gap-5 rounded border border-black/5 bg-white p-6 shadow-soft md:grid-cols-2"
-    >
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        Nome
-        <input className={inputClass} value={form.name} onChange={update("name")} />
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        Empresa
-        <input className={inputClass} value={form.company} onChange={update("company")} />
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        E-mail
-        <input
-          type="email"
-          required
-          className={inputClass}
-          value={form.email}
-          onChange={update("email")}
-        />
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        Telefone
-        <input className={inputClass} value={form.phone} onChange={update("phone")} />
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        Cidade
-        <input className={inputClass} value={form.city} onChange={update("city")} />
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink">
-        Tipo de negócio
-        <select className={inputClass} value={form.business_type} onChange={update("business_type")}>
-          {businessTypes.map((type) => (
-            <option key={type}>{type}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
-        Interesse principal
-        <select className={inputClass} value={form.interest} onChange={update("interest")}>
-          {interests.map((interest) => (
-            <option key={interest}>{interest}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-2 text-sm font-bold text-brand-ink md:col-span-2">
-        Mensagem
-        <textarea
-          rows={6}
-          className={inputClass}
-          value={form.message}
-          onChange={update("message")}
-        />
-      </label>
-      <div className="md:col-span-2">
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="w-full rounded bg-brand-purple px-6 py-3 font-bold text-white transition hover:bg-brand-orange disabled:opacity-60 sm:w-auto"
-        >
-          {status === "sending" ? "Enviando..." : "Enviar interesse"}
-        </button>
-        {status === "error" ? (
-          <p className="mt-3 text-sm font-semibold text-red-600">{error}</p>
-        ) : (
-          <p className="mt-3 text-sm font-semibold text-brand-ink/60">
-            Retornamos normalmente em até 1 dia útil.
-          </p>
-        )}
+    <form className="ov-formcard" onSubmit={onSubmit}>
+      <div className="ov-form">
+        <div className="ov-form-grid">
+          <label className="ov-field">
+            <span>Nome</span>
+            <input className="ov-input" value={form.name} onChange={update("name")} placeholder="Seu nome" />
+          </label>
+          <label className="ov-field">
+            <span>Empresa</span>
+            <input className="ov-input" value={form.company} onChange={update("company")} placeholder="Nome da empresa" />
+          </label>
+          <label className="ov-field">
+            <span>E-mail</span>
+            <input type="email" required className="ov-input" value={form.email} onChange={update("email")} placeholder="voce@empresa.com" />
+          </label>
+          <label className="ov-field">
+            <span>Telefone</span>
+            <input className="ov-input" value={form.phone} onChange={update("phone")} placeholder="(00) 00000-0000" />
+          </label>
+          <label className="ov-field">
+            <span>Cidade</span>
+            <input className="ov-input" value={form.city} onChange={update("city")} placeholder="Cidade / UF" />
+          </label>
+          <label className="ov-field">
+            <span>Tipo de negócio</span>
+            <select className="ov-select" value={form.business_type} onChange={update("business_type")}>
+              {businessTypes.map((type) => (
+                <option key={type}>{type}</option>
+              ))}
+            </select>
+          </label>
+          <label className="ov-field is-full">
+            <span>Interesse principal</span>
+            <select className="ov-select" value={form.interest} onChange={update("interest")}>
+              {interests.map((interest) => (
+                <option key={interest}>{interest}</option>
+              ))}
+            </select>
+          </label>
+          <label className="ov-field is-full">
+            <span>Mensagem</span>
+            <textarea className="ov-textarea" value={form.message} onChange={update("message")} placeholder="Conte sobre sua operação, número de unidades, objetivo…" />
+          </label>
+        </div>
+
+        <div className="ov-form-foot">
+          <button type="submit" className="ov-btn ov-btn-primary" disabled={status === "sending"}>
+            {status === "sending" ? "Enviando…" : "Enviar interesse"}
+            <span className="ov-arr">→</span>
+          </button>
+          {status === "error" ? (
+            <span className="ov-form-err">{error}</span>
+          ) : (
+            <span className="ov-form-note">Retorno em até 1 dia útil · seus dados ficam protegidos</span>
+          )}
+        </div>
       </div>
     </form>
   );

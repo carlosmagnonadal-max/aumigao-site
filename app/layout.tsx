@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { RevealInit } from "@/components/RevealInit";
 
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#7B4DF2" />
       </head>
       <body>
+        <RevealInit />
         <Header />
         <main>{children}</main>
         <Footer />

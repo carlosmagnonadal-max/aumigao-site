@@ -4,29 +4,64 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Entre em contato com o Aumigão Walk para White Label, passeadores, suporte ou parceria comercial.",
+    "Fale com o Aumigão Walk: White Label, rede de passeadores, suporte ou parceria comercial.",
 };
+
+const highlights = [
+  {
+    icon: "◆",
+    title: "White Label sob medida.",
+    text: "Seu app, sua marca e uma operação auditável — sem construir do zero.",
+  },
+  {
+    icon: "↺",
+    title: "Resposta humana.",
+    text: "Retornamos normalmente em até 1 dia útil, com um plano para o seu caso.",
+  },
+  {
+    icon: "✦",
+    title: "Para todo o ecossistema.",
+    text: "Tutores, passeadores e empresas parceiras falam com a gente por aqui.",
+  },
+];
 
 export default function ContatoPage() {
   return (
-    <section className="px-5 py-16 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-        <div>
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
-            Contato
-          </p>
-          <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-            Fale com o time Aumigão Walk.
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-            Conte sobre sua empresa, cidade e interesse principal. O formulário
-            já está preparado para futura integração comercial automatizada.
-          </p>
-          <p className="mt-4 rounded bg-brand-blush px-4 py-3 text-sm font-bold text-brand-purple">
-            Retornamos normalmente em até 1 dia útil.
-          </p>
+    <section className="ov-section ov-center ov-grain">
+      <span className="ov-glow" />
+      <div className="ov-wrap">
+        <div className="ov-contact-grid">
+          <div>
+            <p className="ov-eyebrow">
+              <span className="ov-dot ov-dot-ember" /> Contato
+            </p>
+            <h1 className="ov-ptitle">
+              Vamos desenhar a sua <em>operação</em>.
+            </h1>
+            <p className="ov-lead">
+              White Label, rede credenciada de passeadores, suporte ou parceria
+              comercial — conte seu objetivo e a gente responde com um plano sob
+              medida.
+            </p>
+
+            <ul className="ov-contact-list">
+              {highlights.map((item) => (
+                <li key={item.title}>
+                  <span className="ov-contact-ico">{item.icon}</span>
+                  <span>
+                    <b>{item.title}</b> {item.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <a className="ov-contact-channel" href="mailto:contato@aumigaowalk.com.br">
+              ✉ <b>contato@aumigaowalk.com.br</b>
+            </a>
+          </div>
+
+          <ContactForm />
         </div>
-        <ContactForm />
       </div>
     </section>
   );
