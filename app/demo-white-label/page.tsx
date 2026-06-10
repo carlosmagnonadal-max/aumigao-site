@@ -8,58 +8,49 @@ export const metadata: Metadata = {
     "Showroom conceitual White Label do Aumigão Walk com Matching, Score, Recovery, Financeiro, Rede, Credenciamento, Operação e White Label.",
 };
 
-const highlights = [
-  "Matching",
-  "Score",
-  "Recovery",
-  "Financeiro",
-  "Rede",
-  "Credenciamento",
-  "Operação",
-  "White Label",
-];
-
 export default function DemoWhiteLabelPage() {
   return (
     <>
-      <section className="bg-brand-cream px-5 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-          <div>
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-brand-orange">Showroom conceitual</p>
-            <h1 className="mt-4 text-4xl font-black leading-tight text-brand-night md:text-6xl">
-              Entenda a operação White Label sem expor telas internas.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-brand-ink/68">
-              A demo apresenta os conceitos operacionais da plataforma em uma linguagem própria,
-              protegida e comercial: módulos, fluxos, indicadores e arquitetura.
+      <section className="ov-section ov-center ov-grain">
+        <span className="ov-glow" />
+        <div className="ov-wrap">
+          <div className="ov-section-head ov-section-center">
+            <p className="ov-eyebrow">
+              <span className="ov-dot ov-dot-ember" /> Showroom conceitual
             </p>
-            <Link href="/contato" className="mt-8 inline-flex rounded-full bg-brand-orange px-6 py-3 font-black text-white shadow-premium transition hover:bg-brand-night">
-              Solicitar diagnóstico White Label
-            </Link>
-          </div>
-          <div className="rounded-[2rem] bg-brand-night p-6 text-white shadow-premium">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {highlights.map((item, index) => (
-                <div key={item} className={`rounded-2xl border border-white/10 p-5 font-black ${index === 0 ? "bg-brand-orange" : "bg-white/[0.09]"}`}>
-                  {item}
-                </div>
-              ))}
+            <h1 className="ov-ptitle">
+              Entenda a operação <em>White Label</em> sem expor telas internas.
+            </h1>
+            <p className="ov-lead">
+              A demo apresenta os conceitos operacionais da plataforma em uma
+              linguagem própria, protegida e comercial: módulos, fluxos,
+              indicadores e arquitetura.
+            </p>
+            <div className="ov-cta-row">
+              <Link href="/contato" className="ov-btn ov-btn-primary">
+                Solicitar diagnóstico <span className="ov-arr">→</span>
+              </Link>
+              <Link href="/white-label" className="ov-btn ov-btn-ghost">
+                Ver a proposta White Label
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-5 py-16 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="ov-section ov-flow ov-grain">
+        <div className="ov-wrap">
           <WhiteLabelShowroom />
         </div>
       </section>
 
-      <section className="sticky bottom-0 z-20 border-t border-brand-purple/10 bg-white/[0.92] px-5 py-4 shadow-premium backdrop-blur lg:px-8">
+      <section className="sticky bottom-0 z-20 border-t border-white/10 bg-[#140f1b]/90 px-5 py-4 backdrop-blur lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-black text-brand-night">Pronto para avaliar a operação na sua marca?</p>
-          <Link href="/contato" className="rounded-full bg-brand-night px-5 py-3 text-center text-sm font-black text-white transition hover:bg-brand-orange">
-            Solicitar diagnóstico White Label
+          <p className="font-black text-[#f6f1f8]">
+            Pronto para avaliar a operação na sua marca?
+          </p>
+          <Link href="/contato" className="ov-btn ov-btn-primary">
+            Solicitar diagnóstico <span className="ov-arr">→</span>
           </Link>
         </div>
       </section>
