@@ -5,96 +5,114 @@ import { appDownloadHref } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Seja passeador",
   description:
-    "Seja um Aumigo parceiro: cadastro, credenciamento, kit operacional, ganhos e reputação no Aumigão Walk.",
+    "Seja um Aumigo parceiro: credenciamento, matching, kit operacional, ganhos, incentivos e reputação no Aumigão Walk.",
 };
 
-const sections = [
+const tracks = [
   {
+    icon: "◷",
+    role: "Início",
     title: "Como funciona",
     items: [
-      "Cadastre-se pelo aplicativo",
-      "Envie dados e documentos",
-      "Passe pela aprovação",
-      "Receba solicitações organizadas",
+      "Cadastro rápido pelo app",
+      "Credenciamento com documentos",
+      "Aprovação pela operação",
+      "Solicitações organizadas pelo matching",
     ],
   },
   {
+    icon: "✓",
+    role: "Elegibilidade",
     title: "Requisitos",
     items: [
-      "Responsabilidade com pets",
-      "Pontualidade",
-      "Comunicação com tutores",
+      "Responsabilidade com os pets",
+      "Pontualidade e presença",
+      "Boa comunicação com tutores",
       "Compromisso com segurança",
     ],
   },
   {
-    title: "Documentos e aprovação",
+    icon: "⛉",
+    role: "Verificação",
+    title: "Credenciamento",
     items: [
-      "Dados pessoais",
-      "Documentos de validação",
-      "Análise de cadastro",
-      "Ativação conforme operação",
+      "Dados pessoais e documentos",
+      "Validação de identidade (KYC)",
+      "Análise da operação",
+      "Ativação quando aprovado",
     ],
   },
   {
-    title: "Kit básico",
+    icon: "◫",
+    role: "Operação",
+    title: "Kit operacional",
     items: [
-      "Identificação operacional",
+      "Identificação padronizada",
       "Orientações de atendimento",
-      "Padronização da experiência",
-      "Validação em fase de ativação",
+      "Experiência consistente",
+      "Validação do kit por foto",
     ],
   },
   {
+    icon: "$",
+    role: "Renda",
     title: "Ganhos",
     items: [
-      "Solicitações pelo app",
-      "Agenda organizada",
-      "Controle de passeios",
-      "Repasses conforme operação ativa",
+      "Solicitações direto no app",
+      "Agenda e repasses claros",
+      "Gorjetas dos tutores",
+      "Incentivos por qualidade",
     ],
   },
   {
+    icon: "★",
+    role: "Carreira",
     title: "Reputação e evolução",
     items: [
-      "Avaliações",
-      "Histórico de atendimento",
-      "Score e qualidade",
-      "Evolução profissional",
+      "Avaliações a cada passeio",
+      "Score de qualidade",
+      "Selo de passeador verificado",
+      "Evolução com recovery e metas",
     ],
   },
 ];
 
 export default function SejaPasseadorPage() {
   return (
-    <section className="px-5 py-16 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
-              Seja passeador
+    <>
+      <section className="ov-section ov-center ov-grain">
+        <span className="ov-glow" />
+        <div className="ov-wrap">
+          <div className="ov-section-head">
+            <p className="ov-eyebrow">
+              <span className="ov-dot ov-dot-ember" /> Seja passeador
             </p>
-            <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-              Seja um Aumigo parceiro.
+            <h1 className="ov-ptitle">
+              Seja um <em>Aumigo</em> parceiro.
             </h1>
-            <p className="mt-5 text-lg leading-8 text-brand-ink/65">
-              Transforme cuidado com pets em oportunidade profissional, com
-              agenda, solicitações, credenciamento, kit operacional, segurança
-              e reputação.
+            <p className="ov-lead">
+              Transforme cuidado com pets em renda profissional — com agenda,
+              solicitações organizadas pelo matching, credenciamento, kit
+              operacional, incentivos e uma reputação que cresce a cada passeio.
             </p>
-            <Link
-              href={appDownloadHref}
-              className="mt-8 inline-flex rounded bg-brand-purple px-6 py-3 font-bold text-white shadow-soft transition hover:bg-brand-orange"
-            >
-              Quero me cadastrar
-            </Link>
+            <div className="ov-cta-row">
+              <Link href={appDownloadHref} className="ov-btn ov-btn-primary">
+                Quero me cadastrar <span className="ov-arr">→</span>
+              </Link>
+              <Link href="/#funciona" className="ov-btn ov-btn-ghost">
+                Ver como funciona
+              </Link>
+            </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {sections.map((section) => (
-              <article key={section.title} className="rounded border border-brand-purple/10 bg-white p-6 shadow-soft">
-                <h2 className="text-xl font-black text-brand-ink">{section.title}</h2>
-                <ul className="mt-5 grid gap-3 text-sm leading-6 text-brand-ink/68">
-                  {section.items.map((item) => (
+
+          <div className="ov-tracks">
+            {tracks.map((track) => (
+              <article key={track.title} className="ov-track">
+                <span className="ov-track-icon">{track.icon}</span>
+                <p className="ov-role">{track.role}</p>
+                <h3>{track.title}</h3>
+                <ul className="ov-wlist">
+                  {track.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
@@ -102,7 +120,7 @@ export default function SejaPasseadorPage() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
