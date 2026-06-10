@@ -2121,6 +2121,12 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.72;
 }
 
+.ov-legal-sec a {
+  color: var(--ov-ember);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .ov-legal-sec ul {
   margin-top: 13px;
   display: grid;
