@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { appDownloadHref } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Como funciona",
@@ -8,6 +10,7 @@ export const metadata: Metadata = {
 
 const timelines = [
   {
+    role: "Tutor",
     title: "Fluxo do tutor",
     items: [
       "Agenda o passeio pelo aplicativo",
@@ -17,6 +20,7 @@ const timelines = [
     ],
   },
   {
+    role: "Passeador",
     title: "Fluxo do passeador",
     items: [
       "Passa por cadastro e credenciamento",
@@ -26,6 +30,7 @@ const timelines = [
     ],
   },
   {
+    role: "Operação",
     title: "Fluxo operacional",
     items: [
       "Monitora matching e passeios",
@@ -38,33 +43,38 @@ const timelines = [
 
 export default function ComoFuncionaPage() {
   return (
-    <section className="px-5 py-16 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
-            Como funciona
+    <section className="ov-section ov-center ov-grain">
+      <span className="ov-glow" />
+      <div className="ov-wrap">
+        <div className="ov-section-head">
+          <p className="ov-eyebrow">
+            <span className="ov-dot ov-dot-ember" /> Como funciona
           </p>
-          <h1 className="mt-3 text-4xl font-black text-brand-ink md:text-5xl">
-            Segurança e carinho com operação por trás.
+          <h1 className="ov-ptitle">
+            Segurança e carinho com <em>operação</em> por trás.
           </h1>
-          <p className="mt-5 text-lg leading-8 text-brand-ink/65">
+          <p className="ov-lead">
             O Aumigão Walk organiza a jornada de tutores, passeadores e operação
             para que cada passeio seja mais previsível, auditável e feliz.
           </p>
+          <div className="ov-cta-row">
+            <Link href={appDownloadHref} className="ov-btn ov-btn-primary">
+              Baixar o aplicativo <span className="ov-arr">→</span>
+            </Link>
+            <Link href="/seja-passeador" className="ov-btn ov-btn-ghost">
+              Quero ser passeador
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="ov-tracks">
           {timelines.map((timeline) => (
-            <article key={timeline.title} className="rounded bg-white p-6 shadow-soft">
-              <h2 className="text-2xl font-black text-brand-ink">{timeline.title}</h2>
-              <ol className="mt-6 grid gap-5">
-                {timeline.items.map((item, index) => (
-                  <li key={item} className="flex gap-4">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded bg-brand-blush text-sm font-black text-brand-purple">
-                      {index + 1}
-                    </span>
-                    <p className="pt-1 text-sm leading-6 text-brand-ink/70">{item}</p>
-                  </li>
+            <article key={timeline.title} className="ov-track">
+              <p className="ov-role">{timeline.role}</p>
+              <h3>{timeline.title}</h3>
+              <ol className="ov-steps">
+                {timeline.items.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ol>
             </article>

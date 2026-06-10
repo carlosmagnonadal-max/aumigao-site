@@ -2027,3 +2027,120 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .ov-ptitle em { color: var(--ov-ember); font-style: normal; }
+
+/* ===== Numbered steps (como-funciona) ===== */
+.ov-steps {
+  margin: 22px 0 0;
+  display: grid;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+  counter-reset: ovstep;
+}
+
+.ov-steps li {
+  position: relative;
+  padding-left: 44px;
+  min-height: 30px;
+  color: var(--ov-text);
+  font-size: .94rem;
+  line-height: 1.55;
+  counter-increment: ovstep;
+}
+
+.ov-steps li::before {
+  content: counter(ovstep);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--ov-ember-soft);
+  border: 1px solid rgba(255, 106, 43, .3);
+  color: var(--ov-ember);
+  font-family: var(--ov-mono);
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+/* ===== Legal / document pages (termos, privacidade) ===== */
+.ov-legal {
+  max-width: 880px;
+  margin: 0 auto;
+  border: 1px solid var(--ov-line);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .012));
+  padding: clamp(26px, 5vw, 52px);
+  box-shadow: 0 50px 90px -55px #000;
+}
+
+.ov-legal-note {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0 38px;
+  border: 1px solid rgba(255, 106, 43, .32);
+  border-radius: 14px;
+  background: var(--ov-ember-soft);
+  padding: 16px 18px;
+  color: var(--ov-text-2);
+  font-size: .9rem;
+  line-height: 1.65;
+}
+
+.ov-legal-note strong { color: var(--ov-text); font-weight: 700; }
+
+.ov-legal-note-ico {
+  flex-shrink: 0;
+  color: var(--ov-ember);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.ov-legal-sec { margin-top: 32px; }
+.ov-legal-sec:first-of-type { margin-top: 0; }
+
+.ov-legal-sec h2 {
+  font-family: var(--ov-display);
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--ov-text);
+}
+
+.ov-legal-sec p {
+  margin-top: 10px;
+  color: var(--ov-text-2);
+  font-size: .96rem;
+  line-height: 1.72;
+}
+
+.ov-legal-sec ul {
+  margin-top: 13px;
+  display: grid;
+  gap: 9px;
+  padding: 0;
+  list-style: none;
+}
+
+.ov-legal-sec li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--ov-text-2);
+  font-size: .94rem;
+  line-height: 1.62;
+}
+
+.ov-legal-sec li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: .62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ov-ember);
+}
