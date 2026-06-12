@@ -9,6 +9,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealInit } from "@/components/RevealInit";
+import { AuWidget } from "@/components/AuWidget";
 
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <AuWidget />
       </body>
     </html>
   );
