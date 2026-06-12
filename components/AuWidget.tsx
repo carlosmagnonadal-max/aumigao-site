@@ -434,6 +434,7 @@ export function AuWidget() {
       {/* ── FAB (botão flutuante) ── */}
       <button
         className="au-fab"
+        data-open={open ? "true" : "false"}
         onClick={toggleOpen}
         aria-label={open ? "Fechar chat Au" : "Abrir chat Au"}
         style={{
@@ -506,6 +507,9 @@ export function AuWidget() {
             width: 100% !important;
             max-height: 88dvh !important;
             border-radius: 20px 20px 0 0 !important;
+          }
+          .au-fab[data-open="true"] {
+            display: none !important;
           }
         }
       `}</style>
