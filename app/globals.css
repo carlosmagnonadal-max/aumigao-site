@@ -2153,3 +2153,106 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 50%;
   background: var(--ov-ember);
 }
+
+.ov-legal-sec h3 {
+  font-family: var(--ov-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ov-text);
+  margin-top: 18px;
+  margin-bottom: 4px;
+}
+
+.ov-legal-sec table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: .91rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.ov-legal-sec th {
+  text-align: left;
+  padding: 8px 12px;
+  background: rgba(255,255,255,.06);
+  color: var(--ov-text);
+  font-weight: 600;
+  border: 1px solid var(--ov-line);
+  white-space: nowrap;
+}
+
+.ov-legal-sec td {
+  padding: 8px 12px;
+  color: var(--ov-text-2);
+  border: 1px solid var(--ov-line);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.ov-legal-sec tr:nth-child(even) td {
+  background: rgba(255,255,255,.025);
+}
+
+.ov-legal-aceite {
+  margin-top: 22px;
+  border: 1px solid rgba(157,109,255,.4);
+  border-radius: 12px;
+  background: rgba(157,109,255,.07);
+  padding: 14px 18px;
+  color: var(--ov-text-2);
+  font-size: .9rem;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.ov-legal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.ov-legal-card {
+  border: 1px solid var(--ov-line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  padding: 24px 22px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color .2s, background .2s;
+}
+
+.ov-legal-card:hover {
+  border-color: rgba(157,109,255,.5);
+  background: linear-gradient(180deg, rgba(157,109,255,.08), rgba(157,109,255,.02));
+}
+
+.ov-legal-card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.ov-legal-card-title {
+  font-family: var(--ov-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ov-text);
+  line-height: 1.3;
+}
+
+.ov-legal-card-desc {
+  font-size: .875rem;
+  color: var(--ov-text-2);
+  line-height: 1.55;
+}
+
+.ov-legal-card-arr {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: .85rem;
+  color: var(--ov-ember);
+  font-weight: 600;
+}
