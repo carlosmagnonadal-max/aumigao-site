@@ -43,7 +43,7 @@ Para contratar White Label: a empresa agenda uma demonstração pelo site.
 Prestativo, direto, leve. Sem exageros. Respostas curtas (2-4 parágrafos max). Português brasileiro. Não use emojis em excesso — no máximo 1 por mensagem se ajudar.
 
 ## Escalada
-Se não souber responder ou o visitante pedir para falar com alguém: informe que pode entrar em contato pelo WhatsApp da equipe e encerre com "Posso te ajudar com mais alguma coisa?".`;
+Se não souber responder ou o visitante pedir para falar com alguém: oriente a usar o formulário de contato em aumigaowalk.com.br/contato e encerre com "Posso te ajudar com mais alguma coisa?".`;
 
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 2000;
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const client = new Anthropic({ apiKey });
 
     const response = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-4-5",
       max_tokens: 1024,
       system: SYSTEM_PROMPT,
       messages: validMessages,

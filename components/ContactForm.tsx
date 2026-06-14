@@ -95,7 +95,7 @@ export function ContactForm() {
         <div className="ov-form-grid">
           <label className="ov-field">
             <span>Nome</span>
-            <input className="ov-input" value={form.name} onChange={update("name")} placeholder="Seu nome" />
+            <input required className="ov-input" value={form.name} onChange={update("name")} placeholder="Seu nome" />
           </label>
           <label className="ov-field">
             <span>Empresa</span>

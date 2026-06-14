@@ -370,7 +370,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .ov-photo-hero .ov-reveal > .ov-eyebrow,
-.ov-photo-hero .ov-reveal > h1:not(.ov-photo-title) {
+.ov-photo-hero .ov-reveal > p.ov-hero-subtitle {
   display: none;
 }
 

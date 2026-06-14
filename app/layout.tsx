@@ -36,7 +36,7 @@ const logo = Baloo_2({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aumigao-walk.vercel.app"),
+  metadataBase: new URL("https://aumigaowalk.com.br"),
   title: {
     default: "Aumigão Walk | Operação Viva",
     template: "%s | Aumigão Walk",
@@ -58,6 +58,21 @@ export const metadata: Metadata = {
       "Operação auditável de passeios pet para tutores, passeadores e empresas White Label.",
     type: "website",
     locale: "pt_BR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aumigão Walk — Infraestrutura de passeios pet",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aumigão Walk",
+    description:
+      "Operação auditável de passeios pet para tutores, passeadores e empresas White Label.",
+    images: ["/og-image.png"],
   },
 };
 

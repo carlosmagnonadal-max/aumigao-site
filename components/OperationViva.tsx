@@ -352,7 +352,7 @@ export function EcosystemHero() {
             <span className="ov-word ov-word-4 ov-word-gradient">{"opera\u00E7\u00E3o."}</span>
           </h1>
           <SectionEyebrow live="ember">Infraestrutura de passeios pet</SectionEyebrow>
-          <h1>A operação que cuida do passeio <em>de ponta a ponta</em>.</h1>
+          <p className="ov-hero-subtitle">A operação que cuida do passeio <em>de ponta a ponta</em>.</p>
           <p className="ov-lead ov-photo-fade ov-photo-fade-sub">
             Aumigão conecta tutores, passeadores e empresas em uma operação auditável:
             matching, score, credenciamento, recovery e White Label, em uma só plataforma.

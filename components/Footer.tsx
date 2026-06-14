@@ -60,7 +60,7 @@ export function SiteFooter() {
         </div>
 
         <div className="ov-footer-bottom">
-          <span>© 2026 Aumigão Walk · CNPJ informado na proposta comercial</span>
+          <span>© 2026 Aumigão Walk · CNPJ 49.617.734/0001-03</span>
           <span>Operação · auditável · multiunidades</span>
         </div>
       </div>
