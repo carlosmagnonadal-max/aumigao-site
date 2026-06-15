@@ -1,0 +1,50 @@
+/* "Torne seu" — seletor de marca/cor + preview do app reskinando ao vivo. */
+
+.wrap { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+@media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
+
+/* ── controles ── */
+.controls { }
+.ctrlLabel { font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #7a6e60; margin-bottom: 14px; }
+.brands { display: flex; flex-direction: column; gap: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; border: 1.5px solid rgba(40,25,10,.14); background: #fffdf8; cursor: pointer; transition: border-color .25s, transform .25s; text-align: left; }
+.brand:hover { transform: translateX(3px); }
+.brandActive { border-color: var(--b); box-shadow: 0 10px 26px -14px var(--b); }
+.brandMark { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 14px; font-family: var(--font-logo), sans-serif; flex: none; }
+.brandName { font-weight: 700; font-size: 15.5px; color: #1c1611; }
+.brandTag { font-size: 12px; color: #7a6e60; }
+
+.colorRow { margin-top: 20px; display: flex; align-items: center; gap: 12px; }
+.colorRow label { font-size: 13.5px; color: #4a4036; font-weight: 600; }
+.colorInput { width: 44px; height: 30px; border: none; background: none; cursor: pointer; padding: 0; }
+
+/* ── preview do app (phone) ── */
+.stage { display: flex; justify-content: center; position: relative; }
+.stage::before { content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--b) 35%, transparent), transparent 70%); z-index: 0; }
+.phone { position: relative; z-index: 1; width: 290px; background: #fff; border-radius: 38px; padding: 12px; box-shadow: 0 50px 90px -36px rgba(40,20,10,.5), 0 0 0 10px #1c1611, 0 0 0 11px rgba(0,0,0,.2); transition: box-shadow .4s; }
+.screen { background: #f7f3ec; border-radius: 28px; overflow: hidden; }
+.notch { height: 26px; display: flex; align-items: center; justify-content: center; }
+.notchBar { width: 86px; height: 5px; border-radius: 3px; background: #1c1611; opacity: .85; }
+
+.appHead { padding: 6px 18px 14px; display: flex; align-items: center; gap: 10px; }
+.appMark { width: 34px; height: 34px; border-radius: 10px; background: var(--b); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; font-family: var(--font-logo), sans-serif; transition: background .4s; }
+.appName { font-weight: 800; font-size: 16px; color: #1c1611; }
+.appName small { display: block; font-weight: 500; font-size: 10.5px; color: #8a7e70; letter-spacing: .02em; }
+
+.appCard { margin: 0 14px; background: var(--b); border-radius: 18px; padding: 16px; color: #fff; transition: background .4s; }
+.appCardK { font-size: 11px; opacity: .85; letter-spacing: .04em; text-transform: uppercase; }
+.appCardV { font-size: 19px; font-weight: 800; margin-top: 3px; }
+.appCardRow { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.appCardDot { width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+
+.appBtn { margin: 14px; height: 46px; border-radius: 14px; background: var(--b); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 14.5px; transition: background .4s; }
+
+.appList { padding: 0 14px 8px; }
+.appItem { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid rgba(40,25,10,.08); }
+.appItemIcon { width: 30px; height: 30px; border-radius: 9px; background: color-mix(in srgb, var(--b) 16%, #fff); color: var(--b); display: grid; place-items: center; font-size: 14px; transition: background .4s, color .4s; }
+.appItemT { font-size: 13px; font-weight: 600; color: #1c1611; }
+.appItemS { font-size: 11px; color: #8a7e70; }
+
+.appNav { display: flex; justify-content: space-around; padding: 12px 0 16px; border-top: 1px solid rgba(40,25,10,.08); }
+.appNavI { width: 22px; height: 22px; border-radius: 7px; background: rgba(40,25,10,.12); }
+.appNavActive { background: var(--b); transition: background .4s; }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { LiveMap } from "./LiveMap";
 import s from "./hero-merged.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -40,11 +41,11 @@ export function HeroMerged() {
         animate={reduce ? undefined : "show"}
       >
         <div>
-          <motion.div variants={item} className={s.eyebrow}><i /> Plataforma white-label · operação pet</motion.div>
+          <motion.div variants={item} className={s.eyebrow}><i /> Tutor · Passeador · White-Label — uma só plataforma</motion.div>
           <motion.h1 variants={item} className={s.title}>Cuidar virou <em>operação.</em></motion.h1>
           <motion.p variants={item} className={s.sub}>
-            Matching, score, credenciamento, recovery e financeiro — a sua marca cuidando
-            de cada passeio, do agendamento à escala.
+            A plataforma que conecta tutores, passeadores e petshops numa operação de
+            passeios pet — com acompanhamento ao vivo, segurança e a sua marca.
           </motion.p>
           <motion.div variants={item} className={s.cta}>
             <a href="#" className={s.btn}>Solicitar diagnóstico →</a>
@@ -72,7 +73,7 @@ export function HeroMerged() {
               <Image src="/dog-happy.jpg" alt="Cachorro feliz em um passeio" fill sizes="50vw" style={{ objectFit: "cover" }} priority />
             </motion.div>
           </div>
-          <div className={s.sticker}><span className={s.stickerDot} /> operação ao vivo</div>
+          <div className={s.liveMapWrap}><LiveMap /></div>
         </motion.div>
       </motion.div>
     </section>
