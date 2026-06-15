@@ -115,6 +115,13 @@ html {
   }
 }
 
+/* preview limpo do proto: esconde header/footer escuros globais */
+html.proto-clean .ov-header,
+html.proto-clean .ov-footer,
+html.proto-clean footer {
+  display: none !important;
+}
+
 /* Fundo aurora — glows radiais que flutuam (premium). */
 .ov-aurora {
   position: absolute;
