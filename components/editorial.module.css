@@ -1,0 +1,215 @@
+/* Sistema "Editorial Monocromático" — linguagem Tresmares aplicada ao Aumigão.
+   Branco arejado, tipografia preta monumental, hairlines, números ember, P&B. */
+
+.page {
+  --bg: #f6f5f2;
+  --bg2: #efede8;
+  --ink: #14111a;
+  --ink2: #2b2730;
+  --muted: #6c6770;
+  --accent: #ff6a2b;
+  --hair: rgba(0, 0, 0, .12);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-inline: clamp(22px, 5vw, 56px);
+}
+
+.section {
+  padding-block: clamp(72px, 12vh, 150px);
+  position: relative;
+}
+.sectionAlt { background: var(--bg2); }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: clamp(22px, 3vh, 34px);
+}
+.eyebrow i { width: 38px; height: 1px; background: var(--accent); display: block; }
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 5.2vw, 68px);
+  line-height: .98;
+  letter-spacing: -.035em;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.h2 .accent { color: var(--accent); }
+
+.lead {
+  margin: clamp(20px, 3vh, 30px) 0 0;
+  max-width: 52ch;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.6;
+  color: var(--ink2);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 3px;
+  transition: gap .25s ease;
+}
+.link:hover { gap: 12px; }
+
+/* ---- statement (grande frase + números ember) ---- */
+.statement {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.2vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -.03em;
+  max-width: 22ch;
+  margin: 0 0 clamp(48px, 8vh, 96px);
+}
+.statement .accent { color: var(--accent); }
+
+.bignums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--hair);
+}
+.bignum {
+  padding: clamp(24px, 3vh, 40px) 20px clamp(8px, 1vh, 14px) 0;
+  border-left: 1px solid var(--hair);
+  padding-left: clamp(18px, 2vw, 28px);
+}
+.bignum:first-child { border-left: 0; padding-left: 0; }
+.bignumV {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(38px, 5.6vw, 78px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  color: var(--accent);
+}
+.bignumL {
+  margin-top: 12px;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 26ch;
+}
+
+/* ---- lista de fluxo numerada (operação) ---- */
+.flow { border-top: 1px solid var(--hair); margin-top: clamp(32px, 5vh, 56px); }
+.flowRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(16px, 3vw, 40px);
+  align-items: baseline;
+  padding-block: clamp(22px, 3vh, 34px);
+  border-bottom: 1px solid var(--hair);
+}
+.flowNum { font-family: var(--font-mono), monospace; font-size: 14px; color: var(--accent); font-weight: 600; }
+.flowTitle { font-family: var(--font-display), sans-serif; font-weight: 700; font-size: clamp(19px, 1.8vw, 26px); letter-spacing: -.02em; }
+.flowDesc { color: var(--muted); font-size: clamp(14.5px, 1.1vw, 17px); line-height: 1.55; }
+@media (max-width: 720px) {
+  .flowRow { grid-template-columns: 40px 1fr; }
+  .flowDesc { grid-column: 1 / -1; }
+}
+
+/* ---- módulos (grid editorial) ---- */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+  margin-top: clamp(32px, 5vh, 56px);
+}
+.module {
+  background: var(--bg);
+  padding: clamp(26px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 200px;
+  transition: background .3s ease;
+}
+.module:hover { background: var(--bg2); }
+.moduleTag { font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .12em; color: var(--accent); }
+.moduleTitle { font-family: var(--font-display), sans-serif; font-weight: 700; font-size: clamp(20px, 1.8vw, 25px); letter-spacing: -.02em; margin-top: 4px; }
+.moduleDesc { color: var(--muted); font-size: 15px; line-height: 1.55; margin-top: auto; }
+
+/* ---- white-label split ---- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+}
+@media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+.media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+}
+.media :global(img) { object-fit: cover; filter: grayscale(1) contrast(1.03); }
+
+/* ---- CTA final ---- */
+.cta {
+  background: var(--ink);
+  color: #fff;
+  padding-block: clamp(72px, 12vh, 140px);
+}
+.ctaTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 6vw, 86px);
+  line-height: .96;
+  letter-spacing: -.04em;
+  max-width: 16ch;
+  margin: 0 0 clamp(28px, 4vh, 44px);
+}
+.ctaTitle .accent { color: var(--accent); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  background: linear-gradient(180deg, #ffa24d, #ff6a2b);
+  color: #1b1320;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
+  box-shadow: 0 18px 40px -16px rgba(255,106,43,.7);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 26px 54px -16px rgba(255,106,43,.85); }
+
+/* ---- footer ---- */
+.footer { background: var(--ink); color: rgba(255,255,255,.7); border-top: 1px solid rgba(255,255,255,.1); padding-block: clamp(40px, 6vh, 64px); }
+.footerRow { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+.footerBrand { font-family: var(--font-logo), sans-serif; font-weight: 800; font-size: 18px; color: #fff; }
+.footerLinks { display: flex; gap: clamp(16px, 2.4vw, 30px); flex-wrap: wrap; }
+.footerLinks a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 14px; }
+.footerLinks a:hover { color: #fff; }

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { HeroV2 } from "@/components/HeroV2";
+import { EditorialHome } from "@/components/EditorialHome";
 
 export const metadata: Metadata = {
-  title: "Proto · Hero V2",
+  title: "Proto · Home Editorial",
   robots: { index: false, follow: false },
 };
 
 export default function ProtoPage() {
-  return <HeroV2 />;
+  return <EditorialHome />;
 }
