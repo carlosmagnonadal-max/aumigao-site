@@ -1,0 +1,86 @@
+/* Home editorial + pop (conteúdo RICO). Creme quente + Fraunces + tangerina. */
+
+.page {
+  --cream: #faf4e8;
+  --cream2: #f3e9d6;
+  --ink: #1c1611;
+  --ink2: #4a4036;
+  --muted: #7a6e60;
+  --tang: #f4671e;
+  --coral: #ff5a3c;
+  --amber: #ffb24d;
+  --hair: rgba(40,25,10,.14);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.container { width: 100%; max-width: 1240px; margin: 0 auto; padding-inline: clamp(22px,5vw,56px); }
+.section { padding-block: clamp(72px,11vh,140px); position: relative; }
+.alt { background: var(--cream2); }
+.dark { background: #17120e; color: #f3ead4; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono), monospace; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #b1532b; margin-bottom: clamp(20px,3vh,30px); }
+.eyebrow i { width: 38px; height: 1px; background: var(--tang); }
+.dark .eyebrow { color: var(--amber); }
+
+.h2 { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(34px,5vw,68px); line-height: .98; letter-spacing: -.02em; margin: 0; max-width: 20ch; }
+.h2 em { font-style: italic; color: var(--tang); }
+.dark .h2 { color: #fdf6ec; }
+
+.lead { margin: clamp(18px,2.5vh,26px) 0 0; max-width: 54ch; font-size: clamp(16px,1.2vw,19px); line-height: 1.6; color: var(--ink2); }
+.dark .lead { color: #cbbfae; }
+
+.link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--tang); padding-bottom: 2px; transition: gap .25s; }
+.link:hover { gap: 12px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 30px; border-radius: 44px; font-weight: 700; font-size: 16px; text-decoration: none; background: var(--tang); color: #fff; box-shadow: 0 18px 38px -14px rgba(244,103,30,.7); transition: transform .3s cubic-bezier(.22,1,.36,1); }
+.btn:hover { transform: translateY(-3px) rotate(-1deg); }
+
+/* ── PILARES (4 cards) ── */
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: clamp(16px,1.6vw,22px); margin-top: clamp(34px,5vh,56px); }
+.pillar { background: var(--cream); border: 1px solid var(--hair); border-radius: 22px; padding: clamp(24px,2.4vw,34px); display: flex; flex-direction: column; gap: 12px; transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
+.alt .pillar { background: #fffdf8; }
+.pillar:hover { transform: translateY(-5px); box-shadow: 0 30px 60px -30px rgba(80,40,10,.4); }
+.pillarIcon { width: 52px; height: 52px; border-radius: 15px; background: var(--tang); color: #fff; display: grid; place-items: center; font-size: 24px; transform: rotate(-4deg); }
+.pillarTitle { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(20px,1.7vw,25px); letter-spacing: -.01em; }
+.pillarDesc { color: var(--muted); font-size: 15px; line-height: 1.55; }
+
+/* ── FLUXO (operação) ── */
+.flow { border-top: 1px solid var(--hair); margin-top: clamp(32px,5vh,52px); }
+.flowRow { display: grid; grid-template-columns: 70px minmax(0,1fr) minmax(0,1.5fr); gap: clamp(16px,3vw,40px); align-items: baseline; padding-block: clamp(22px,3vh,32px); border-bottom: 1px solid var(--hair); }
+.flowNum { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(26px,2.4vw,40px); color: var(--tang); line-height: 1; }
+.flowTitle { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(19px,1.7vw,25px); letter-spacing: -.01em; }
+.flowDesc { color: var(--muted); font-size: clamp(14.5px,1.1vw,17px); line-height: 1.55; }
+@media (max-width: 720px) { .flowRow { grid-template-columns: 46px 1fr; } .flowDesc { grid-column: 1/-1; } }
+
+/* ── MÓDULOS ── */
+.modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: clamp(14px,1.4vw,20px); margin-top: clamp(34px,5vh,56px); }
+.module { background: #fffdf8; border: 1px solid var(--hair); border-radius: 20px; padding: clamp(24px,2.4vw,32px); display: flex; flex-direction: column; gap: 8px; min-height: 200px; transition: transform .3s, border-color .3s; }
+.module:hover { transform: translateY(-4px); border-color: var(--tang); }
+.moduleTag { font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--tang); }
+.moduleTitle { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(20px,1.7vw,25px); letter-spacing: -.01em; margin-top: 2px; }
+.moduleDesc { color: var(--muted); font-size: 15px; line-height: 1.55; margin-top: auto; }
+
+/* ── SPLIT (white-label) ── */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,6vw,80px); align-items: center; }
+@media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+.media { position: relative; aspect-ratio: 4/5; border-radius: 26px; overflow: hidden; transform: rotate(-2deg); box-shadow: 0 40px 80px -30px rgba(80,40,10,.45); }
+.media :global(img) { object-fit: cover; }
+.ul { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--ink2); }
+.liDot { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--tang); color: #fff; display: grid; place-items: center; font-size: 12px; margin-top: 1px; }
+.dark .li { color: #cbbfae; }
+
+/* ── CTA ── */
+.ctaTitle { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(36px,6vw,82px); line-height: .96; letter-spacing: -.02em; margin: 0 0 clamp(26px,4vh,42px); max-width: 16ch; }
+.ctaTitle em { font-style: italic; color: var(--amber); }
+
+/* ── FOOTER ── */
+.footer { background: #17120e; color: rgba(255,255,255,.7); padding-block: clamp(40px,6vh,60px); }
+.footerRow { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+.footerBrand { font-family: var(--font-logo), sans-serif; font-weight: 800; font-size: 18px; color: #fff; }
+.footerLinks { display: flex; gap: clamp(16px,2.4vw,28px); flex-wrap: wrap; }
+.footerLinks a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 14px; }
+.footerLinks a:hover { color: #fff; }
