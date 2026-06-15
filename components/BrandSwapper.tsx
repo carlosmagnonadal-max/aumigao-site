@@ -1,73 +1,118 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState, type CSSProperties, type ChangeEvent } from "react";
 import s from "./BrandSwapper.module.css";
 
-const brands = [
-  { name: "Aumigão Walk", tag: "padrão da plataforma", mark: "AU", color: "#ff6a2b" },
-  { name: "Pet Vida", tag: "exemplo de petshop", mark: "PV", color: "#16a34a" },
-  { name: "AuAu Walk", tag: "exemplo de petshop", mark: "AA", color: "#2563eb" },
-  { name: "Lola Pet", tag: "exemplo de petshop", mark: "LP", color: "#db2777" },
+const examples = [
+  { name: "Pet Vida", color: "#16a34a" },
+  { name: "AuAu Walk", color: "#2563eb" },
+  { name: "Lola Pet", color: "#db2777" },
 ];
 
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  return ((parts[0]?.[0] ?? "A") + (parts[1]?.[0] ?? "")).toUpperCase();
+}
+
 export function BrandSwapper() {
-  const [i, setI] = useState(0);
-  const [custom, setCustom] = useState<string | null>(null);
-  const b = brands[i];
-  const color = custom ?? b.color;
+  const [name, setName] = useState("Aumigão Walk");
+  const [color, setColor] = useState("#ff6a2b");
+  const [logo, setLogo] = useState<string | null>(null);
   const style = { "--b": color } as CSSProperties;
 
+  function onLogo(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) setLogo(URL.createObjectURL(file));
+  }
+
   return (
-    <div className={s.wrap}>
+    <div className={s.wrap} style={style}>
       {/* controles */}
-      <div className={s.controls}>
-        <div className={s.ctrlLabel}>Escolha uma marca</div>
-        <div className={s.brands}>
-          {brands.map((br, idx) => (
-            <button
-              key={br.name}
-              onClick={() => { setI(idx); setCustom(null); }}
-              className={`${s.brand} ${idx === i && !custom ? s.brandActive : ""}`}
-              style={{ "--b": br.color } as CSSProperties}
-            >
-              <span className={s.brandMark} style={{ background: br.color }}>{br.mark}</span>
-              <span>
-                <span className={s.brandName}>{br.name}</span>
-                <span className={s.brandTag} style={{ display: "block" }}>{br.tag}</span>
-              </span>
-            </button>
-          ))}
+      <div>
+        <div className={s.field}>
+          <div className={s.ctrlLabel}>Nome da sua marca</div>
+          <input className={s.input} value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex.: Pet Vida" maxLength={28} />
         </div>
-        <div className={s.colorRow}>
-          <label htmlFor="bswap-color">…ou escolha a sua cor:</label>
-          <input id="bswap-color" className={s.colorInput} type="color" value={color} onChange={(e) => setCustom(e.target.value)} />
+
+        <div className={s.field}>
+          <div className={s.ctrlLabel}>Sua logo</div>
+          <div className={s.row}>
+            <label className={s.uploadBtn}>
+              📷 Enviar logo
+              <input type="file" accept="image/*" onChange={onLogo} />
+            </label>
+            {logo && <button className={s.removeLogo} onClick={() => setLogo(null)}>remover</button>}
+          </div>
+        </div>
+
+        <div className={s.field}>
+          <div className={s.ctrlLabel}>Sua cor</div>
+          <div className={s.colorWrap}>
+            <input className={s.colorInput} type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+            <span>{color.toUpperCase()}</span>
+          </div>
+        </div>
+
+        <div className={s.examples}>
+          Exemplos:
+          {examples.map((ex) => (
+            <button key={ex.name} className={s.exChip} onClick={() => { setName(ex.name); setColor(ex.color); setLogo(null); }}>{ex.name}</button>
+          ))}
         </div>
       </div>
 
-      {/* preview do app */}
-      <div className={s.stage} style={style}>
+      {/* preview do app (fiel ao tutor-home) */}
+      <div className={s.stage}>
         <div className={s.phone}>
           <div className={s.screen}>
-            <div className={s.notch}><div className={s.notchBar} /></div>
+            <div className={s.statusbar}><span>14:04</span><small>📶 🔋</small></div>
+
             <div className={s.appHead}>
-              <div className={s.appMark}>{b.mark}</div>
-              <div className={s.appName}>{b.name}<small>passeios · seu pet</small></div>
+              <div className={s.logoBox}>
+                {logo
+                  ? <img className={s.logoImg} src={logo} alt="logo" />
+                  : <>
+                      <span className={s.logoMark}>{initials(name)}</span>
+                      <span className={s.logoName}>{name}<small>passeios pet</small></span>
+                    </>}
+              </div>
+              <div className={s.headIcons}>
+                <span className={s.headIcon}>🎧</span>
+                <span className={s.headIcon}>🔔</span>
+                <span className={s.headIcon}>👤</span>
+              </div>
             </div>
-            <div className={s.appCard}>
-              <div className={s.appCardK}>Próximo passeio</div>
-              <div className={s.appCardV}>Hoje, 16:30 · Thor</div>
-              <div className={s.appCardRow}><span className={s.appCardDot} /> Passeador a caminho · em rota</div>
+
+            <div className={s.greet}>
+              <div className={s.greetH}>Olá, tutor! 👋</div>
+              <div className={s.greetS}>Cuidado organizado, passeio seguro e rotina leve para o seu pet.</div>
             </div>
-            <div className={s.appBtn}>Agendar passeio →</div>
-            <div className={s.appList}>
-              <div className={s.appItem}><span className={s.appItemIcon}>📍</span><span><span className={s.appItemT} style={{ display: "block" }}>Acompanhar ao vivo</span><span className={s.appItemS}>rota e localização em tempo real</span></span></div>
-              <div className={s.appItem}><span className={s.appItemIcon}>★</span><span><span className={s.appItemT} style={{ display: "block" }}>Avaliar passeio</span><span className={s.appItemS}>seu feedback melhora a operação</span></span></div>
+
+            <div className={s.agendar}>
+              <div className={s.agendarT}>
+                <b>Agendar passeio</b>
+                <span>Encontre um passeador verificado e acompanhe cada etapa.</span>
+              </div>
+              <div className={s.agendarBtn}>→</div>
             </div>
-            <div className={s.appNav}>
-              <div className={`${s.appNavI} ${s.appNavActive}`} />
-              <div className={s.appNavI} />
-              <div className={s.appNavI} />
-              <div className={s.appNavI} />
+
+            <div className={s.pills}>
+              <div className={s.pill}><div className={s.pillIcon}>🛡️</div><div className={s.pillT}>Passeadores verificados</div></div>
+              <div className={s.pill}><div className={s.pillIcon}>💬</div><div className={s.pillT}>Chat protegido</div></div>
+              <div className={s.pill}><div className={s.pillIcon}>📍</div><div className={s.pillT}>Status em tempo real</div></div>
+            </div>
+
+            <div className={s.stats}>
+              <div className={s.statc}><div className={s.statcV}>0 de 3</div><div className={s.statcL}>passeios esta semana</div></div>
+              <div className={s.statc}><div className={s.statcV}>Nível 1</div><div className={s.statcL}>começando a rotina</div></div>
+            </div>
+
+            <div className={s.nav}>
+              {[["🏠", "Início", true], ["🐾", "Passeios", false], ["❤️", "Pet", false], ["👤", "Conta", false], ["📋", "Planos", false]].map(([ic, lb, act]) => (
+                <div key={lb as string} className={act ? `${s.navI} ${s.navActive}` : s.navI}>
+                  <span className={s.navDot} />{lb}
+                </div>
+              ))}
             </div>
           </div>
         </div>

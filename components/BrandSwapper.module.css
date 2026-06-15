@@ -1,50 +1,66 @@
-/* "Torne seu" — seletor de marca/cor + preview do app reskinando ao vivo. */
+/* "Torne seu" — nome + logo + cor; preview do app FIEL ao app real (tutor-home). */
 
-.wrap { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.wrap { display: grid; grid-template-columns: 0.86fr 1.14fr; gap: clamp(28px,5vw,64px); align-items: center; }
 @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
 
 /* ── controles ── */
-.controls { }
-.ctrlLabel { font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #7a6e60; margin-bottom: 14px; }
-.brands { display: flex; flex-direction: column; gap: 10px; }
-.brand { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; border: 1.5px solid rgba(40,25,10,.14); background: #fffdf8; cursor: pointer; transition: border-color .25s, transform .25s; text-align: left; }
-.brand:hover { transform: translateX(3px); }
-.brandActive { border-color: var(--b); box-shadow: 0 10px 26px -14px var(--b); }
-.brandMark { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 14px; font-family: var(--font-logo), sans-serif; flex: none; }
-.brandName { font-weight: 700; font-size: 15.5px; color: #1c1611; }
-.brandTag { font-size: 12px; color: #7a6e60; }
+.ctrlLabel { font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #7a6e60; margin-bottom: 10px; }
+.field { margin-bottom: 18px; }
+.input { width: 100%; height: 50px; border-radius: 14px; border: 1.5px solid rgba(40,25,10,.16); background: #fffdf8; padding: 0 16px; font-size: 15.5px; color: #1c1611; outline: none; transition: border-color .2s; }
+.input:focus { border-color: var(--b); }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.uploadBtn { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 18px; border-radius: 14px; border: 1.5px dashed rgba(40,25,10,.28); background: #fffdf8; cursor: pointer; font-size: 14.5px; font-weight: 600; color: #4a4036; transition: border-color .2s; }
+.uploadBtn:hover { border-color: var(--b); color: var(--b); }
+.uploadBtn input { display: none; }
+.removeLogo { background: none; border: none; color: #b1532b; font-size: 13px; cursor: pointer; text-decoration: underline; }
+.colorInput { width: 50px; height: 50px; border: 1.5px solid rgba(40,25,10,.16); border-radius: 14px; background: none; cursor: pointer; padding: 4px; }
+.colorWrap { display: flex; align-items: center; gap: 10px; }
+.colorWrap span { font-size: 14px; color: #4a4036; font-weight: 600; }
+.examples { margin-top: 16px; font-size: 13px; color: #7a6e60; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.exChip { border: 1px solid rgba(40,25,10,.16); background: #fffdf8; border-radius: 30px; padding: 6px 12px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #4a4036; transition: .2s; }
+.exChip:hover { border-color: var(--b); color: var(--b); }
 
-.colorRow { margin-top: 20px; display: flex; align-items: center; gap: 12px; }
-.colorRow label { font-size: 13.5px; color: #4a4036; font-weight: 600; }
-.colorInput { width: 44px; height: 30px; border: none; background: none; cursor: pointer; padding: 0; }
-
-/* ── preview do app (phone) ── */
+/* ── preview do app (fiel ao tutor-home) ── */
 .stage { display: flex; justify-content: center; position: relative; }
-.stage::before { content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--b) 35%, transparent), transparent 70%); z-index: 0; }
-.phone { position: relative; z-index: 1; width: 290px; background: #fff; border-radius: 38px; padding: 12px; box-shadow: 0 50px 90px -36px rgba(40,20,10,.5), 0 0 0 10px #1c1611, 0 0 0 11px rgba(0,0,0,.2); transition: box-shadow .4s; }
-.screen { background: #f7f3ec; border-radius: 28px; overflow: hidden; }
-.notch { height: 26px; display: flex; align-items: center; justify-content: center; }
-.notchBar { width: 86px; height: 5px; border-radius: 3px; background: #1c1611; opacity: .85; }
+.stage::before { content: ""; position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--b) 34%, transparent), transparent 70%); z-index: 0; }
+.phone { position: relative; z-index: 1; width: 300px; background: #0e0c12; border-radius: 42px; padding: 10px; box-shadow: 0 54px 100px -40px rgba(40,20,10,.55); }
+.screen { background: #f5f3fb; border-radius: 34px; overflow: hidden; padding-bottom: 2px; }
 
-.appHead { padding: 6px 18px 14px; display: flex; align-items: center; gap: 10px; }
-.appMark { width: 34px; height: 34px; border-radius: 10px; background: var(--b); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; font-family: var(--font-logo), sans-serif; transition: background .4s; }
-.appName { font-weight: 800; font-size: 16px; color: #1c1611; }
-.appName small { display: block; font-weight: 500; font-size: 10.5px; color: #8a7e70; letter-spacing: .02em; }
+.statusbar { height: 30px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; font-size: 12px; font-weight: 700; color: #1c1611; }
+.statusbar small { font-weight: 600; opacity: .7; letter-spacing: .5px; }
 
-.appCard { margin: 0 14px; background: var(--b); border-radius: 18px; padding: 16px; color: #fff; transition: background .4s; }
-.appCardK { font-size: 11px; opacity: .85; letter-spacing: .04em; text-transform: uppercase; }
-.appCardV { font-size: 19px; font-weight: 800; margin-top: 3px; }
-.appCardRow { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; }
-.appCardDot { width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.appHead { display: flex; align-items: center; justify-content: space-between; padding: 6px 18px 12px; }
+.logoBox { display: flex; align-items: center; gap: 9px; }
+.logoImg { height: 30px; max-width: 120px; object-fit: contain; }
+.logoMark { width: 34px; height: 34px; border-radius: 10px; background: var(--b); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; font-family: var(--font-logo), sans-serif; transition: background .35s; }
+.logoName { font-weight: 800; font-size: 15px; color: #1c1611; line-height: 1; }
+.logoName small { display: block; font-weight: 600; font-size: 9.5px; color: var(--b); letter-spacing: .04em; margin-top: 2px; transition: color .35s; }
+.headIcons { display: flex; gap: 6px; }
+.headIcon { width: 26px; height: 26px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 12px; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
 
-.appBtn { margin: 14px; height: 46px; border-radius: 14px; background: var(--b); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 14.5px; transition: background .4s; }
+.greet { padding: 4px 18px 0; }
+.greetH { font-size: 21px; font-weight: 800; color: #14111a; }
+.greetS { font-size: 12.5px; color: #6c6776; margin-top: 3px; line-height: 1.35; }
 
-.appList { padding: 0 14px 8px; }
-.appItem { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid rgba(40,25,10,.08); }
-.appItemIcon { width: 30px; height: 30px; border-radius: 9px; background: color-mix(in srgb, var(--b) 16%, #fff); color: var(--b); display: grid; place-items: center; font-size: 14px; transition: background .4s, color .4s; }
-.appItemT { font-size: 13px; font-weight: 600; color: #1c1611; }
-.appItemS { font-size: 11px; color: #8a7e70; }
+.agendar { margin: 14px 18px 0; background: var(--b); border-radius: 20px; padding: 16px 16px 18px; color: #fff; display: flex; align-items: center; gap: 12px; transition: background .35s; position: relative; overflow: hidden; }
+.agendar::after { content: "🐾"; position: absolute; right: -6px; bottom: -10px; font-size: 64px; opacity: .12; }
+.agendarT { flex: 1; }
+.agendarT b { font-size: 18px; font-weight: 800; display: block; }
+.agendarT span { font-size: 11.5px; opacity: .92; line-height: 1.35; display: block; margin-top: 4px; }
+.agendarBtn { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--b); display: grid; place-items: center; font-size: 18px; font-weight: 800; transition: color .35s; }
 
-.appNav { display: flex; justify-content: space-around; padding: 12px 0 16px; border-top: 1px solid rgba(40,25,10,.08); }
-.appNavI { width: 22px; height: 22px; border-radius: 7px; background: rgba(40,25,10,.12); }
-.appNavActive { background: var(--b); transition: background .4s; }
+.pills { display: flex; gap: 7px; padding: 12px 18px 0; }
+.pill { flex: 1; background: #fff; border-radius: 13px; padding: 9px 6px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.pillIcon { font-size: 14px; }
+.pillT { font-size: 9px; color: #4a4458; font-weight: 700; margin-top: 3px; line-height: 1.2; }
+
+.stats { display: flex; gap: 7px; padding: 10px 18px 0; }
+.statc { flex: 1; background: #fff; border-radius: 13px; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.statcV { font-size: 14px; font-weight: 800; color: #14111a; }
+.statcL { font-size: 9px; color: #8a8596; margin-top: 2px; }
+
+.nav { display: flex; justify-content: space-between; padding: 12px 18px 14px; margin-top: 12px; }
+.navI { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 8px; color: #9a96a6; }
+.navDot { width: 18px; height: 18px; border-radius: 6px; background: #d8d4e4; }
+.navActive .navDot { background: var(--b); transition: background .35s; }
+.navActive { color: var(--b); transition: color .35s; }
