@@ -76,13 +76,43 @@ img, svg { display: block; max-width: 100%; }
 
 .ov-reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+  transform: translateY(30px) scale(.986);
+  transition: opacity .9s cubic-bezier(.22, 1, .36, 1), transform .9s cubic-bezier(.22, 1, .36, 1);
 }
 
 .ov-reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ov-reveal {
+    transform: none;
+    transition: opacity .45s ease;
+  }
+}
+
+/* Barra de progresso de leitura (Framer Motion controla o scaleX). */
+.ov-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--ov-ember-2), var(--ov-ember));
+  box-shadow: 0 0 14px -2px rgba(255, 106, 43, .6);
+  z-index: 200;
+  pointer-events: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 .ov-header {

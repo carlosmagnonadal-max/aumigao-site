@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealInit } from "@/components/RevealInit";
 import { AuWidget } from "@/components/AuWidget";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#7B4DF2" />
       </head>
       <body>
+        <ScrollProgress />
         <RevealInit />
         <Header />
         <main>{children}</main>

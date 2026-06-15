@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Hoverable } from "./Motion";
 
 type SectionEyebrowProps = {
   number?: string;
@@ -358,12 +359,16 @@ export function EcosystemHero() {
             matching, score, credenciamento, recovery e White Label, em uma só plataforma.
           </p>
           <div className="ov-cta-row ov-photo-fade ov-photo-fade-cta">
-            <Link href="/#cta" className="ov-btn ov-btn-primary">
-              Solicitar diagnóstico White Label <span className="ov-arr">→</span>
-            </Link>
-            <Link href="/#funciona" className="ov-btn ov-btn-ghost">
-              Ver como funciona
-            </Link>
+            <Hoverable style={{ display: "inline-flex" }}>
+              <Link href="/#cta" className="ov-btn ov-btn-primary">
+                Solicitar diagnóstico White Label <span className="ov-arr">→</span>
+              </Link>
+            </Hoverable>
+            <Hoverable style={{ display: "inline-flex" }}>
+              <Link href="/#funciona" className="ov-btn ov-btn-ghost">
+                Ver como funciona
+              </Link>
+            </Hoverable>
           </div>
           <div className="ov-trust-pills ov-photo-fade ov-photo-fade-pills">
             <StatusPill>Credenciamento verificado</StatusPill>
