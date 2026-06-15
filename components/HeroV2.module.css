@@ -80,7 +80,11 @@
   height: 100%;
   z-index: 0;
 }
-.photo :global(img) {
+.photoInner {
+  position: absolute;
+  inset: 0;
+}
+.photoInner :global(img) {
   object-fit: cover;
   filter: grayscale(1) contrast(1.04) brightness(1.04);
 }

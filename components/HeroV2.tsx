@@ -58,16 +58,22 @@ export function HeroV2() {
         </nav>
       </header>
 
-      {/* foto P&B dissolvendo na névoa */}
+      {/* foto P&B dissolvendo na névoa — parallax (scroll) + Ken Burns (contínuo) */}
       <motion.div className={s.photo} style={reduce ? undefined : { y, scale }}>
-        <Image
-          src="/walker-hero.jpg"
-          alt="Passeadora da Aumigão caminhando com um cachorro"
-          fill
-          priority
-          sizes="70vw"
-          style={{ objectFit: "cover" }}
-        />
+        <motion.div
+          className={s.photoInner}
+          animate={reduce ? undefined : { scale: [1.06, 1.13, 1.06], x: ["0%", "-3%", "0%"] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            src="/walker-hero.jpg"
+            alt="Passeadora da Aumigão caminhando com um cachorro"
+            fill
+            priority
+            sizes="70vw"
+            style={{ objectFit: "cover" }}
+          />
+        </motion.div>
       </motion.div>
       <div className={s.photoFade} />
 
