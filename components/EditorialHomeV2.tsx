@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { HeroMerged } from "./HeroMerged";
 import { BrandSwapper } from "./BrandSwapper";
+import { PlatformPeek } from "./PlatformPeek";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import s from "./editorial-home.module.css";
 
@@ -10,13 +10,6 @@ const trilhas = [
   { tag: "Para o tutor", title: "Segurança e rotina", promise: "Tranquilidade e cuidado consistente para o pet, sem fricção.", bullets: ["Agendamento simples e previsível", "Acompanhamento do passeio ao vivo", "Avaliação que melhora o serviço"] },
   { tag: "Para o passeador", title: "Oportunidade e reputação", promise: "Demanda qualificada, agenda própria e profissionalização.", bullets: ["Renda recorrente, não bico", "Agenda própria", "Score que valoriza quem cuida"] },
   { tag: "Para o petshop", title: "Marca, receita e escala", promise: "Lance a própria operação de passeios com governança assistida.", bullets: ["Plataforma white-label própria", "Nova receita recorrente", "Multiunidades e expansão"] },
-];
-
-const passeadorGanhos = [
-  ["Renda recorrente, não bico.", "Demanda contínua em vez de corrida esporádica."],
-  ["Agenda própria.", "Você escolhe quando e quanto passear."],
-  ["Demanda certa via matching.", "O sistema conecta você aos passeios do seu perfil e região."],
-  ["Score que valoriza.", "Quem cuida bem ganha reputação e mais oportunidades."],
 ];
 
 const modules = [
@@ -60,46 +53,15 @@ export function EditorialHomeV2() {
         </div>
       </section>
 
-      {/* TUTOR */}
-      <section className={`${s.section} ${s.alt}`} id="tutor">
+      {/* POR DENTRO DA PLATAFORMA */}
+      <section className={`${s.section} ${s.alt}`} id="plataforma-por-dentro">
         <div className={s.container}>
-          <div className={s.split}>
-            <Reveal>
-              <div className={s.eyebrow}><i /> Para o tutor</div>
-              <h2 className={s.h2}>Segurança e rotina, sem <em>fricção.</em></h2>
-              <p className={s.lead}>Seu cliente agenda em segundos, acompanha o passeio ao vivo no mapa e avalia ao final. Cada passeio é registrado, verificável e recuperável.</p>
-              <ul className={s.ul}>
-                <li className={s.li}><span className={s.liDot}>✓</span> Agenda pet, duração e modalidade pelo app — com a sua marca.</li>
-                <li className={s.li}><span className={s.liDot}>✓</span> Acompanha a rota e a localização em tempo real.</li>
-                <li className={s.li}><span className={s.liDot}>✓</span> Passeador credenciado, verificado e avaliado.</li>
-                <li className={s.li}><span className={s.liDot}>✓</span> Avalia a experiência e ajuda a operação a melhorar.</li>
-              </ul>
-            </Reveal>
-            <Reveal from="right" className={s.media}>
-              <Image src="/dog-walk-street.jpg" alt="Tutor acompanha o passeio do pet" fill sizes="50vw" style={{ objectFit: "cover" }} />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* PASSEADOR */}
-      <section className={s.section} id="passeador">
-        <div className={s.container}>
-          <div className={s.split}>
-            <Reveal className={s.media}>
-              <Image src="/walker-hero.jpg" alt="Passeador da rede Aumigão" fill sizes="50vw" style={{ objectFit: "cover" }} />
-            </Reveal>
-            <Reveal from="right">
-              <div className={s.eyebrow}><i /> Para o passeador</div>
-              <h2 className={s.h2}>Transforme passeios em renda <em>recorrente.</em></h2>
-              <p className={s.lead}>O Aumigão leva demanda qualificada até você. Você define a agenda, constrói reputação e faz dos passeios uma fonte de renda de verdade — com kit, credenciamento e suporte.</p>
-              <ul className={s.ul}>
-                {passeadorGanhos.map(([t, d]) => (
-                  <li key={t} className={s.li}><span className={s.liDot}>✓</span><span><b style={{ color: "var(--ink)" }}>{t}</b> {d}</span></li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+          <Reveal>
+            <div className={s.eyebrow}><i /> Por dentro da plataforma</div>
+            <h2 className={s.h2}>Veja o app e o painel — <em>por dentro.</em></h2>
+            <p className={s.lead}>A mesma operação, três experiências: o app do tutor, o app do passeador (a rede é nossa) e o painel white-label que você comanda com a sua marca.</p>
+          </Reveal>
+          <Reveal><PlatformPeek /></Reveal>
         </div>
       </section>
 
