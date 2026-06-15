@@ -1,0 +1,182 @@
+/* Hero "Editorial Cinematográfico" — inspirado em Tresmares Capital.
+   Minimal, tipografia monumental, 1 acento ember, foto full-bleed cinematográfica. */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #0b0710;
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: -8% 0 0 0; /* folga p/ parallax */
+  z-index: 0;
+}
+.media :global(img) {
+  object-fit: cover;
+}
+/* grade fina editorial + vinheta de legibilidade */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(11, 7, 16, .5) 0%, rgba(11, 7, 16, .12) 32%, rgba(11, 7, 16, .92) 100%),
+    linear-gradient(90deg, rgba(11, 7, 16, .82) 0%, rgba(11, 7, 16, .25) 48%, transparent 72%);
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .05;
+  background-image: radial-gradient(rgba(255, 255, 255, .9) .5px, transparent .6px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(22px, 5vw, 56px) clamp(56px, 9vh, 104px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(246, 241, 248, .72);
+  margin-bottom: clamp(20px, 3vh, 30px);
+}
+.eyebrow i {
+  display: block;
+  width: 46px;
+  height: 1px;
+  background: #ff6a2b;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(46px, 9.2vw, 124px);
+  line-height: .94;
+  letter-spacing: -.035em;
+  color: #fff;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.em {
+  color: #ff6a2b;
+}
+
+.sub {
+  margin: clamp(22px, 3vh, 30px) 0 0;
+  max-width: 50ch;
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.55;
+  color: rgba(246, 241, 248, .82);
+}
+
+.cta {
+  margin-top: clamp(28px, 4vh, 40px);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15.5px;
+  text-decoration: none;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease, background .35s ease;
+}
+.primary {
+  color: #1b1320;
+  background: linear-gradient(180deg, #ffa24d, #ff6a2b);
+  box-shadow: 0 18px 40px -16px rgba(255, 106, 43, .8);
+}
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 54px -16px rgba(255, 106, 43, .9);
+}
+.ghost {
+  color: #f6f1f8;
+  background: transparent;
+}
+.ghost i {
+  transition: transform .3s ease;
+}
+.ghost:hover i {
+  transform: translateX(4px);
+}
+
+.meta {
+  margin-top: clamp(34px, 5vh, 52px);
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 4vw, 48px);
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  padding-top: 22px;
+}
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.metaNum {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 30px);
+  color: #fff;
+  letter-spacing: -.02em;
+}
+.metaLabel {
+  font-size: 12.5px;
+  color: rgba(246, 241, 248, .6);
+  letter-spacing: .01em;
+}
+
+.scroll {
+  position: absolute;
+  right: clamp(22px, 5vw, 56px);
+  bottom: clamp(56px, 9vh, 104px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(246, 241, 248, .55);
+}
+.scroll i {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(rgba(255, 106, 43, .9), transparent);
+}
+
+@media (max-width: 720px) {
+  .scroll { display: none; }
+  .meta { gap: 20px; }
+}
