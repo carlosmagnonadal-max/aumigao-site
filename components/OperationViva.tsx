@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Hoverable } from "./Motion";
+import { Aurora } from "./Aurora";
 
 type SectionEyebrowProps = {
   number?: string;
@@ -338,6 +339,7 @@ export function EcosystemHero() {
       <div className="ov-photo-scrim-left" />
       <div className="ov-photo-scrim-bottom" />
       <div className="ov-photo-noise" />
+      <Aurora intensity={1} />
       <HeroPhotoRoute />
       <HeroPhotoGlassCard />
       <div className="ov-photo-chip ov-photo-chip-one"><LiveDot tone="ember" /> Recovery monitorado</div>
@@ -400,6 +402,7 @@ export function TrustMarquee() {
 export function OperationFlow() {
   return (
     <section className="ov-section ov-flow ov-grain" id="funciona">
+      <Aurora intensity={1.1} />
       <div className="ov-wrap">
         <div className="ov-section-head ov-reveal">
           <SectionEyebrow number="01">Como a operação funciona</SectionEyebrow>
@@ -430,6 +433,7 @@ export function OperationFlow() {
 export function ConceptCommandCenter() {
   return (
     <section className="ov-section ov-center ov-grain">
+      <Aurora intensity={1.15} />
       <div className="ov-glow" />
       <div className="ov-wrap">
         <div className="ov-section-head ov-reveal">
@@ -522,6 +526,7 @@ export function SecurityTrust() {
 export function ParticipantJourney() {
   return (
     <section className="ov-section ov-journey ov-grain" id="jornada">
+      <Aurora intensity={0.9} />
       <div className="ov-wrap">
         <div className="ov-section-head ov-reveal">
           <SectionEyebrow number="04">Jornada dos participantes</SectionEyebrow>

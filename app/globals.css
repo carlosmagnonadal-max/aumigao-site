@@ -115,6 +115,43 @@ html {
   }
 }
 
+/* Fundo aurora — glows radiais que flutuam (premium). */
+.ov-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.ov-aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.ov-aurora-ember {
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(255, 122, 50, 1), rgba(255, 106, 43, .4) 42%, transparent 70%);
+  top: -16%;
+  left: -8%;
+}
+.ov-aurora-purple {
+  width: 780px;
+  height: 780px;
+  background: radial-gradient(circle, rgba(160, 86, 240, .95), rgba(143, 69, 221, .4) 42%, transparent 70%);
+  bottom: -24%;
+  right: -10%;
+}
+.ov-aurora-violet {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(140, 96, 255, .85), transparent 66%);
+  top: 24%;
+  left: 40%;
+}
+
 .ov-header {
   position: sticky;
   top: 0;
@@ -695,11 +732,21 @@ html {
 .ov-opcard {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--ov-line);
+  border: 1px solid rgba(255, 255, 255, .1);
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .01));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .018));
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
   padding: 18px;
-  box-shadow: 0 50px 90px -50px #000;
+  box-shadow: 0 50px 90px -50px #000, inset 0 1px 0 rgba(255, 255, 255, .1);
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s ease, box-shadow .35s ease;
+}
+
+.ov-opcard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 106, 43, .5);
+  box-shadow: 0 60px 100px -50px #000, 0 0 0 1px rgba(255, 106, 43, .3),
+    0 22px 55px -20px rgba(255, 106, 43, .4), inset 0 1px 0 rgba(255, 255, 255, .14);
 }
 
 .ov-opcard-head {
