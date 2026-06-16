@@ -76,13 +76,13 @@ export function EditorialHomeV2() {
             <p className={s.lead}>Sua marca no app do tutor, no app do passeador e no painel operacional. Você opera; o Aumigão sustenta a tecnologia, a rede e a governança. Passeio deixa de ser serviço avulso e vira produto recorrente.</p>
             <ul className={s.ul} style={{ maxWidth: "72ch" }}>
               <li className={s.li}><span className={s.liDot}>1</span><span><b style={{ color: "var(--ink)" }}>Os tutores são seus.</b> A base de clientes é da sua empresa — com a sua marca e a sua carteira.</span></li>
-              <li className={s.li}><span className={s.liDot}>2</span><span><b style={{ color: "var(--ink)" }}>Os passeadores são da rede Aumigão.</b> Credenciados, avaliados e mantidos pela plataforma: você pluga numa rede pronta em vez de recrutar e gerir passeadores do zero.</span></li>
+              <li className={s.li}><span className={s.liDot}>2</span><span><b style={{ color: "var(--ink)" }}>Os passeadores são da rede Aumigão.</b> Credenciados, avaliados e mantidos pela plataforma: você convida quem quiser de uma rede pronta — e cada passeador escolhe trabalhar com a sua marca — em vez de recrutar e gerir passeadores do zero.</span></li>
               <li className={s.li}><span className={s.liDot}>3</span><span><b style={{ color: "var(--ink)" }}>Você opera; a Aumigão sustenta.</b> Rede de passeadores, matching, reputação e pagamentos por nossa conta — a operação e a marca, por sua.</span></li>
             </ul>
             <div className={s.netCallout}>
               <span className={s.netCalloutLabel}>◆ O pulo do gato · efeito de rede</span>
               <h3 className={s.netCalloutTitle}>A rede é compartilhada — e isso joga a <em>seu favor.</em></h3>
-              <p className={s.netCalloutText}>A mesma rede credenciada atende a Aumigão e as outras empresas da plataforma — então a cada empresa e a cada passeador que entram, <b style={{ color: "var(--ink)" }}>maior a capacidade disponível pra você</b>: novos bairros, picos de demanda e novas frentes de receita, sem recrutar ninguém do zero. Você pluga num ativo que só cresce — e quem entra cedo cresce junto.</p>
+              <p className={s.netCalloutText}>A mesma rede credenciada atende a Aumigão e as outras empresas da plataforma. Você convida os passeadores que quiser — e cada um decide se topa trabalhar com a sua marca. Quanto mais empresas e passeadores entram, <b style={{ color: "var(--ink)" }}>maior o pool pra você convidar</b>: novos bairros, picos de demanda e novas frentes de receita, sem recrutar ninguém do zero. Uma rede que só cresce — e quem entra cedo cresce junto.</p>
             </div>
             <p className={s.plansNote} style={{ marginTop: 14 }}>Acesso à Rede de passeadores disponível a partir do plano Business.</p>
           </Reveal>
