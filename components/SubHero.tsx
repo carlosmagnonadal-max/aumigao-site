@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, type ReactNode } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { LiveMap } from "./LiveMap";
-import { AUDIENCES, type AudienceKey } from "@/lib/audiences";
+import type { AudienceKey } from "@/lib/audiences";
 import s from "./hero-merged.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -13,7 +13,7 @@ const container: Variants = { hidden: {}, show: { transition: { staggerChildren:
 const item: Variants = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } };
 
 export type SubHeroProps = {
-  current: AudienceKey;
+  current?: AudienceKey;
   eyebrow: string;
   title: ReactNode;
   sub: string;
@@ -30,7 +30,7 @@ export type SubHeroProps = {
  * creme quente + Fraunces + foto calorosa + (opcional) mapa ao vivo. Topbar com a marca
  * (volta ao hub) + as 3 portas (público atual marcado) + CTA contextual.
  */
-export function SubHero({ current, eyebrow, title, sub, primary, ghost, stats, image, imageAlt, showMap = true }: SubHeroProps) {
+export function SubHero({ eyebrow, title, sub, primary, ghost, stats, image, imageAlt, showMap = true }: SubHeroProps) {
   const reduce = useReducedMotion();
   useEffect(() => {
     document.documentElement.classList.add("proto-clean");
@@ -49,19 +49,6 @@ export function SubHero({ current, eyebrow, title, sub, primary, ghost, stats, i
           <img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk
         </Link>
         <nav className={s.nav}>
-          <span className={s.navLinks}>
-            {AUDIENCES.map((a) => (
-              <Link
-                key={a.key}
-                href={a.route}
-                aria-current={a.key === current ? "page" : undefined}
-                style={a.key === current ? { color: "var(--ink)", fontWeight: 700 } : undefined}
-              >
-                {a.navLabel}
-              </Link>
-            ))}
-          </span>
-          <Link href="/" className={s.navGhost}>← Início</Link>
           <Link href={primary.href} className={s.navCta}>{primary.label}</Link>
         </nav>
       </header>
