@@ -9,6 +9,10 @@ import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
 
+function qr(url: string) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=1c1611&bgcolor=fffdf8&data=${encodeURIComponent(url)}`;
+}
+
 const seguranca = [
   { icon: "⛉", role: "Verificação", title: "Passeador verificado (KYC)", desc: "Documento, identidade e credenciamento conferidos antes de pegar o seu cão. Só passeia quem passou pela operação." },
   { icon: "◉", role: "Ao vivo", title: "Mapa em tempo real", desc: "Acompanhe o trajeto pelo mapa enquanto o passeio acontece. Você sabe onde seu cão está, do começo ao fim." },
@@ -23,7 +27,7 @@ const appBullets = [
 ];
 
 const passos = [
-  { n: "Baixe o app da sua marca", desc: "Se o seu petshop usa Aumigão, ele tem um app com a marca dele. Você baixa, faz seu login e pronto." },
+  { n: "Baixe o app", desc: "Baixe o app do tutor, crie seu acesso e pronto. Leva um minuto." },
   { n: "Cadastre seu pet", desc: "Nome, porte, temperamento e cuidados. O passeador recebe tudo que precisa saber sobre o seu cão." },
   { n: "Agende o passeio", desc: "Escolha dia, horário e modalidade. O matching organiza um passeador credenciado para você." },
   { n: "Acompanhe e avalie", desc: "Veja o mapa ao vivo, receba as fotos e avalie ao final. Sua nota mantém a rede com qualidade." },
@@ -32,7 +36,7 @@ const passos = [
 const faq = [
   { q: "É seguro deixar meu cão com um passeador?", a: "Sim. Todo passeador passa por credenciamento e validação de identidade (KYC) antes de ser ativado. Durante o passeio, você acompanha o trajeto pelo mapa ao vivo e recebe fotos — nada acontece sem o seu acompanhamento." },
   { q: "Quem é o passeador que vai pegar meu cão?", a: "É um passeador da rede Aumigão, credenciado e com reputação construída a cada passeio. Você vê quem é antes do passeio e avalia depois. Passeadores com boas avaliações têm prioridade no matching." },
-  { q: "Como eu pago e como cancelo?", a: "O pagamento é feito pelo próprio app, de forma simples e transparente. O cancelamento segue a política do seu petshop dentro do app — e, se um passeio agendado falhar por parte da rede, o valor é devolvido integralmente." },
+  { q: "Como eu pago e como cancelo?", a: "O pagamento é feito pelo próprio app, de forma simples e transparente. O cancelamento segue a política da sua empresa pet dentro do app — e, se um passeio agendado falhar por parte da rede, o valor é devolvido integralmente." },
   { q: "Como eu acompanho o passeio?", a: "Pelo app: mapa em tempo real durante o trajeto, fotos do seu cão no passeio e um resumo ao final. Você fica por dentro mesmo estando longe." },
 ];
 
@@ -61,7 +65,7 @@ export function TutorContent() {
           <Reveal>
             <div className={sub.emotion}>
               <span className={sub.kicker}><i /> Quem ama, acompanha</span>
-              <h2 className={e.h2}>O melhor dia dele não devia depender do <em>seu horário.</em></h2>
+              <h2 className={e.h2} style={{ marginInline: "auto" }}>O melhor dia dele não devia depender do <em>seu horário.</em></h2>
               <p className={e.lead} style={{ marginInline: "auto" }}>
                 Trabalho, trânsito, reunião que furou a tarde. Enquanto a vida acontece, seu cão
                 fica esperando a porta abrir. Com o Aumigão, ele sai, gasta energia e volta feliz —
@@ -107,7 +111,7 @@ export function TutorContent() {
                     <li key={t}><span className={sub.tick}>✓</span><span><b>{t}</b> {d}</span></li>
                   ))}
                 </ul>
-                <p className={sub.note}>Representação ilustrativa do app. O app que você usa tem a marca do seu petshop.</p>
+                <p className={sub.note}>Representação ilustrativa do app.</p>
               </div>
               <div className={sub.phoneWrap}><TutorPhone /></div>
             </div>
@@ -153,7 +157,7 @@ export function TutorContent() {
               </p>
               <ul className={sub.bullets}>
                 <li><span className={sub.tick}>✓</span><span>Reembolso integral se o passeio falhar por parte da rede.</span></li>
-                <li><span className={sub.tick}>✓</span><span>Suporte do seu petshop e da operação Aumigão a qualquer momento.</span></li>
+                <li><span className={sub.tick}>✓</span><span>Suporte da sua empresa pet e da operação Aumigão a qualquer momento.</span></li>
                 <li><span className={sub.tick}>✓</span><span>Passeadores com baixa avaliação saem do matching — qualidade primeiro.</span></li>
               </ul>
             </Reveal>
@@ -179,22 +183,34 @@ export function TutorContent() {
         </div>
       </section>
 
-      {/* CTA DUPLO */}
-      <section className={`${e.section} ${e.alt}`} id="encontrar">
+      {/* BAIXE O APP */}
+      <section className={`${e.section} ${e.alt}`} id="baixar">
         <div className={e.container}>
           <Reveal>
-            <div className={e.eyebrow}><i /> Comece agora</div>
-            <h2 className={e.h2}>Seu petshop já usa <em>Aumigão?</em></h2>
-            <p className={e.lead}>O app é da marca do seu petshop. Veja o caminho certo pra você.</p>
+            <div className={e.eyebrow}><i /> Baixe o app</div>
+            <h2 className={e.h2}>Acompanhe os passeios na <em>palma da mão.</em></h2>
+            <p className={e.lead}>Aponte a câmera no QR ou baixe pela loja: agende, acompanhe ao vivo no mapa e avalie cada passeio.</p>
           </Reveal>
-          <div className={e.cta} style={{ marginTop: "clamp(20px,3vh,30px)", display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <Link href="/contato" className={e.btn ?? ""} style={{ display: "inline-flex", alignItems: "center", height: 56, padding: "0 28px", borderRadius: 44, fontWeight: 700, textDecoration: "none", color: "#fff", background: "linear-gradient(180deg, var(--roxo2,#8f45dd), var(--roxo,#6d2bbd))", boxShadow: "0 18px 38px -14px rgba(109,43,189,.55)" }}>
-              Sim → baixar o app da minha marca
-            </Link>
-            <Link href="/contato?perfil=empresa" style={{ display: "inline-flex", alignItems: "center", fontWeight: 600, color: "var(--ink,#1c1611)", textDecoration: "none", borderBottom: "2px solid var(--accent)", paddingBottom: 2 }}>
-              Não → indicar meu petshop
-            </Link>
-          </div>
+          <Reveal>
+            <div className={e.dl} style={{ marginTop: "clamp(20px,4vh,36px)" }}>
+              <div className={e.dlInfo}>
+                <div className={e.dlTag}>App do tutor</div>
+                <div className={e.dlTitle}>Agende e acompanhe ao vivo</div>
+                <p className={e.dlDesc}>Mapa em tempo real, fotos do passeio e avaliação — tudo no seu celular.</p>
+                <div className={e.dlBadges}>
+                  <a className={e.dlBadge} href="#"> Baixar na<small>App Store</small></a>
+                  <a className={e.dlBadge} href="#">▶ Disponível no<small>Google Play</small></a>
+                </div>
+              </div>
+              <div className={e.dlQR}><img src={qr("https://www.aumigaowalk.com.br")} alt="QR para baixar o app do tutor" /></div>
+            </div>
+          </Reveal>
+          <Reveal>
+            <p className={e.lead} style={{ marginTop: "clamp(18px,3vh,26px)" }}>
+              Sua empresa pet ainda não usa Aumigão?{" "}
+              <Link href="/contato?perfil=empresa" style={{ color: "var(--accent)", fontWeight: 700, borderBottom: "2px solid var(--accent)" }}>Indique sua empresa pet →</Link>
+            </p>
+          </Reveal>
         </div>
       </section>
 
