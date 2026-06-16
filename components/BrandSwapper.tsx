@@ -70,7 +70,10 @@ export function BrandSwapper() {
             <div className={s.appHead}>
               <div className={s.logoBox}>
                 {logo
-                  ? <img className={s.logoImg} src={logo} alt="logo" />
+                  ? <>
+                      <span className={s.logoIcon}><img src={logo} alt="logo" /></span>
+                      <span className={s.logoName}>{name}<small>passeios pet</small></span>
+                    </>
                   : <>
                       <span className={s.logoMark}>{initials(name)}</span>
                       <span className={s.logoName}>{name}<small>passeios pet</small></span>
