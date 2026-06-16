@@ -2,7 +2,8 @@
 
 import s from "./LiveMap.module.css";
 
-const ROUTE = "M 56 196 C 150 196 130 118 224 120 C 312 122 332 64 424 52";
+// Rota roxa acompanhando as ruas (igual ao app: Polyline cor primária + marcador paw).
+const ROUTE = "M 60 205 L 60 170 L 150 170 L 150 74 L 330 74 L 400 45";
 
 export function LiveMap() {
   return (
@@ -14,45 +15,39 @@ export function LiveMap() {
 
       <div className={s.map}>
         <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" fill="none">
-          {/* grid de ruas */}
-          <g stroke="rgba(255,255,255,.05)" strokeWidth="1">
-            {[40, 80, 120, 160, 200].map((y) => <line key={"h" + y} x1="0" y1={y} x2="480" y2={y} />)}
-            {[60, 120, 180, 240, 300, 360, 420].map((x) => <line key={"v" + x} x1={x} y1="0" x2={x} y2="240" />)}
+          {/* praça/parque */}
+          <rect x="18" y="138" width="116" height="84" rx="10" fill="#cfe3c4" />
+          {/* quarteirões sutis */}
+          <g fill="rgba(40,25,10,.04)">
+            <rect x="170" y="90" width="140" height="60" rx="4" />
+            <rect x="350" y="90" width="110" height="60" rx="4" />
+            <rect x="170" y="190" width="140" height="44" rx="4" />
           </g>
-          <g fill="rgba(255,255,255,.03)">
-            <rect x="66" y="46" width="48" height="28" rx="3" />
-            <rect x="186" y="86" width="48" height="28" rx="3" />
-            <rect x="306" y="126" width="48" height="28" rx="3" />
-            <rect x="246" y="166" width="48" height="28" rx="3" />
+          {/* ruas principais (claras) */}
+          <g stroke="#ffffff" strokeWidth="13" strokeLinecap="round">
+            <line x1="-10" y1="74" x2="490" y2="74" />
+            <line x1="-10" y1="170" x2="490" y2="170" />
+            <line x1="150" y1="-10" x2="150" y2="250" />
+            <line x1="330" y1="-10" x2="330" y2="250" />
           </g>
-
-          {/* rota: base + linha animada */}
-          <path id="lm-route" d={ROUTE} stroke="#ff6a2b" strokeOpacity=".22" strokeWidth="9" strokeLinecap="round" />
-          <path d={ROUTE} stroke="url(#lm-grad)" strokeWidth="3" strokeLinecap="round" strokeDasharray="7 9">
-            <animate attributeName="stroke-dashoffset" from="160" to="0" dur="4s" repeatCount="indefinite" />
+          {/* ruas secundárias */}
+          <g stroke="#efe9dd" strokeWidth="5" strokeLinecap="round">
+            <line x1="-10" y1="120" x2="490" y2="120" />
+            <line x1="240" y1="-10" x2="240" y2="250" />
+            <line x1="410" y1="-10" x2="410" y2="250" />
+          </g>
+          {/* rota roxa (cor primária do app) */}
+          <path d={ROUTE} stroke="#6d2bbd" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" opacity=".25" />
+          <path d={ROUTE} stroke="#6d2bbd" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="500" strokeDashoffset="500">
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4s" repeatCount="indefinite" />
           </path>
-          <defs>
-            <linearGradient id="lm-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#ffa24d" />
-              <stop offset="1" stopColor="#ff6a2b" />
-            </linearGradient>
-          </defs>
-
-          {/* pins */}
-          <circle cx="56" cy="196" r="6" fill="#fff" />
-          <circle cx="56" cy="196" r="11" stroke="#fff" strokeOpacity=".5" />
-          <text x="40" y="222" className={s.pinLabel}>Tutor</text>
-          <circle cx="424" cy="52" r="6" fill="#ff6a2b" />
-          <circle cx="424" cy="52" r="11" stroke="#ff6a2b" strokeOpacity=".6" />
-          <text x="398" y="38" className={s.pinLabel}>Destino</text>
-
-          {/* passeador se movendo */}
-          <g>
-            <circle r="5" fill="#fff" />
-            <circle r="10" fill="none" stroke="#ff6a2b" strokeWidth="2" strokeOpacity=".8" />
-            <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" path={ROUTE} />
-          </g>
+          {/* origem */}
+          <circle cx="60" cy="205" r="5" fill="#fff" stroke="#6d2bbd" strokeWidth="2.5" />
         </svg>
+
+        {/* marcador da patinha (posição ao vivo) — igual ao app */}
+        <span className={s.pawRing} style={{ left: "83.3%", top: "18.8%" }} />
+        <span className={s.pawMarker} style={{ left: "83.3%", top: "18.8%" }}>🐾</span>
       </div>
 
       <div className={s.status}>

@@ -39,10 +39,14 @@
 .dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #4fd69c; animation: lmpulse 1.8s infinite; }
 @keyframes lmpulse { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
 
-.map { position: relative; width: 100%; aspect-ratio: 2 / 1; border-radius: 13px; overflow: hidden; background: linear-gradient(160deg, #181222, #141019); border: 1px solid rgba(255,255,255,.06); }
+/* mapa de ruas realista (estilo do app: ruas claras + rota roxa + marcador da patinha) */
+.map { position: relative; width: 100%; aspect-ratio: 2 / 1; border-radius: 13px; overflow: hidden; background: #e8e4da; border: 1px solid rgba(0,0,0,.08); }
 .map svg { display: block; width: 100%; height: 100%; }
 
-.pinLabel { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .04em; fill: rgba(246,241,248,.6); }
+/* marcador da patinha (igual ao app: círculo gradiente roxo, borda branca, paw) */
+.pawMarker { position: absolute; width: 26px; height: 26px; border-radius: 50%; border: 2.5px solid #fff; background: linear-gradient(135deg, #6d2bbd, #4d20de); display: grid; place-items: center; font-size: 12px; box-shadow: 0 3px 8px rgba(40,20,80,.4); transform: translate(-50%, -50%); }
+.pawRing { position: absolute; width: 26px; height: 26px; border-radius: 50%; border: 2px solid rgba(109,43,189,.5); transform: translate(-50%, -50%); animation: pawpulse 1.8s infinite; }
+@keyframes pawpulse { 0% { transform: translate(-50%,-50%) scale(1); opacity: .7; } 100% { transform: translate(-50%,-50%) scale(2.4); opacity: 0; } }
 
 .status { display: flex; gap: 14px; margin-top: 13px; }
 .stat { flex: 1; }
