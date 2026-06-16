@@ -95,9 +95,9 @@ function AdminBrowser() {
 }
 
 const content = {
-  tutor: { cap: <>O app do <em>tutor</em>.</>, lead: "Agendar, acompanhar ao vivo no mapa e avaliar — simples e seguro, com a sua marca.", bullets: ["Agendamento em segundos", "Acompanhamento ao vivo", "Passeador verificado", "Avaliação e histórico"], link: "/como-funciona", linkLabel: "Ver como funciona" },
-  passeador: { cap: <>O app do <em>passeador</em>.</>, lead: "A rede de passeadores é nossa: demanda qualificada, ganhos claros e reputação que valoriza quem cuida.", bullets: ["Ganhos transparentes e saque fácil", "Agenda própria", "Matching por região e score", "Kit, credenciamento e suporte"], link: "/seja-passeador", linkLabel: "Quero ser passeador" },
-  admin: { cap: <>O painel <em>white-label</em>.</>, lead: "Você opera com a sua marca: matching, operação ao vivo, passeadores e financeiro num só painel.", bullets: ["Operação ao vivo no mapa", "Gestão da rede de passeadores", "Financeiro e repasses rastreáveis", "Tudo com a sua marca"], link: "/white-label", linkLabel: "Conheça o White Label" },
+  tutor: { cap: <>O app do <em>tutor</em>.</>, lead: "Agendar, acompanhar ao vivo no mapa e avaliar — simples e seguro, com a sua marca.", bullets: ["Agendamento em segundos", "Acompanhamento ao vivo", "Passeador verificado", "Avaliação e histórico"], link: "#baixar", linkLabel: "Baixar o app" },
+  passeador: { cap: <>O app do <em>passeador</em>.</>, lead: "A rede de passeadores é nossa: demanda qualificada, ganhos claros e reputação que valoriza quem cuida.", bullets: ["Ganhos transparentes e saque fácil", "Agenda própria", "Matching por região e score", "Kit, credenciamento e suporte"], link: "#contato", linkLabel: "Quero ser passeador" },
+  admin: { cap: <>O painel <em>white-label</em>.</>, lead: "Você opera com a sua marca: matching, operação ao vivo, passeadores e financeiro num só painel.", bullets: ["Operação ao vivo no mapa", "Gestão da rede de passeadores", "Financeiro e repasses rastreáveis", "Tudo com a sua marca"], link: "#contato", linkLabel: "Conheça o White Label" },
 } as const;
 
 export function PlatformPeek() {

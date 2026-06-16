@@ -107,6 +107,46 @@
 .planCta:hover { transform: translateY(-2px); }
 .plansNote { margin-top: 22px; font-size: 13px; color: var(--muted); }
 
+/* ── BAIXAR APPS ── */
+.downloads { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(16px,2vw,24px); margin-top: clamp(34px,5vh,56px); }
+@media (max-width: 760px) { .downloads { grid-template-columns: 1fr; } }
+.dl { background: #fffdf8; border: 1px solid var(--hair); border-radius: 22px; padding: clamp(24px,2.4vw,32px); display: flex; gap: 22px; align-items: center; }
+.dlInfo { flex: 1; }
+.dlTag { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--tang); }
+.dlTitle { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(21px,1.8vw,26px); margin: 6px 0 4px; }
+.dlDesc { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.dlBadges { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.dlBadge { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 12px; background: var(--ink); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; transition: transform .25s; }
+.dlBadge:hover { transform: translateY(-2px); }
+.dlBadge small { display: block; font-size: 9px; opacity: .7; font-weight: 500; }
+.dlQR { flex: none; width: 104px; height: 104px; border-radius: 14px; background: #fff; border: 1px solid var(--hair); padding: 7px; }
+.dlQR img { width: 100%; height: 100%; display: block; }
+@media (max-width: 480px) { .dlQR { display: none; } }
+
+/* ── CONTATO ── */
+.contactGrid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px,5vw,72px); align-items: start; margin-top: clamp(30px,4vh,44px); }
+@media (max-width: 880px) { .contactGrid { grid-template-columns: 1fr; } }
+.contactAside { }
+.waBtn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 40px; background: #16a34a; color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; margin-top: 18px; transition: transform .25s; }
+.waBtn:hover { transform: translateY(-2px); }
+.contactMeta { margin-top: 24px; font-size: 14.5px; color: var(--ink2); line-height: 1.9; }
+.contactMeta a { color: var(--tang); text-decoration: none; font-weight: 600; }
+
+.form { background: #fffdf8; border: 1px solid var(--hair); border-radius: 22px; padding: clamp(24px,2.4vw,32px); }
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.fieldFull { grid-column: 1 / -1; }
+.field span { font-size: 12.5px; font-weight: 600; color: var(--ink2); }
+.finput, .fselect, .ftext { width: 100%; border: 1.5px solid rgba(40,25,10,.16); border-radius: 12px; background: #fff; padding: 11px 14px; font-size: 15px; color: var(--ink); outline: none; font-family: inherit; transition: border-color .2s; }
+.finput:focus, .fselect:focus, .ftext:focus { border-color: var(--tang); }
+.ftext { min-height: 84px; resize: vertical; }
+.fsubmit { margin-top: 18px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.fnote { font-size: 12.5px; color: var(--muted); }
+.ferr { font-size: 13px; color: #d6492f; font-weight: 600; }
+.fok { text-align: center; padding: 20px; }
+.fokH { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: 24px; }
+.fokP { color: var(--ink2); margin-top: 8px; }
+
 /* ── FOOTER ── */
 .footer { background: #17120e; color: rgba(255,255,255,.7); padding-block: clamp(40px,6vh,60px); }
 .footerRow { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }

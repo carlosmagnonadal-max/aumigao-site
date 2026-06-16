@@ -28,9 +28,9 @@ export function HeroMerged() {
         <a href="#" className={s.brand}><span className={s.brandMark}>AU</span> Aumigão Walk</a>
         <nav className={s.nav}>
           <span className={s.navLinks}>
-            <a href="#">Como funciona</a> <a href="#">Confiança</a> <a href="#">White Label</a>
+            <a href="#plataforma-por-dentro">Como funciona</a> <a href="#planos">Planos</a> <a href="#white-label">White Label</a>
           </span>
-          <a href="#" className={s.navCta}>Portal do parceiro</a>
+          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navCta}>Portal do parceiro</a>
         </nav>
       </header>
 
@@ -48,8 +48,8 @@ export function HeroMerged() {
             passeios pet — com acompanhamento ao vivo, segurança e a sua marca.
           </motion.p>
           <motion.div variants={item} className={s.cta}>
-            <a href="#" className={s.btn}>Solicitar diagnóstico →</a>
-            <a href="#" className={s.ghost}>Ver como funciona</a>
+            <a href="#contato" className={s.btn}>Solicitar diagnóstico →</a>
+            <a href="#plataforma-por-dentro" className={s.ghost}>Ver como funciona</a>
           </motion.div>
           <motion.div variants={item} className={s.stats}>
             <div className={s.stat}><span className={s.statNum}>100%</span><span className={s.statLabel}>passeios auditáveis</span></div>

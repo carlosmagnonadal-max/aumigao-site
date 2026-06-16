@@ -3,6 +3,8 @@
 import { HeroMerged } from "./HeroMerged";
 import { BrandSwapper } from "./BrandSwapper";
 import { PlatformPeek } from "./PlatformPeek";
+import { AppDownload } from "./AppDownload";
+import { ContactSection } from "./ContactSection";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import s from "./editorial-home.module.css";
 
@@ -95,7 +97,7 @@ export function EditorialHomeV2() {
                 <div className={s.planPrice}>{p.price}<small>{p.per}</small></div>
                 <p className={s.planDesc}>{p.desc}</p>
                 <ul className={s.planUl}>{p.feats.map((f) => <li key={f} className={s.planLi}><span>✓</span> {f}</li>)}</ul>
-                <a href="#cta" className={`${s.planCta} ${p.fill ? s.planCtaFill : ""}`}>{p.cta}</a>
+                <a href="#contato" className={`${s.planCta} ${p.fill ? s.planCtaFill : ""}`}>{p.cta}</a>
               </RevealItem>
             ))}
           </Stagger>
@@ -122,15 +124,26 @@ export function EditorialHomeV2() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={`${s.section} ${s.dark}`} id="cta">
+      {/* BAIXE OS APPS */}
+      <section className={s.section} id="baixar">
+        <div className={s.container}>
+          <Reveal>
+            <div className={s.eyebrow}><i /> Baixe os apps</div>
+            <h2 className={s.h2}>Leve a operação no <em>bolso.</em></h2>
+            <p className={s.lead}>Dois apps com a sua marca: um para o tutor agendar e acompanhar ao vivo, outro para o passeador receber demanda e ganhos.</p>
+          </Reveal>
+          <Reveal><AppDownload /></Reveal>
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section className={`${s.section} ${s.alt}`} id="contato">
         <div className={s.container}>
           <Reveal>
             <div className={s.eyebrow}><i /> Vamos começar</div>
-            <h2 className={s.ctaTitle}>Sua operação de passeios, com a sua <em>marca.</em></h2>
-            <p className={s.lead} style={{ marginBottom: 34 }}>Agende um diagnóstico gratuito. A gente mostra como o seu petshop pode lançar passeios com marca própria e nova receita — em semanas, não meses.</p>
-            <a href="#" className={s.btn}>Solicitar diagnóstico White Label →</a>
+            <h2 className={s.h2}>Sua operação de passeios, com a sua <em>marca.</em></h2>
           </Reveal>
+          <Reveal><ContactSection /></Reveal>
         </div>
       </section>
 
@@ -139,11 +152,12 @@ export function EditorialHomeV2() {
           <div className={s.footerRow}>
             <span className={s.footerBrand}>Aumigão Walk</span>
             <nav className={s.footerLinks}>
-              <a href="#tutor">Tutor</a>
-              <a href="#passeador">Passeador</a>
+              <a href="#para-quem">Para quem</a>
+              <a href="#plataforma-por-dentro">A plataforma</a>
               <a href="#white-label">White Label</a>
               <a href="#planos">Planos</a>
-              <a href="#cta">Contato</a>
+              <a href="#baixar">Apps</a>
+              <a href="#contato">Contato</a>
             </nav>
           </div>
         </div>
