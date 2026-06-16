@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { SubHero } from "./SubHero";
-import { PasseadorPhone } from "./PlatformPeek";
+import { WalkPhoneDark } from "./WalkPhoneDark";
 import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
+
+function qr(url: string) {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=15111d&bgcolor=ffffff&data=${encodeURIComponent(url)}`;
+}
 
 const appBullets = [
   ["Ganhos transparentes.", "Veja repasse, gorjetas e incentivos passeio a passeio — e saque fácil."],
@@ -36,7 +40,7 @@ export function PasseadorContent() {
         eyebrow="Para passeadores — sua profissão, sua renda"
         title={<>Cuidar de cães virou <em style={{ color: "var(--accent)" }}>profissão.</em></>}
         sub="Não é bico: é renda recorrente. Entre para a rede Aumigão, receba passeios de várias empresas pet e construa uma reputação que te acompanha em toda a rede. Quem cuida bem, ganha mais demanda."
-        primary={{ label: "Quero me cadastrar", href: "/contato?perfil=passeador" }}
+        primary={{ label: "Quero me cadastrar", href: "#baixar" }}
         ghost={{ label: "Como funciona", href: "#como-funciona" }}
         stats={[
           { num: "Recorrente", label: "renda, não bico" },
@@ -73,7 +77,7 @@ export function PasseadorContent() {
           </Reveal>
           <Reveal>
             <div className={sub.split}>
-              <div className={sub.phoneWrap}><PasseadorPhone /></div>
+              <div className={sub.phoneWrap}><WalkPhoneDark /></div>
               <div>
                 <ul className={sub.bullets}>
                   {appBullets.map(([t, d]) => (
@@ -119,17 +123,17 @@ export function PasseadorContent() {
         <div className={e.container}>
           <Reveal>
             <div className={e.eyebrow}><i /> A rede Aumigão</div>
-            <h2 className={e.h2}>Uma rede, <em>vários petshops.</em> Você entra por convite e aceite.</h2>
+            <h2 className={e.h2}>Uma rede, <em>várias empresas pet.</em> Você entra por convite e aceite.</h2>
             <p className={e.lead}>
               Em vez de depender de um único cliente, você recebe demanda de várias empresas pet parceiras.
-              Cada petshop convida passeadores da rede — e você decide se topa trabalhar com aquela marca.
+              Cada empresa pet convida passeadores da rede — e você decide se topa trabalhar com aquela marca.
               Sua reputação te acompanha em toda a rede.
             </p>
           </Reveal>
           <Stagger className={e.modules}>
             {[
               ["Cadastre-se uma vez", "Um único cadastro no Walk te coloca na rede inteira."],
-              ["Receba convites", "Petshops da rede convidam passeadores por região e score."],
+              ["Receba convites", "Empresas pet da rede convidam passeadores por região e score."],
               ["Você aceita (ou não)", "O vínculo é seu: trabalha com as marcas que quiser."],
               ["Reputação que viaja", "Seu score vale em toda a rede — não recomeça do zero."],
             ].map(([t, d], i) => (
@@ -187,22 +191,59 @@ export function PasseadorContent() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={`${e.section} ${e.alt}`} id="cadastro">
+      {/* BAIXE O WALK */}
+      <section className={e.section} id="baixar">
         <div className={e.container}>
           <Reveal>
-            <div className={e.eyebrow}><i /> Comece agora</div>
-            <h2 className={e.h2}>Entre para a rede e <em>comece a receber.</em></h2>
+            <div className={e.eyebrow}><i /> Baixe o Walk</div>
+            <h2 className={e.h2}>Entre para a rede pelo app <em>Walk.</em></h2>
             <p className={e.lead}>Baixe o Walk, faça seu credenciamento e comece a receber demanda das empresas pet parceiras.</p>
           </Reveal>
-          <div style={{ marginTop: "clamp(20px,3vh,30px)", display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
-            <Link href="/contato?perfil=passeador" style={{ display: "inline-flex", alignItems: "center", height: 56, padding: "0 28px", borderRadius: 44, fontWeight: 700, textDecoration: "none", color: "#fff", background: "linear-gradient(180deg, var(--roxo2,#8f45dd), var(--roxo,#6d2bbd))", boxShadow: "0 18px 38px -14px rgba(109,43,189,.55)" }}>
-              Quero me cadastrar →
-            </Link>
-            <Link href="/contato?perfil=passeador" style={{ display: "inline-flex", alignItems: "center", fontWeight: 600, color: "var(--ink,#1c1611)", textDecoration: "none", borderBottom: "2px solid var(--accent)", paddingBottom: 2 }}>
-              Tenho dúvidas
-            </Link>
-          </div>
+          <Reveal>
+            <div
+              style={{
+                marginTop: "clamp(20px,4vh,36px)",
+                background: "linear-gradient(135deg, #1b1526, #0e0b15)",
+                borderRadius: 24,
+                padding: "clamp(24px,3vw,40px)",
+                display: "flex",
+                gap: "clamp(22px,4vw,52px)",
+                alignItems: "center",
+                flexWrap: "wrap",
+                boxShadow: "0 34px 80px -38px rgba(20,10,40,.6)",
+                border: "1px solid rgba(255,255,255,.06)",
+              }}
+            >
+              <div style={{ flex: "1 1 280px", color: "#f3eefb" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                  <img src="/walk-icon.png" alt="App Walk" style={{ width: 72, height: 72, borderRadius: 18, boxShadow: "0 12px 28px -10px rgba(0,0,0,.6)" }} />
+                  <div>
+                    <div style={{ fontFamily: "var(--font-fraunces), serif", fontWeight: 600, fontSize: 24, color: "#fff", lineHeight: 1.05 }}>Aumigão Walk</div>
+                    <div style={{ fontSize: 13, color: "#a99fc0", marginTop: 3 }}>O app do passeador</div>
+                  </div>
+                </div>
+                <p style={{ marginTop: 18, fontSize: 15.5, lineHeight: 1.55, color: "#cfc6e0", maxWidth: "46ch" }}>
+                  Ganhos, agenda, score e passeios num app só. Cadastre-se uma vez e receba demanda de várias empresas pet parceiras.
+                </p>
+                <div style={{ display: "flex", gap: 10, marginTop: 20, flexWrap: "wrap" }}>
+                  <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 20px", borderRadius: 12, background: "#fff", color: "#15111d", textDecoration: "none", fontWeight: 700, fontSize: 13.5 }}> App Store</a>
+                  <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 20px", borderRadius: 12, background: "#fff", color: "#15111d", textDecoration: "none", fontWeight: 700, fontSize: 13.5 }}>▶ Google Play</a>
+                </div>
+              </div>
+              <div style={{ flex: "none", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+                <div style={{ background: "#fff", padding: 9, borderRadius: 16 }}>
+                  <img src={qr("https://www.aumigaowalk.com.br")} alt="QR para baixar o Walk" style={{ width: 132, height: 132, display: "block" }} />
+                </div>
+                <span style={{ fontSize: 11.5, color: "#a99fc0" }}>Aponte a câmera do celular</span>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal>
+            <p className={e.lead} style={{ marginTop: "clamp(18px,3vh,26px)" }}>
+              Ainda com dúvidas?{" "}
+              <Link href="/contato?perfil=passeador" style={{ color: "var(--accent)", fontWeight: 700, borderBottom: "2px solid var(--accent)" }}>Fale com a gente →</Link>
+            </p>
+          </Reveal>
         </div>
       </section>
 
