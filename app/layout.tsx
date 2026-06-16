@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Baloo_2,
+  Fraunces,
   Hanken_Grotesk,
   JetBrains_Mono,
   Schibsted_Grotesk,
@@ -34,6 +35,13 @@ const logo = Baloo_2({
   subsets: ["latin"],
   variable: "--font-logo",
   weight: ["700", "800"],
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -85,7 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable}`}
+      className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable} ${fraunces.variable}`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />

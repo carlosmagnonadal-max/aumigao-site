@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InnerPage } from "@/components/InnerPage";
+import s from "@/components/inner.module.css";
 
 export const metadata: Metadata = {
   title: "Termos — Aumigão Walk",
@@ -36,45 +38,26 @@ const docs = [
 
 export default function TermosPage() {
   return (
-    <section className="ov-section ov-center ov-grain">
-      <span className="ov-glow" />
-      <div className="ov-wrap">
-        <div className="ov-section-head ov-section-center">
-          <p className="ov-eyebrow">
-            <span className="ov-dot ov-dot-ember" /> Termos
-          </p>
-          <h1 className="ov-ptitle">Termos de uso</h1>
-          <p className="ov-lead">
-            Os termos do Aumigão Walk são organizados por perfil de usuário.
-            Selecione o documento que se aplica à sua relação com a Plataforma.
-          </p>
-        </div>
-
-        <div className="ov-legal-cards">
-          {docs.map((d) => (
-            <Link key={d.href} href={d.href} className="ov-legal-card">
-              <span className="ov-legal-card-icon">{d.icon}</span>
-              <span className="ov-legal-card-title">{d.title}</span>
-              <span className="ov-legal-card-desc">{d.desc}</span>
-              <span className="ov-legal-card-arr">Ler documento →</span>
-            </Link>
-          ))}
-        </div>
-
-        <div style={{ marginTop: 48, textAlign: "center" }}>
-          <p style={{ fontSize: ".9rem", color: "var(--ov-text-2)" }}>
-            Dúvidas sobre os termos?{" "}
-            <Link href="/contato" style={{ color: "var(--ov-ember)", textDecoration: "underline" }}>
-              Fale com o nosso time
-            </Link>
-            . Veja também nossa{" "}
-            <Link href="/privacidade" style={{ color: "var(--ov-ember)", textDecoration: "underline" }}>
-              Política de Privacidade
-            </Link>
-            .
-          </p>
-        </div>
+    <InnerPage
+      center
+      eyebrow="Termos"
+      title="Termos de uso"
+      lead="Os termos do Aumigão Walk são organizados por perfil de usuário. Selecione o documento que se aplica à sua relação com a Plataforma."
+    >
+      <div className={s.cards}>
+        {docs.map((d) => (
+          <Link key={d.href} href={d.href} className={s.card}>
+            <span className={s.cardIcon}>{d.icon}</span>
+            <span className={s.cardTitle}>{d.title}</span>
+            <span className={s.cardDesc}>{d.desc}</span>
+            <span className={s.cardArr}>Ler documento →</span>
+          </Link>
+        ))}
       </div>
-    </section>
+      <p className={s.note}>
+        Dúvidas sobre os termos? <Link href="/contato">Fale com o nosso time</Link>. Veja também nossa{" "}
+        <Link href="/privacidade">Política de Privacidade</Link>.
+      </p>
+    </InnerPage>
   );
 }
