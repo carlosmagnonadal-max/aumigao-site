@@ -95,3 +95,54 @@
 .contactList li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--ink2); line-height: 1.55; }
 .contactIco { flex: none; width: 30px; height: 30px; border-radius: 9px; background: rgba(244, 103, 30, .12); color: var(--tang); display: grid; place-items: center; font-size: 14px; }
 .contactList b { color: var(--ink); }
+
+/* ── seções de marketing (como-funciona, seja-passeador, white-label, demo) ── */
+.block { margin-top: clamp(40px, 7vh, 80px); }
+.blockHead { max-width: 62ch; margin-bottom: clamp(22px, 3vh, 34px); }
+.blockHeadCenter { text-align: center; margin-inline: auto; }
+.blockEye { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono), monospace; font-size: 11.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #b1532b; margin: 0 0 14px; }
+.blockEye i { width: 28px; height: 1px; background: var(--tang); }
+.h2 { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -.02em; margin: 0; color: var(--ink); max-width: 24ch; }
+.h2 em { font-style: italic; color: var(--tang); }
+.blockLead { margin: 14px 0 0; max-width: 62ch; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; color: var(--ink2); }
+
+/* grid de cards */
+.tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 20px); }
+.tracks2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 820px) { .tracks, .tracks2 { grid-template-columns: 1fr; } }
+.track { background: #fffdf8; border: 1px solid var(--hair); border-radius: 22px; padding: clamp(22px, 2.4vw, 30px); transition: transform .3s, box-shadow .3s; }
+.track:hover { transform: translateY(-4px); box-shadow: 0 26px 54px -30px rgba(80, 40, 10, .4); }
+.trackIcon { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: rgba(244, 103, 30, .12); color: var(--tang); font-size: 20px; margin-bottom: 14px; }
+.trackRole { font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--tang); margin: 0 0 8px; }
+.track h3 { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: clamp(18px, 1.6vw, 22px); letter-spacing: -.01em; margin: 0 0 8px; color: var(--ink); line-height: 1.18; }
+.track p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink2); }
+
+/* lista numerada (steps) */
+.steps { list-style: none; counter-reset: st; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.steps li { counter-increment: st; position: relative; padding-left: 34px; font-size: 15px; line-height: 1.5; color: var(--ink2); }
+.steps li::before { content: counter(st); position: absolute; left: 0; top: -1px; width: 22px; height: 22px; border-radius: 7px; background: var(--roxo); color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; font-family: var(--font-mono), monospace; }
+
+/* lista com check */
+.wlist { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.wlist li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; color: var(--ink2); }
+.wlist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--tang); font-weight: 800; font-size: 13px; }
+
+/* dsteps numerados (implantação) */
+.dsteps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.8vw, 20px); }
+@media (max-width: 820px) { .dsteps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .dsteps { grid-template-columns: 1fr; } }
+.dstep { background: #fffdf8; border: 1px solid var(--hair); border-radius: 20px; padding: clamp(20px, 2.2vw, 26px); }
+.dstep span { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(180deg, var(--roxo2), var(--roxo)); color: #fff; font-family: var(--font-fraunces), serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; }
+.dstep h3 { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; color: var(--ink); }
+.dstep p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink2); }
+
+/* arquitetura (white-label) */
+.arch { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: clamp(24px, 4vh, 40px); }
+.archNode { background: linear-gradient(180deg, var(--roxo2), var(--roxo)); color: #fff; font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 16px; box-shadow: 0 16px 34px -16px rgba(109, 43, 189, .5); }
+.archConn { width: 2px; height: 26px; background: linear-gradient(var(--tang), transparent); }
+.archLayer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 760px; }
+@media (max-width: 620px) { .archLayer { grid-template-columns: repeat(2, 1fr); } }
+.archCell { background: #fffdf8; border: 1px solid var(--hair); border-radius: 14px; padding: 14px 16px; font-weight: 700; font-size: 15px; color: var(--ink); display: flex; flex-direction: column; gap: 2px; }
+.archCell span { font-family: var(--font-mono), monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.archOut { max-width: 540px; }
+.archOut .archNode { background: rgba(244, 103, 30, .13); color: var(--tang); box-shadow: none; border: 1px solid rgba(244, 103, 30, .32); text-align: center; }

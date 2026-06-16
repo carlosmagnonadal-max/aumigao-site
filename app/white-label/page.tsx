@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContactForm } from "@/components/ContactForm";
+import { InnerPage } from "@/components/InnerPage";
+import { ContactSection } from "@/components/ContactSection";
+import s from "@/components/inner.module.css";
 
 export const metadata: Metadata = {
   title: "White Label",
@@ -20,14 +22,7 @@ const revenue: [string, string][] = [
   ["Expansão regional", "A operação pode começar local e evoluir para novas unidades."],
 ];
 
-const middle = [
-  "App Tutor",
-  "App Passeador",
-  "Painel Operacional",
-  "Rede de Passeadores",
-  "Governança",
-  "Financeiro",
-];
+const middle = ["App Tutor", "App Passeador", "Painel Operacional", "Rede de Passeadores", "Governança", "Financeiro"];
 const outcomes = ["Nova Receita", "Fidelização", "Escala"];
 
 const governance: [string, string][] = [
@@ -55,198 +50,122 @@ const objections: [string, string][] = [
 
 export default function WhiteLabelPage() {
   return (
-    <>
-      <section className="ov-section ov-wl ov-grain">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-wl-top">
-            <div>
-              <p className="ov-eyebrow">
-                <span className="ov-dot ov-dot-ember" /> White Label Enterprise
-              </p>
-              <h1 className="ov-ptitle">
-                Lance passeios pet com <em>sua marca</em>, sem construir uma
-                operação do zero.
-              </h1>
-            </div>
-            <div>
-              <p className="ov-lead">
-                O Aumigão combina tecnologia, governança e implantação assistida
-                para transformar confiança local em uma nova frente recorrente de
-                receita.
-              </p>
-              <div className="ov-cta-row">
-                <Link href="/contato" className="ov-btn ov-btn-primary">
-                  Solicitar diagnóstico <span className="ov-arr">→</span>
-                </Link>
-                <Link href="/demo-white-label" className="ov-btn ov-btn-ghost">
-                  Conhecer a plataforma
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <InnerPage
+      eyebrow="White Label Enterprise"
+      title={<>Lance passeios pet com <em>sua marca</em>, sem construir uma operação do zero.</>}
+      lead="O Aumigão combina tecnologia, governança e implantação assistida para transformar confiança local em uma nova frente recorrente de receita."
+    >
+      <div className={s.btnRow}>
+        <Link href="/contato" className={`${s.btn} ${s.btnPrimary}`}>Solicitar diagnóstico →</Link>
+        <Link href="/#plataforma-por-dentro" className={`${s.btn} ${s.btnGhost}`}>Conhecer a plataforma</Link>
+      </div>
 
-      <section className="ov-section ov-grain">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Oportunidade de mercado
-            </p>
-            <h2>Quem já tem confiança pode criar uma nova rotina de consumo.</h2>
-          </div>
-          <div className="ov-tracks">
-            {opportunity.map((item, index) => (
-              <article key={item} className="ov-track">
-                <p className="ov-role">{`0${index + 1}`}</p>
-                <h3>{item}</h3>
-              </article>
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Oportunidade de mercado</p>
+          <h2 className={s.h2}>Quem já tem confiança pode criar uma nova rotina de consumo.</h2>
+        </div>
+        <div className={s.tracks}>
+          {opportunity.map((item, index) => (
+            <article key={item} className={s.track}>
+              <p className={s.trackRole}>{`0${index + 1}`}</p>
+              <h3>{item}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Nova fonte de receita</p>
+          <h2 className={s.h2}>Passeio deixa de ser serviço avulso e vira produto recorrente.</h2>
+        </div>
+        <div className={s.tracks}>
+          {revenue.map(([title, text]) => (
+            <article key={title} className={s.track}>
+              <p className={s.trackRole}>Receita</p>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Arquitetura da operação</p>
+          <h2 className={s.h2}>Uma estrutura comercial protegida, modular e pronta para escalar.</h2>
+        </div>
+        <div className={s.arch}>
+          <div className={s.archNode}>Sua marca</div>
+          <div className={s.archConn} />
+          <div className={s.archLayer}>
+            {middle.map((item) => (
+              <div className={s.archCell} key={item}><span>Camada</span>{item}</div>
             ))}
           </div>
+          <div className={s.archConn} />
+          <div className={`${s.archLayer} ${s.archOut}`}>
+            {outcomes.map((item) => <div className={s.archNode} key={item}>{item}</div>)}
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="ov-section ov-flow ov-grain">
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Nova fonte de receita
-            </p>
-            <h2>Passeio deixa de ser serviço avulso e vira produto recorrente.</h2>
-          </div>
-          <div className="ov-tracks">
-            {revenue.map(([title, text]) => (
-              <article key={title} className="ov-track">
-                <p className="ov-role">Receita</p>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Governança operacional</p>
+          <h2 className={s.h2}>A operação cresce com critérios, não só com demanda.</h2>
+          <p className={s.blockLead}>Cada módulo representa um controle necessário para entregar confiança ao tutor, profissionalização ao passeador e previsibilidade à empresa.</p>
         </div>
-      </section>
+        <div className={s.tracks}>
+          {governance.map(([title, text]) => (
+            <article key={title} className={s.track}>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
 
-      <section className="ov-section ov-wl ov-grain">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Arquitetura da operação
-            </p>
-            <h2>Uma estrutura comercial protegida, modular e pronta para escalar.</h2>
-          </div>
-          <div className="ov-arch">
-            <div className="ov-arch-node is-brand">Sua marca</div>
-            <div className="ov-connector" />
-            <div className="ov-arch-layer">
-              {middle.map((item) => (
-                <div className="ov-arch-cell" key={item}>
-                  <span>Camada</span>
-                  {item}
-                </div>
-              ))}
-            </div>
-            <div className="ov-connector" />
-            <div className="ov-arch-layer is-out">
-              {outcomes.map((item) => (
-                <div className="ov-arch-node" key={item}>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Implantação assistida</p>
+          <h2 className={s.h2}>Um caminho comercial antes de virar um projeto complexo.</h2>
         </div>
-      </section>
+        <div className={s.dsteps}>
+          {rollout.map(([title, text], index) => (
+            <article key={title} className={s.dstep}>
+              <span>{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
 
-      <section className="ov-section ov-grain">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Governança operacional
-            </p>
-            <h2>A operação cresce com critérios, não só com demanda.</h2>
-            <p className="ov-lead">
-              Cada módulo representa um controle necessário para entregar confiança
-              ao tutor, profissionalização ao passeador e previsibilidade à empresa.
-            </p>
-          </div>
-          <div className="ov-tracks">
-            {governance.map(([title, text]) => (
-              <article key={title} className="ov-track">
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
+      <div className={s.block}>
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Objeções comerciais</p>
+          <h2 className={s.h2}>As perguntas que toda empresa pet faz primeiro.</h2>
         </div>
-      </section>
+        <div className={`${s.tracks} ${s.tracks2}`}>
+          {objections.map(([question, answer]) => (
+            <article key={question} className={s.track}>
+              <h3>{question}</h3>
+              <p>{answer}</p>
+            </article>
+          ))}
+        </div>
+      </div>
 
-      <section className="ov-section ov-flow ov-grain">
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Implantação assistida
-            </p>
-            <h2>Um caminho comercial antes de virar um projeto complexo.</h2>
-          </div>
-          <div className="ov-dsteps">
-            {rollout.map(([title, text], index) => (
-              <article key={title} className="ov-dstep">
-                <span>{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
+      <div className={s.block} id="cta">
+        <div className={s.blockHead}>
+          <p className={s.blockEye}><i /> Vamos começar</p>
+          <h2 className={s.h2}>Vamos mapear o potencial <em>White Label</em> da sua empresa.</h2>
+          <p className={s.blockLead}>O diagnóstico analisa público, região, unidades, marca, operação e plano de lançamento.</p>
         </div>
-      </section>
-
-      <section className="ov-section ov-grain">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-section-head">
-            <p className="ov-eyebrow">
-              <span className="ov-dot ov-dot-ember" /> Objeções comerciais
-            </p>
-            <h2>As perguntas que toda empresa pet faz primeiro.</h2>
-          </div>
-          <div className="ov-tracks ov-tracks-2">
-            {objections.map(([question, answer]) => (
-              <article key={question} className="ov-track">
-                <h3>{question}</h3>
-                <p>{answer}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ov-section ov-wl ov-grain" id="cta">
-        <span className="ov-glow" />
-        <div className="ov-wrap">
-          <div className="ov-contact-grid">
-            <div>
-              <p className="ov-eyebrow">
-                <span className="ov-dot ov-dot-ember" /> CTA consultivo
-              </p>
-              <h2 className="ov-ptitle">
-                Vamos mapear o potencial <em>White Label</em> da sua empresa.
-              </h2>
-              <p className="ov-lead">
-                O diagnóstico analisa público, região, unidades, marca, operação e
-                plano de lançamento.
-              </p>
-              <a className="ov-contact-channel" href="mailto:contato@aumigaowalk.com.br">
-                ✉ <b>contato@aumigaowalk.com.br</b>
-              </a>
-            </div>
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-    </>
+        <ContactSection />
+      </div>
+    </InnerPage>
   );
 }

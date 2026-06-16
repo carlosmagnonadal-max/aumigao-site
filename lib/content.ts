@@ -1,5 +1,4 @@
 export const appDownloadHref = "/contato";
-export const demoHref = "/demo-white-label";
 
 export const benefits = [
   {
