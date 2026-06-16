@@ -117,8 +117,7 @@ html {
 
 /* preview limpo do proto: esconde header/footer escuros globais */
 html.proto-clean .ov-header,
-html.proto-clean .ov-footer,
-html.proto-clean footer {
+html.proto-clean .ov-footer {
   display: none !important;
 }
 

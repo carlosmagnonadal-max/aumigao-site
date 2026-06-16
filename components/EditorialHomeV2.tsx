@@ -149,15 +149,37 @@ export function EditorialHomeV2() {
 
       <footer className={s.footer}>
         <div className={s.container}>
-          <div className={s.footerRow}>
-            <span className={s.footerBrand}>Aumigão Walk</span>
-            <nav className={s.footerLinks}>
-              <a href="#para-quem">Para quem</a>
-              <a href="#plataforma-por-dentro">A plataforma</a>
+          <div className={s.footerTop}>
+            <div>
+              <div className={s.footerLogo}><img src="/icon-rounded-512.png" alt="" /><span>Aumigão Walk</span></div>
+              <p className={s.footerTagline}>Infraestrutura de passeios pet: operação auditável, rede credenciada e White Label — com a sua marca.</p>
+            </div>
+            <div className={s.footerCol}>
+              <h4>Plataforma</h4>
+              <a href="#plataforma-por-dentro">Como funciona</a>
+              <a href="#plataforma">Módulos</a>
               <a href="#white-label">White Label</a>
               <a href="#planos">Planos</a>
-              <a href="#baixar">Apps</a>
-              <a href="#contato">Contato</a>
+            </div>
+            <div className={s.footerCol}>
+              <h4>Participantes</h4>
+              <a href="#plataforma-por-dentro">Para tutores</a>
+              <a href="#baixar">Seja passeador (Walk)</a>
+              <a href="#white-label">Para petshops</a>
+            </div>
+            <div className={s.footerCol}>
+              <h4>Empresa</h4>
+              <a href="/contato">Contato</a>
+              <a href="/termos">Termos</a>
+              <a href="/privacidade">Privacidade · LGPD</a>
+            </div>
+          </div>
+          <div className={s.footerBottom}>
+            <span>© 2026 Aumigão Walk · CNPJ 49.617.734/0001-03</span>
+            <nav className={s.footerLegal}>
+              <a href="/termos">Termos</a>
+              <a href="/privacidade">Privacidade · LGPD</a>
+              <a href="/contato">Contato</a>
             </nav>
           </div>
         </div>

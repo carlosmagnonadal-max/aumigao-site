@@ -30,7 +30,8 @@ export function HeroMerged() {
           <span className={s.navLinks}>
             <a href="#plataforma-por-dentro">Como funciona</a> <a href="#planos">Planos</a> <a href="#white-label">White Label</a>
           </span>
-          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navCta}>Portal do parceiro</a>
+          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost}>Portal do parceiro</a>
+          <a href="#contato" className={s.navCta}>Solicitar diagnóstico</a>
         </nav>
       </header>
 
