@@ -25,7 +25,7 @@ export function HeroMerged() {
       <div className={s.grain} />
 
       <header className={s.topbar}>
-        <a href="#" className={s.brand}><span className={s.brandMark}>AU</span> Aumigão Walk</a>
+        <a href="#" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
         <nav className={s.nav}>
           <span className={s.navLinks}>
             <a href="#plataforma-por-dentro">Como funciona</a> <a href="#planos">Planos</a> <a href="#white-label">White Label</a>
