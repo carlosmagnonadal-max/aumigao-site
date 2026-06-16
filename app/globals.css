@@ -29,6 +29,24 @@
   --ov-body: var(--font-body), sans-serif;
   --ov-mono: var(--font-mono), monospace;
   --ov-logo-font: var(--font-logo), sans-serif;
+  --accent: #f4671e;
+  --accent-2: #ffb24d;
+  --action: #6d2bbd;
+}
+
+[data-aud="tutor"] {
+  --accent: #f4671e;
+  --accent-2: #ffb24d;
+}
+
+[data-aud="passeador"] {
+  --accent: #6d2bbd;
+  --accent-2: #8f45dd;
+}
+
+[data-aud="empresa"] {
+  --accent: #6d2bbd;
+  --accent-2: #f4671e; /* TEMP roxo — vira verde #1f7a5a após validação em preview (gate Carlos) */
 }
 
 * { box-sizing: border-box; }
