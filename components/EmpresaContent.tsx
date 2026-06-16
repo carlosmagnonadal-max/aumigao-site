@@ -27,7 +27,7 @@ const modules = [
 
 const plans = [
   { name: "Starter", price: "R$197", per: "/mês", desc: "Pra começar a operar com marca própria.", feats: ["1 unidade", "Módulos essenciais", "Setup grátis", "Comissão 12% por passeio"], cta: "Solicitar diagnóstico", feat: false },
-  { name: "Business", price: "R$597", per: "/mês", desc: "Pra escalar a operação e fidelizar.", feats: ["2 unidades (+ extra)", "Rede de passeadores credenciada", "Recorrência + Pet Tour", "Comissão 8% por passeio"], cta: "Falar com a gente", feat: true },
+  { name: "Business", price: "R$597", per: "/mês", desc: "Pra escalar a operação e fidelizar.", feats: ["2 unidades (+ extra)", "Habilitado a usar a rede de passeadores", "Recorrência + Pet Tour", "Comissão 8% por passeio"], cta: "Falar com a gente", feat: true },
   { name: "Enterprise", price: "Sob consulta", per: "", desc: "Pra redes e multiunidades.", feats: ["Unidades sob medida", "Todos os módulos", "Comissão 5% por passeio", "Governança dedicada"], cta: "Solicitar proposta", feat: false },
 ];
 
@@ -41,7 +41,7 @@ const rollout = [
 const faq = [
   { q: "Quanto custa e quando começo a ganhar?", a: "Os planos vão de R$197 a R$597/mês (Enterprise sob consulta), com comissão por passeio conforme o plano (12% / 8% / 5%). Você lança com a sua marca e o passeio vira receita recorrente — o plano ideal sai do diagnóstico gratuito." },
   { q: "Preciso de equipe técnica?", a: "Não. Você não monta tecnologia do zero nem contrata time de TI. A plataforma já existe: você escolhe o plano, personaliza com a sua marca e a operação roda com a nossa governança." },
-  { q: "Eu uso a rede pronta de passeadores?", a: "Sim — a partir do plano Business. Você convida passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Cada passeador decide se topa trabalhar com a sua marca." },
+  { q: "Eu uso a rede pronta de passeadores?", a: "A partir do plano Business você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
   { q: "A base de tutores é minha?", a: "Sim. Os tutores são da sua empresa, com a sua marca e a sua carteira. Você opera; a Aumigão sustenta a tecnologia, a rede e os pagamentos por trás." },
 ];
 
@@ -154,7 +154,7 @@ export function EmpresaContent() {
           <Stagger className={e.plans}>
             {plans.map((p) => (
               <RevealItem key={p.name} className={`${e.plan} ${p.feat ? e.planFeat : ""}`}>
-                {p.feat && <span className={e.planBadge}>Mais escolhido</span>}
+                {p.feat && <span className={e.planBadge}>Mais indicado</span>}
                 <div className={e.planName}>{p.name}</div>
                 <div className={e.planPrice}>{p.price}<small>{p.per}</small></div>
                 <p className={e.planDesc}>{p.desc}</p>
