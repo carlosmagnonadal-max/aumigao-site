@@ -253,12 +253,16 @@ export function AuWidget() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "18px",
               flexShrink: 0,
               border: "1.5px solid rgba(255,255,255,0.25)",
+              overflow: "hidden",
             }}
           >
-            🐾
+            <img
+              src="/au-mark.png"
+              alt="Au"
+              style={{ width: "24px", height: "auto", display: "block", pointerEvents: "none" }}
+            />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
