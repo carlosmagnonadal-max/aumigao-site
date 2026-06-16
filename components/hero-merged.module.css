@@ -34,6 +34,7 @@
 .nav { display: flex; align-items: center; gap: clamp(16px,2.2vw,30px); }
 .nav a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; }
 .nav a:hover { color: var(--ink); }
+.navLinks { display: inline-flex; align-items: center; gap: clamp(16px, 2.2vw, 28px); }
 .navGhost { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 11px 4px; }
 .navGhost:hover { color: var(--roxo); }
 .navCta { padding: 11px 20px; border-radius: 40px; background: linear-gradient(180deg, var(--roxo2), var(--roxo)); color: #fff !important; font-weight: 600; }
