@@ -49,30 +49,64 @@
 .anavD { width: 17px; height: 17px; border-radius: 6px; background: #d8d4e4; }
 .anavOn { background: #ff6a2b; }
 
-/* ── browser (admin) ── */
-.browser { position: relative; z-index: 1; width: 100%; max-width: 540px; background: #14111a; border-radius: 16px; padding: 8px; box-shadow: 0 54px 100px -40px rgba(40,20,10,.5); }
+/* ── browser (admin) — fiel ao admin real: tema escuro + sidebar + KPIs por tom ── */
+.browser { position: relative; z-index: 1; width: 100%; max-width: 560px; background: #0d0a13; border-radius: 16px; padding: 8px; box-shadow: 0 54px 100px -40px rgba(40,20,10,.5); }
 .bbar { display: flex; align-items: center; gap: 8px; padding: 6px 8px 10px; }
 .bdot { width: 10px; height: 10px; border-radius: 50%; }
 .burl { margin-left: 10px; flex: 1; background: rgba(255,255,255,.08); border-radius: 8px; height: 22px; display: flex; align-items: center; padding: 0 12px; font-family: var(--font-mono), monospace; font-size: 10.5px; color: rgba(255,255,255,.55); }
-.bscreen { background: #f7f5fb; border-radius: 10px; overflow: hidden; padding: 16px; }
-.bhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.bbrand { font-weight: 800; font-size: 14px; color: #14111a; display: flex; align-items: center; gap: 8px; }
-.bbrandM { width: 24px; height: 24px; border-radius: 7px; background: #ff6a2b; color: #fff; display: grid; place-items: center; font-size: 10px; font-weight: 800; }
-.blive { font-family: var(--font-mono), monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #16a34a; display: flex; align-items: center; gap: 6px; }
-.bliveDot { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; }
-.bkpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 12px; }
-.bkpi { background: #fff; border-radius: 10px; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-.bkpiV { font-size: 17px; font-weight: 800; color: #14111a; }
-.bkpiL { font-size: 9px; color: #8a8596; margin-top: 2px; }
-.bgrid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 10px; }
-.bmap { background: linear-gradient(160deg,#1c1626,#150f1d); border-radius: 10px; aspect-ratio: 1/1; position: relative; overflow: hidden; }
-.btable { background: #fff; border-radius: 10px; padding: 10px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-.btrow { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-top: 1px solid rgba(40,25,10,.07); font-size: 11px; }
-.btrow:first-child { border-top: none; }
-.btName { font-weight: 700; color: #14111a; }
-.btTag { font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
-.btOk { background: rgba(22,163,74,.14); color: #16a34a; }
-.btEmber { background: rgba(255,106,43,.14); color: #ff6a2b; }
-.bnote { margin-top: 10px; font-size: 9px; color: #9a9088; }
 
+.bscreen { background: #140f1b; border-radius: 10px; overflow: hidden; display: flex; }
+
+/* sidebar */
+.bside { width: 124px; flex: none; background: #1a1422; border-right: 1px solid rgba(255,255,255,.07); padding: 12px 9px; }
+.bsideBrand { display: flex; align-items: center; gap: 7px; margin-bottom: 12px; }
+.bsideLogo { width: 25px; height: 25px; border-radius: 7px; background: linear-gradient(150deg,#9d6dff,#6a3de0); color: #fff; display: grid; place-items: center; font-size: 10px; font-weight: 800; flex: none; }
+.bsideName { font-size: 11px; font-weight: 800; color: #f6f1f8; line-height: 1.15; display: flex; flex-direction: column; }
+.bsideName small { font-size: 7.5px; font-weight: 600; color: rgba(246,241,248,.45); letter-spacing: .04em; }
+.bsideGroup { font-size: 7.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(246,241,248,.36); margin: 11px 4px 5px; }
+.bnav { display: flex; align-items: center; gap: 7px; padding: 5px 6px; border-radius: 7px; font-size: 10px; font-weight: 600; color: rgba(246,241,248,.64); margin-bottom: 1px; }
+.bnavMk { width: 17px; height: 15px; border-radius: 4px; background: rgba(255,255,255,.06); display: grid; place-items: center; font-size: 7.5px; font-weight: 800; font-family: var(--font-mono), monospace; color: rgba(246,241,248,.6); flex: none; }
+.bnavOn { background: rgba(255,106,43,.13); color: #ff6a2b; box-shadow: inset 0 0 0 1px rgba(255,106,43,.2); }
+.bnavOn .bnavMk { background: rgba(255,106,43,.2); color: #ff6a2b; }
+
+/* main */
+.bmain { flex: 1; min-width: 0; padding: 13px 14px; }
+.bhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.bbrand { font-family: var(--font-fraunces), serif; font-weight: 600; font-size: 15px; color: #f6f1f8; }
+.bheadSub { font-family: var(--font-mono), monospace; font-size: 10px; font-weight: 600; color: rgba(246,241,248,.45); }
+.blive { font-family: var(--font-mono), monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: #ff6a2b; display: flex; align-items: center; gap: 6px; }
+.bliveDot { width: 7px; height: 7px; border-radius: 50%; background: #ff6a2b; position: relative; }
+.bliveDot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #ff6a2b; animation: bpulse 1.8s infinite; }
+@keyframes bpulse { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
+
+.bkpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; margin-bottom: 11px; }
+.bkpi { background: #221a2d; border: 1px solid rgba(255,255,255,.08); border-radius: 9px; padding: 8px 9px; }
+.bkpiV { font-size: 16px; font-weight: 800; color: #f6f1f8; }
+.bkpiL { font-size: 8px; color: rgba(246,241,248,.5); margin-top: 2px; line-height: 1.2; }
+.kEmber { border-color: rgba(255,106,43,.3); } .kEmber .bkpiV { color: #ff6a2b; }
+.kGreen { border-color: rgba(79,214,156,.28); } .kGreen .bkpiV { color: #4fd69c; }
+.kSky { border-color: rgba(99,179,237,.28); } .kSky .bkpiV { color: #63b3ed; }
+.kAmber { border-color: rgba(245,166,35,.3); } .kAmber .bkpiV { color: #f5a623; }
+
+.bgrid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 9px; }
+
+/* mini-mapa claro (igual ao LiveMap do hero) */
+.bmap { background: #e8e4da; border: 1px solid rgba(0,0,0,.12); border-radius: 9px; aspect-ratio: 4/3; position: relative; overflow: hidden; }
+.bmap svg { display: block; width: 100%; height: 100%; }
+.bpaw { position: absolute; width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid #fff; background: linear-gradient(135deg,#6d2bbd,#4d20de); display: grid; place-items: center; font-size: 10px; box-shadow: 0 3px 8px rgba(40,20,80,.4); transform: translate(-50%,-50%); }
+.bpawRing { position: absolute; width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(109,43,189,.5); transform: translate(-50%,-50%); animation: bpaw 1.8s infinite; }
+@keyframes bpaw { 0% { transform: translate(-50%,-50%) scale(1); opacity: .7; } 100% { transform: translate(-50%,-50%) scale(2.3); opacity: 0; } }
+
+/* tabela escura */
+.btable { background: #221a2d; border: 1px solid rgba(255,255,255,.08); border-radius: 9px; padding: 9px 11px; }
+.btHd { font-size: 8px; text-transform: uppercase; letter-spacing: .1em; color: rgba(246,241,248,.42); font-weight: 700; margin-bottom: 5px; }
+.btrow { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-top: 1px solid rgba(255,255,255,.07); font-size: 10.5px; }
+.btName { font-weight: 700; color: #f6f1f8; }
+.btTag { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+.btOk { background: rgba(79,214,156,.14); color: #4fd69c; }
+.btAmber { background: rgba(245,166,35,.14); color: #f5a623; }
+.btMuted { background: rgba(255,255,255,.06); color: rgba(246,241,248,.55); }
+.bnote { margin-top: 9px; font-size: 9px; color: rgba(246,241,248,.34); }
+
+@media (max-width: 560px) { .bkpis { grid-template-columns: repeat(2,1fr); } .bside { width: 104px; } }
 @media (max-width: 480px) { .phone { width: 248px; } }

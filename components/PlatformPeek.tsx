@@ -53,6 +53,37 @@ function PasseadorPhone() {
   );
 }
 
+// Mini-mapa idêntico ao LiveMap do hero: ruas claras + rota roxa (cor do app) + marcador da patinha.
+const ROUTE = "M 60 205 L 60 170 L 150 170 L 150 74 L 330 74 L 400 45";
+function MiniMap() {
+  return (
+    <div className={s.bmap}>
+      <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" fill="none">
+        <rect x="18" y="138" width="116" height="84" rx="10" fill="#cfe3c4" />
+        <g fill="rgba(40,25,10,.04)">
+          <rect x="170" y="90" width="140" height="60" rx="4" />
+          <rect x="350" y="90" width="110" height="60" rx="4" />
+          <rect x="170" y="190" width="140" height="44" rx="4" />
+        </g>
+        <g stroke="#ffffff" strokeWidth="13" strokeLinecap="round">
+          <line x1="-10" y1="74" x2="490" y2="74" /><line x1="-10" y1="170" x2="490" y2="170" />
+          <line x1="150" y1="-10" x2="150" y2="250" /><line x1="330" y1="-10" x2="330" y2="250" />
+        </g>
+        <g stroke="#efe9dd" strokeWidth="5" strokeLinecap="round">
+          <line x1="-10" y1="120" x2="490" y2="120" /><line x1="240" y1="-10" x2="240" y2="250" /><line x1="410" y1="-10" x2="410" y2="250" />
+        </g>
+        <path d={ROUTE} stroke="#6d2bbd" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" opacity=".25" />
+        <path d={ROUTE} stroke="#6d2bbd" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="500" strokeDashoffset="500">
+          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4s" repeatCount="indefinite" />
+        </path>
+        <circle cx="60" cy="205" r="5" fill="#fff" stroke="#6d2bbd" strokeWidth="2.5" />
+      </svg>
+      <span className={s.bpawRing} style={{ left: "83.3%", top: "18.8%" }} />
+      <span className={s.bpaw} style={{ left: "83.3%", top: "18.8%" }}>🐾</span>
+    </div>
+  );
+}
+
 function AdminBrowser() {
   return (
     <div className={s.browser}>
@@ -61,34 +92,42 @@ function AdminBrowser() {
         <span className={s.burl}>painel.suamarca.com.br/operacao</span>
       </div>
       <div className={s.bscreen}>
-        <div className={s.bhead}>
-          <div className={s.bbrand}><span className={s.bbrandM}>SM</span> Sua Marca · Operação</div>
-          <div className={s.blive}><span className={s.bliveDot} /> Ao vivo</div>
-        </div>
-        <div className={s.bkpis}>
-          <div className={s.bkpi}><div className={s.bkpiV}>128</div><div className={s.bkpiL}>passeios ativos</div></div>
-          <div className={s.bkpi}><div className={s.bkpiV}>342</div><div className={s.bkpiL}>passeadores</div></div>
-          <div className={s.bkpi}><div className={s.bkpiV}>98%</div><div className={s.bkpiL}>matching</div></div>
-          <div className={s.bkpi}><div className={s.bkpiV}>R$ 42k</div><div className={s.bkpiL}>no mês</div></div>
-        </div>
-        <div className={s.bgrid}>
-          <div className={s.bmap}>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none">
-              <g stroke="rgba(255,255,255,.05)"><line x1="0" y1="66" x2="200" y2="66" /><line x1="0" y1="133" x2="200" y2="133" /><line x1="66" y1="0" x2="66" y2="200" /><line x1="133" y1="0" x2="133" y2="200" /></g>
-              <path d="M26 168 C 90 168 80 90 160 40" stroke="#ff6a2b" strokeOpacity=".25" strokeWidth="6" strokeLinecap="round" />
-              <path d="M26 168 C 90 168 80 90 160 40" stroke="#ffa24d" strokeWidth="2.5" strokeDasharray="6 7"><animate attributeName="stroke-dashoffset" from="120" to="0" dur="4s" repeatCount="indefinite" /></path>
-              <circle cx="26" cy="168" r="5" fill="#fff" /><circle cx="160" cy="40" r="5" fill="#ff6a2b" />
-              <g><circle r="4" fill="#fff" /><circle r="8" fill="none" stroke="#ff6a2b" strokeWidth="1.5" /><animateMotion dur="4s" repeatCount="indefinite" path="M26 168 C 90 168 80 90 160 40" /></g>
-            </svg>
+        <aside className={s.bside}>
+          <div className={s.bsideBrand}><span className={s.bsideLogo}>SM</span><span className={s.bsideName}>Sua Marca<small>Ops Center</small></span></div>
+          <div className={s.bsideGroup}>Operação</div>
+          <div className={`${s.bnav} ${s.bnavOn}`}><span className={s.bnavMk}>D</span> Dashboard</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Op</span> Operação</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Mx</span> Matching</div>
+          <div className={s.bsideGroup}>Rede</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Pa</span> Passeadores</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Ql</span> Qualidade</div>
+          <div className={s.bsideGroup}>Financeiro</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Fi</span> Financeiro</div>
+          <div className={s.bnav}><span className={s.bnavMk}>Wl</span> White-label</div>
+        </aside>
+        <div className={s.bmain}>
+          <div className={s.bhead}>
+            <div className={s.bbrand}>Operação<span className={s.bheadSub}> · tempo real</span></div>
+            <div className={s.blive}><span className={s.bliveDot} /> Ao vivo</div>
           </div>
-          <div className={s.btable}>
-            <div className={s.btrow}><span className={s.btName}>Marina S.</span><span className={`${s.btTag} ${s.btOk}`}>Em rota</span></div>
-            <div className={s.btrow}><span className={s.btName}>Diego R.</span><span className={`${s.btTag} ${s.btOk}`}>Em rota</span></div>
-            <div className={s.btrow}><span className={s.btName}>Paula M.</span><span className={`${s.btTag} ${s.btEmber}`}>Recovery</span></div>
-            <div className={s.btrow}><span className={s.btName}>João T.</span><span className={`${s.btTag} ${s.btOk}`}>Concluído</span></div>
+          <div className={s.bkpis}>
+            <div className={`${s.bkpi} ${s.kEmber}`}><div className={s.bkpiV}>128</div><div className={s.bkpiL}>passeios ativos</div></div>
+            <div className={`${s.bkpi} ${s.kGreen}`}><div className={s.bkpiV}>342</div><div className={s.bkpiL}>passeadores</div></div>
+            <div className={`${s.bkpi} ${s.kSky}`}><div className={s.bkpiV}>98%</div><div className={s.bkpiL}>matching</div></div>
+            <div className={`${s.bkpi} ${s.kAmber}`}><div className={s.bkpiV}>R$42k</div><div className={s.bkpiL}>no mês</div></div>
           </div>
+          <div className={s.bgrid}>
+            <MiniMap />
+            <div className={s.btable}>
+              <div className={s.btHd}>Passeadores em campo</div>
+              <div className={s.btrow}><span className={s.btName}>Marina S.</span><span className={`${s.btTag} ${s.btOk}`}>Em rota</span></div>
+              <div className={s.btrow}><span className={s.btName}>Diego R.</span><span className={`${s.btTag} ${s.btOk}`}>Em rota</span></div>
+              <div className={s.btrow}><span className={s.btName}>Paula M.</span><span className={`${s.btTag} ${s.btAmber}`}>Recovery</span></div>
+              <div className={s.btrow}><span className={s.btName}>João T.</span><span className={`${s.btTag} ${s.btMuted}`}>Concluído</span></div>
+            </div>
+          </div>
+          <p className={s.bnote}>Representação ilustrativa do painel. Dados conceituais.</p>
         </div>
-        <p className={s.bnote}>Representação ilustrativa do painel. Dados conceituais.</p>
       </div>
     </div>
   );
