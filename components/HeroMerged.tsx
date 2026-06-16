@@ -38,7 +38,7 @@ export function HeroMerged() {
       <motion.div
         className={s.stage}
         variants={reduce ? undefined : container}
-        initial={reduce ? undefined : "hidden"}
+        initial={false}
         animate={reduce ? undefined : "show"}
       >
         <div>
@@ -61,8 +61,8 @@ export function HeroMerged() {
 
         <motion.div
           className={s.media}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94, rotate: 4 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0, transition: { duration: 1, ease, delay: 0.2 } }}
+          initial={false}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
         >
           <div className={s.mediaBack} />
           <div className={s.mediaFrame}>

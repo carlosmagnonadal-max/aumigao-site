@@ -12,6 +12,7 @@
   --roxo: #6d2bbd;   /* pincelada de roxo da marca */
   --roxo2: #8f45dd;
   position: relative;
+  min-height: 100vh;
   min-height: 100svh;
   background: var(--cream);
   color: var(--ink);
