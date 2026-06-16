@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { LiveMap } from "./LiveMap";
@@ -42,7 +43,15 @@ export function HeroMerged() {
         animate={reduce ? undefined : "show"}
       >
         <div>
-          <motion.div variants={item} className={s.eyebrow}><i /> Tutor · Passeador · White-Label — uma só plataforma</motion.div>
+          <motion.div variants={item} className={s.eyebrow}>
+            <i />{" "}
+            <Link href="/tutor" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>Tutor</Link>
+            {" · "}
+            <Link href="/passeador" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>Passeador</Link>
+            {" · "}
+            <Link href="/para-empresas" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>White-Label</Link>
+            {" — uma só plataforma"}
+          </motion.div>
           <motion.h1 variants={item} className={s.title}>Cuidar virou <em>operação.</em></motion.h1>
           <motion.p variants={item} className={s.sub}>
             A plataforma que conecta tutores, passeadores e empresas pet numa operação
