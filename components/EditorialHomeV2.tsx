@@ -79,6 +79,11 @@ export function EditorialHomeV2() {
               <li className={s.li}><span className={s.liDot}>2</span><span><b style={{ color: "var(--ink)" }}>Os passeadores são da rede Aumigão.</b> Credenciados, avaliados e mantidos pela plataforma: você pluga numa rede pronta em vez de recrutar e gerir passeadores do zero.</span></li>
               <li className={s.li}><span className={s.liDot}>3</span><span><b style={{ color: "var(--ink)" }}>Você opera; a Aumigão sustenta.</b> Rede de passeadores, matching, reputação e pagamentos por nossa conta — a operação e a marca, por sua.</span></li>
             </ul>
+            <div className={s.netCallout}>
+              <span className={s.netCalloutLabel}>◆ O pulo do gato · efeito de rede</span>
+              <h3 className={s.netCalloutTitle}>A rede é compartilhada — e isso joga a <em>seu favor.</em></h3>
+              <p className={s.netCalloutText}>A mesma rede credenciada atende a Aumigão e as outras empresas da plataforma — então a cada empresa e a cada passeador que entram, <b style={{ color: "var(--ink)" }}>maior a capacidade disponível pra você</b>: novos bairros, picos de demanda e novas frentes de receita, sem recrutar ninguém do zero. Você pluga num ativo que só cresce — e quem entra cedo cresce junto.</p>
+            </div>
             <p className={s.plansNote} style={{ marginTop: 14 }}>Acesso à Rede de passeadores disponível a partir do plano Business.</p>
           </Reveal>
           <div style={{ marginTop: "clamp(36px,6vh,64px)" }}>
