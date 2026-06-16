@@ -96,7 +96,7 @@ function AdminBrowser() {
 
 const content = {
   tutor: { cap: <>O app do <em>tutor</em>.</>, lead: "Agendar, acompanhar ao vivo no mapa e avaliar — simples e seguro, com a sua marca.", bullets: ["Agendamento em segundos", "Acompanhamento ao vivo", "Passeador verificado", "Avaliação e histórico"], link: "#baixar", linkLabel: "Baixar o app" },
-  passeador: { cap: <>O app do <em>passeador</em>: o Walk.</>, lead: "A rede de passeadores é nossa, dentro do app Walk: demanda qualificada, ganhos claros e reputação que valoriza quem cuida. Quer ser passeador? É só baixar o Walk e se cadastrar.", bullets: ["Ganhos transparentes e saque fácil", "Agenda própria", "Matching por região e score", "Kit, credenciamento e suporte"], link: "#baixar", linkLabel: "Baixar o Walk e ser passeador" },
+  passeador: { cap: <>O app do <em>passeador</em>: o Walk.</>, lead: "A rede de passeadores é da Aumigão, dentro do app Walk. Você entra uma vez (com o seu aceite) e, credenciado, atende vários petshops parceiros — um único cadastro, mais demanda e mais oportunidade. Ganhos claros e reputação que valoriza quem cuida.", bullets: ["Atende vários petshops com um só cadastro", "Ganhos transparentes e saque fácil", "Agenda própria e matching por região", "Kit, credenciamento e suporte"], link: "#baixar", linkLabel: "Baixar o Walk e ser passeador" },
   admin: { cap: <>O painel <em>white-label</em>.</>, lead: "Você opera com a sua marca: matching, operação ao vivo, passeadores e financeiro num só painel.", bullets: ["Operação ao vivo no mapa", "Gestão da rede de passeadores", "Financeiro e repasses rastreáveis", "Tudo com a sua marca"], link: "#contato", linkLabel: "Conheça o White Label" },
 } as const;
 

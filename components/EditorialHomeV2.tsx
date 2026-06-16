@@ -25,7 +25,7 @@ const modules = [
 
 const plans = [
   { name: "Starter", price: "R$197", per: "/mês", desc: "Pra começar a operar com marca própria.", feats: ["1 unidade", "Módulos essenciais", "Setup grátis", "Comissão 12% por passeio"], cta: "Solicitar diagnóstico", fill: false, feat: false },
-  { name: "Business", price: "R$597", per: "/mês", desc: "Pra escalar a operação e fidelizar.", feats: ["2 unidades (+ extra)", "Recorrência + Pet Tour", "Comissão 8% por passeio", "Setup isentável no anual"], cta: "Falar com a gente", fill: true, feat: true },
+  { name: "Business", price: "R$597", per: "/mês", desc: "Pra escalar a operação e fidelizar.", feats: ["2 unidades (+ extra)", "Rede de passeadores credenciada", "Recorrência + Pet Tour", "Comissão 8% por passeio"], cta: "Falar com a gente", fill: true, feat: true },
   { name: "Enterprise", price: "Sob consulta", per: "", desc: "Pra redes e multiunidades.", feats: ["Unidades sob medida", "Todos os módulos", "Comissão 5% por passeio", "Governança dedicada"], cta: "Solicitar proposta", fill: false, feat: false },
 ];
 
@@ -74,6 +74,12 @@ export function EditorialHomeV2() {
             <div className={s.eyebrow}><i /> Para o petshop · White Label</div>
             <h2 className={s.h2}>Lance sua própria operação de passeios — com a sua <em>marca.</em></h2>
             <p className={s.lead}>Sua marca no app do tutor, no app do passeador e no painel operacional. Você opera; o Aumigão sustenta a tecnologia, a rede e a governança. Passeio deixa de ser serviço avulso e vira produto recorrente.</p>
+            <ul className={s.ul} style={{ maxWidth: "72ch" }}>
+              <li className={s.li}><span className={s.liDot}>1</span><span><b style={{ color: "var(--ink)" }}>Os tutores são seus.</b> A base de clientes é do seu petshop — com a sua marca e a sua carteira.</span></li>
+              <li className={s.li}><span className={s.liDot}>2</span><span><b style={{ color: "var(--ink)" }}>Os passeadores são da rede Aumigão.</b> Credenciados, avaliados e mantidos pela plataforma: você pluga numa rede pronta em vez de recrutar e gerir passeadores do zero.</span></li>
+              <li className={s.li}><span className={s.liDot}>3</span><span><b style={{ color: "var(--ink)" }}>Você opera; a Aumigão sustenta.</b> Rede de passeadores, matching, reputação e pagamentos por nossa conta — a operação e a marca, por sua.</span></li>
+            </ul>
+            <p className={s.plansNote} style={{ marginTop: 14 }}>Acesso à Rede de passeadores disponível a partir do plano Business.</p>
           </Reveal>
           <div style={{ marginTop: "clamp(36px,6vh,64px)" }}>
             <Reveal><BrandSwapper /></Reveal>
