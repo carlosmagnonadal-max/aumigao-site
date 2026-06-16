@@ -11,7 +11,7 @@ import s from "./editorial-home.module.css";
 const trilhas = [
   { tag: "Para o tutor", title: "Segurança e rotina", promise: "Tranquilidade e cuidado consistente para o pet, sem fricção.", bullets: ["Agendamento simples e previsível", "Acompanhamento do passeio ao vivo", "Avaliação que melhora o serviço"] },
   { tag: "Para o passeador", title: "Oportunidade e reputação", promise: "Demanda qualificada, agenda própria e profissionalização.", bullets: ["Renda recorrente, não bico", "Agenda própria", "Score que valoriza quem cuida"] },
-  { tag: "Para o petshop", title: "Marca, receita e escala", promise: "Lance a própria operação de passeios com governança assistida.", bullets: ["Plataforma white-label própria", "Nova receita recorrente", "Multiunidades e expansão"] },
+  { tag: "Para a empresa pet", title: "Marca, receita e escala", promise: "Lance a própria operação de passeios com governança assistida.", bullets: ["Plataforma white-label própria", "Nova receita recorrente", "Multiunidades e expansão"] },
 ];
 
 const modules = [
@@ -20,7 +20,7 @@ const modules = [
   ["Credenciamento", "Documentos, validação e trilha de auditoria de cada passeador."],
   ["Recovery", "Exceções com tratamento dedicado, monitoradas 24/7."],
   ["Financeiro", "Repasses, comissões e relatórios — com a sua marca, rastreáveis."],
-  ["White Label", "App, painel e financeiro com a identidade do seu petshop."],
+  ["White Label", "App, painel e financeiro com a identidade da sua empresa."],
 ];
 
 const plans = [
@@ -71,11 +71,11 @@ export function EditorialHomeV2() {
       <section className={`${s.section} ${s.alt}`} id="white-label">
         <div className={s.container}>
           <Reveal>
-            <div className={s.eyebrow}><i /> Para o petshop · White Label</div>
+            <div className={s.eyebrow}><i /> Para a empresa pet · White Label</div>
             <h2 className={s.h2}>Lance sua própria operação de passeios — com a sua <em>marca.</em></h2>
             <p className={s.lead}>Sua marca no app do tutor, no app do passeador e no painel operacional. Você opera; o Aumigão sustenta a tecnologia, a rede e a governança. Passeio deixa de ser serviço avulso e vira produto recorrente.</p>
             <ul className={s.ul} style={{ maxWidth: "72ch" }}>
-              <li className={s.li}><span className={s.liDot}>1</span><span><b style={{ color: "var(--ink)" }}>Os tutores são seus.</b> A base de clientes é do seu petshop — com a sua marca e a sua carteira.</span></li>
+              <li className={s.li}><span className={s.liDot}>1</span><span><b style={{ color: "var(--ink)" }}>Os tutores são seus.</b> A base de clientes é da sua empresa — com a sua marca e a sua carteira.</span></li>
               <li className={s.li}><span className={s.liDot}>2</span><span><b style={{ color: "var(--ink)" }}>Os passeadores são da rede Aumigão.</b> Credenciados, avaliados e mantidos pela plataforma: você pluga numa rede pronta em vez de recrutar e gerir passeadores do zero.</span></li>
               <li className={s.li}><span className={s.liDot}>3</span><span><b style={{ color: "var(--ink)" }}>Você opera; a Aumigão sustenta.</b> Rede de passeadores, matching, reputação e pagamentos por nossa conta — a operação e a marca, por sua.</span></li>
             </ul>
@@ -171,7 +171,7 @@ export function EditorialHomeV2() {
               <h4>Participantes</h4>
               <a href="#plataforma-por-dentro">Para tutores</a>
               <a href="#baixar">Seja passeador (Walk)</a>
-              <a href="#white-label">Para petshops</a>
+              <a href="#white-label">Para empresas pet</a>
             </div>
             <div className={s.footerCol}>
               <h4>Empresa</h4>

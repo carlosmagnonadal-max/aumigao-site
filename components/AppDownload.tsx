@@ -2,7 +2,7 @@ import s from "./editorial-home.module.css";
 
 // TODO: trocar pelos links reais (App Store / Google Play / TestFlight) quando publicados.
 const apps = [
-  { tag: "App do tutor", title: "Agende e acompanhe os passeios", desc: "Para os clientes do seu petshop agendarem e acompanharem ao vivo, com a sua marca.", url: "https://www.aumigaowalk.com.br", ios: "#", android: "#" },
+  { tag: "App do tutor", title: "Agende e acompanhe os passeios", desc: "Para os clientes da sua empresa agendarem e acompanharem ao vivo, com a sua marca.", url: "https://www.aumigaowalk.com.br", ios: "#", android: "#" },
   { tag: "App do passeador · Walk", title: "Entre para a rede no Walk", desc: "Quer ser passeador? Baixe o Walk, cadastre-se e comece a receber demanda, ganhos e reputação.", url: "https://www.aumigaowalk.com.br", ios: "#", android: "#" },
 ];
 

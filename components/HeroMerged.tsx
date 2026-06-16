@@ -45,8 +45,8 @@ export function HeroMerged() {
           <motion.div variants={item} className={s.eyebrow}><i /> Tutor · Passeador · White-Label — uma só plataforma</motion.div>
           <motion.h1 variants={item} className={s.title}>Cuidar virou <em>operação.</em></motion.h1>
           <motion.p variants={item} className={s.sub}>
-            A plataforma que conecta tutores, passeadores e petshops numa operação de
-            passeios pet — com acompanhamento ao vivo, segurança e a sua marca.
+            A plataforma que conecta tutores, passeadores e empresas pet numa operação
+            de passeios — com acompanhamento ao vivo, segurança e a sua marca.
           </motion.p>
           <motion.div variants={item} className={s.cta}>
             <a href="#contato" className={s.btn}>Solicitar diagnóstico →</a>
