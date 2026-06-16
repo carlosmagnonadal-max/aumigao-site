@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { LiveMap } from "./LiveMap";
@@ -28,10 +27,7 @@ export function HeroMerged() {
       <header className={s.topbar}>
         <a href="#" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
         <nav className={s.nav}>
-          <span className={s.navLinks}>
-            <Link href="/tutor">Para tutores</Link> <Link href="/passeador">Para passeadores</Link> <Link href="/para-empresas">Para empresas</Link>
-          </span>
-          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost}>Portal do parceiro</a>
+          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost} style={{ border: "1.5px solid var(--roxo)", borderRadius: 40, padding: "10px 18px", color: "var(--roxo)", fontWeight: 700 }}>Portal do parceiro ↗</a>
           <a href="/contato?perfil=empresa" className={s.navCta}>Solicitar diagnóstico</a>
         </nav>
       </header>

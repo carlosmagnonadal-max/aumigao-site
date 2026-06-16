@@ -30,6 +30,7 @@ export function EditorialFooter() {
           <div className={s.footerCol}>
             <h4>Empresa</h4>
             <Link href="/contato">Contato</Link>
+            <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer">Portal do parceiro</a>
             <Link href="/termos">Termos</Link>
             <Link href="/privacidade">Privacidade · LGPD</Link>
           </div>
