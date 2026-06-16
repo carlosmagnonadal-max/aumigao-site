@@ -14,9 +14,9 @@ import sub from "./subsite.module.css";
  * vive agora nos sub-sites /tutor, /passeador, /para-empresas.
  */
 const doors = [
-  { route: "/tutor", tag: "Para tutores", title: "Acompanhe cada passeio", text: "Seu cão passeia com um passeador verificado e você vê tudo ao vivo — mapa, fotos e avaliação.", c: "#f4671e" },
-  { route: "/passeador", tag: "Para passeadores", title: "Cuidar virou profissão", text: "Renda recorrente na rede Aumigão, com o app Walk. Não é bico: é a sua profissão.", c: "#6d2bbd" },
-  { route: "/para-empresas", tag: "Para empresas pet", title: "Sua marca, sua receita", text: "Lance sua operação de passeios white-label — com a sua marca, sem montar tecnologia.", c: "#6d2bbd" },
+  { route: "/tutor", tag: "Sou tutor", title: "Veja seu cão no passeio, ao vivo", text: "Passeador verificado, mapa em tempo real e fotos no seu celular. Veja como seu cão fica em boas mãos enquanto você toca o dia.", cta: "Ver como funciona", c: "#f4671e" },
+  { route: "/passeador", tag: "Quero ser passeador", title: "Transforme passeios em renda", text: "Entre na rede Aumigão pelo app Walk e receba demanda de várias empresas pet. Descubra quanto dá pra ganhar todo mês.", cta: "Quero ganhar passeando", c: "#6d2bbd" },
+  { route: "/para-empresas", tag: "Tenho uma empresa pet", title: "Sua marca, nova receita recorrente", text: "Lance sua operação de passeios white-label, sem montar tecnologia. Veja os planos e como sua marca entra no ar.", cta: "Quero pra minha empresa", c: "#6d2bbd" },
 ];
 
 export function EditorialHomeV2() {
@@ -41,7 +41,7 @@ export function EditorialHomeV2() {
                     <span className={sub.doorTag}>{d.tag}</span>
                     <span className={sub.doorTitle}>{d.title}</span>
                     <span className={sub.doorText}>{d.text}</span>
-                    <span className={sub.doorBtn}>Entrar →</span>
+                    <span className={sub.doorBtn}>{d.cta} →</span>
                   </span>
                 </Link>
               </RevealItem>
