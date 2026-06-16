@@ -49,6 +49,12 @@
   --accent-2: #f4671e; /* TEMP roxo — vira verde #1f7a5a após validação em preview (gate Carlos) */
 }
 
+/* Preview do verde-confiança no /para-empresas — só ativa dentro de [data-verde] (rota /preview-verde). Não afeta a produção. */
+[data-verde] [data-aud="empresa"] {
+  --accent: #1f7a5a;
+  --accent-2: #f4671e;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }

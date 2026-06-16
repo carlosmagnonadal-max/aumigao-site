@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { HeroMerged } from "./HeroMerged";
 import { BrandSwapper } from "./BrandSwapper";
 import { PlatformPeek } from "./PlatformPeek";
@@ -9,9 +10,9 @@ import { Reveal, Stagger, RevealItem } from "./Motion";
 import s from "./editorial-home.module.css";
 
 const trilhas = [
-  { tag: "Para o tutor", title: "Segurança e rotina", promise: "Tranquilidade e cuidado consistente para o pet, sem fricção.", bullets: ["Agendamento simples e previsível", "Acompanhamento do passeio ao vivo", "Avaliação que melhora o serviço"] },
-  { tag: "Para o passeador", title: "Oportunidade e reputação", promise: "Demanda qualificada, agenda própria e profissionalização.", bullets: ["Renda recorrente, não bico", "Agenda própria", "Score que valoriza quem cuida"] },
-  { tag: "Para a empresa pet", title: "Marca, receita e escala", promise: "Lance a própria operação de passeios com governança assistida.", bullets: ["Plataforma white-label própria", "Nova receita recorrente", "Multiunidades e expansão"] },
+  { tag: "Para o tutor", href: "/tutor", title: "Segurança e rotina", promise: "Tranquilidade e cuidado consistente para o pet, sem fricção.", bullets: ["Agendamento simples e previsível", "Acompanhamento do passeio ao vivo", "Avaliação que melhora o serviço"] },
+  { tag: "Para o passeador", href: "/passeador", title: "Oportunidade e reputação", promise: "Demanda qualificada, agenda própria e profissionalização.", bullets: ["Renda recorrente, não bico", "Agenda própria", "Score que valoriza quem cuida"] },
+  { tag: "Para a empresa pet", href: "/para-empresas", title: "Marca, receita e escala", promise: "Lance a própria operação de passeios com governança assistida.", bullets: ["Plataforma white-label própria", "Nova receita recorrente", "Multiunidades e expansão"] },
 ];
 
 const modules = [
@@ -44,11 +45,13 @@ export function EditorialHomeV2() {
           </Reveal>
           <Stagger className={s.trilhas}>
             {trilhas.map((t) => (
-              <RevealItem key={t.title} className={s.trilha}>
+              <RevealItem key={t.title} className={s.trilha} style={{ position: "relative" }}>
                 <span className={s.trilhaTag}>{t.tag}</span>
                 <div className={s.trilhaTitle}>{t.title}</div>
                 <p className={s.trilhaPromise}>{t.promise}</p>
                 <ul className={s.trilhaUl}>{t.bullets.map((b) => <li key={b} className={s.trilhaLi}>{b}</li>)}</ul>
+                <span style={{ display: "inline-block", marginTop: 16, fontWeight: 700, color: "#f4671e" }}>Conhecer →</span>
+                <Link href={t.href} aria-label={`${t.tag}: ${t.title}`} style={{ position: "absolute", inset: 0 }} />
               </RevealItem>
             ))}
           </Stagger>
