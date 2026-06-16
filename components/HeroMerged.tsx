@@ -29,10 +29,10 @@ export function HeroMerged() {
         <a href="#" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
         <nav className={s.nav}>
           <span className={s.navLinks}>
-            <a href="#plataforma-por-dentro">Como funciona</a> <a href="#planos">Planos</a> <a href="#white-label">White Label</a>
+            <Link href="/tutor">Para tutores</Link> <Link href="/passeador">Para passeadores</Link> <Link href="/para-empresas">Para empresas</Link>
           </span>
           <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost}>Portal do parceiro</a>
-          <a href="#contato" className={s.navCta}>Solicitar diagnóstico</a>
+          <a href="/contato?perfil=empresa" className={s.navCta}>Solicitar diagnóstico</a>
         </nav>
       </header>
 
@@ -58,8 +58,8 @@ export function HeroMerged() {
             de passeios — com acompanhamento ao vivo, segurança e a sua marca.
           </motion.p>
           <motion.div variants={item} className={s.cta}>
-            <a href="#contato" className={s.btn}>Solicitar diagnóstico →</a>
-            <a href="#plataforma-por-dentro" className={s.ghost}>Ver como funciona</a>
+            <a href="#portas" className={s.btn}>Conheça os 3 caminhos ↓</a>
+            <a href="/contato?perfil=empresa" className={s.ghost}>Solicitar diagnóstico</a>
           </motion.div>
           <motion.div variants={item} className={s.stats}>
             <div className={s.stat}><span className={s.statNum}>100%</span><span className={s.statLabel}>passeios auditáveis</span></div>
