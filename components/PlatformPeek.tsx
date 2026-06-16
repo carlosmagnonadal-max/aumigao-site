@@ -5,7 +5,7 @@ import s from "./PlatformPeek.module.css";
 
 type Tab = "tutor" | "passeador" | "admin";
 
-function TutorPhone() {
+export function TutorPhone() {
   return (
     <div className={s.phone}><div className={s.screen}>
       <div className={s.bar}><span>14:04</span><small>📶 🔋</small></div>
@@ -29,7 +29,7 @@ function TutorPhone() {
   );
 }
 
-function PasseadorPhone() {
+export function PasseadorPhone() {
   return (
     <div className={s.phone}><div className={s.screen}>
       <div className={s.bar}><span>18:24</span><small>📶 🔋</small></div>
@@ -84,7 +84,7 @@ function MiniMap() {
   );
 }
 
-function AdminBrowser() {
+export function AdminBrowser() {
   return (
     <div className={s.browser}>
       <div className={s.bbar}>
