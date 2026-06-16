@@ -477,7 +477,11 @@ export function AuWidget() {
           </svg>
         ) : (
           <>
-            Au
+            <img
+              src="/au-mark.png"
+              alt="Au"
+              style={{ width: "34px", height: "auto", display: "block", pointerEvents: "none", filter: "drop-shadow(0 1px 1px rgba(0,0,0,.18))" }}
+            />
             {/* Badge de notificação (some após primeira abertura) */}
             {!everOpened && (
               <span
