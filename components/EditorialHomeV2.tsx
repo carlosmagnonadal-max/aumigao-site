@@ -25,7 +25,7 @@ export function EditorialHomeV2() {
       <HeroMerged />
 
       {/* 3 PORTAS — entrada destacada pros sub-sites */}
-      <section className={e.section} id="portas">
+      <section className={e.section} id="portas" style={{ paddingTop: "clamp(32px, 5vh, 56px)" }}>
         <div className={e.container}>
           <Reveal>
             <div className={e.eyebrow}><i /> Escolha seu caminho</div>
