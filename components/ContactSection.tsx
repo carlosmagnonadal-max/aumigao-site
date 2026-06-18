@@ -11,14 +11,22 @@ const businessTypes = ["Pet shop", "Clínica veterinária", "Creche ou hotel pet
 type F = { name: string; company: string; email: string; phone: string; city: string; business_type: string; interest: string; message: string };
 const EMPTY: F = { name: "", company: "", email: "", phone: "", city: "", business_type: businessTypes[0], interest: interests[0], message: "" };
 
+// M9: Limites de comprimento por campo
+const MAX_SHORT = 200;
+const MAX_MSG = 2000;
+
 export function ContactSection() {
   const [form, setForm] = useState<F>(EMPTY);
+  // M9: honeypot — se preenchido por bot, aborta silenciosamente
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
   const up = <K extends keyof F>(k: K) => (e: { target: { value: string } }) => setForm((c) => ({ ...c, [k]: e.target.value }));
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    // M9: campo honeypot preenchido → bot detectado; abortar silenciosamente
+    if (honeypot) { setStatus("sent"); return; }
     setStatus("sending"); setError("");
     try {
       const res = await fetch(`${API_URL}/api/contact`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
@@ -46,15 +54,25 @@ export function ContactSection() {
         </div></div>
       ) : (
         <form className={s.form} onSubmit={onSubmit}>
+          {/* M9: honeypot — oculto para humanos, bots costumam preencher */}
+          <input
+            name="website"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ display: "none" }}
+          />
           <div className={s.fgrid}>
-            <label className={s.field}><span>Nome</span><input required className={s.finput} value={form.name} onChange={up("name")} placeholder="Seu nome" /></label>
-            <label className={s.field}><span>Empresa</span><input className={s.finput} value={form.company} onChange={up("company")} placeholder="Nome da empresa" /></label>
-            <label className={s.field}><span>E-mail</span><input type="email" required className={s.finput} value={form.email} onChange={up("email")} placeholder="voce@empresa.com" /></label>
-            <label className={s.field}><span>Telefone</span><input className={s.finput} value={form.phone} onChange={up("phone")} placeholder="(00) 00000-0000" /></label>
-            <label className={s.field}><span>Cidade</span><input className={s.finput} value={form.city} onChange={up("city")} placeholder="Cidade / UF" /></label>
+            <label className={s.field}><span>Nome</span><input required className={s.finput} value={form.name} onChange={up("name")} placeholder="Seu nome" maxLength={MAX_SHORT} /></label>
+            <label className={s.field}><span>Empresa</span><input className={s.finput} value={form.company} onChange={up("company")} placeholder="Nome da empresa" maxLength={MAX_SHORT} /></label>
+            <label className={s.field}><span>E-mail</span><input type="email" required className={s.finput} value={form.email} onChange={up("email")} placeholder="voce@empresa.com" maxLength={MAX_SHORT} /></label>
+            <label className={s.field}><span>Telefone</span><input className={s.finput} value={form.phone} onChange={up("phone")} placeholder="(00) 00000-0000" maxLength={MAX_SHORT} /></label>
+            <label className={s.field}><span>Cidade</span><input className={s.finput} value={form.city} onChange={up("city")} placeholder="Cidade / UF" maxLength={MAX_SHORT} /></label>
             <label className={s.field}><span>Tipo de negócio</span><select className={s.fselect} value={form.business_type} onChange={up("business_type")}>{businessTypes.map((t) => <option key={t}>{t}</option>)}</select></label>
             <label className={`${s.field} ${s.fieldFull}`}><span>Interesse principal</span><select className={s.fselect} value={form.interest} onChange={up("interest")}>{interests.map((i) => <option key={i}>{i}</option>)}</select></label>
-            <label className={`${s.field} ${s.fieldFull}`}><span>Mensagem</span><textarea className={s.ftext} value={form.message} onChange={up("message")} placeholder="Conte sobre sua operação, número de unidades, objetivo…" /></label>
+            <label className={`${s.field} ${s.fieldFull}`}><span>Mensagem</span><textarea className={s.ftext} value={form.message} onChange={up("message")} placeholder="Conte sobre sua operação, número de unidades, objetivo…" maxLength={MAX_MSG} /></label>
           </div>
           <div className={s.fsubmit}>
             <button type="submit" className={s.btn} disabled={status === "sending"}>{status === "sending" ? "Enviando…" : "Solicitar diagnóstico"} →</button>

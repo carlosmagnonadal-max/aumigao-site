@@ -1,6 +1,45 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 
+// ─── A4: Rate limit simples por IP (in-memory, janela deslizante) ─────────────
+// Limite: 10 requisições por janela de 60 segundos por IP.
+// NOTA: este controle é por instância de servidor (processo Node). Em produção com
+// múltiplas instâncias (Vercel Serverless), cada função tem seu próprio mapa.
+// Para rate limit global cross-instância, migrar para Vercel KV ou Vercel Firewall
+// (regra de WAF por rota). Este controle já protege contra uso casual/acidental.
+const RATE_WINDOW_MS = 60_000; // 1 minuto
+const RATE_MAX_REQ = 10;       // requisições por janela
+
+interface RateEntry { count: number; windowStart: number }
+const rateLimitMap = new Map<string, RateEntry>();
+
+function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number } {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now - entry.windowStart >= RATE_WINDOW_MS) {
+    // Nova janela
+    rateLimitMap.set(ip, { count: 1, windowStart: now });
+    return { allowed: true, retryAfterSec: 0 };
+  }
+
+  if (entry.count >= RATE_MAX_REQ) {
+    const retryAfterMs = RATE_WINDOW_MS - (now - entry.windowStart);
+    return { allowed: false, retryAfterSec: Math.ceil(retryAfterMs / 1000) };
+  }
+
+  entry.count += 1;
+  return { allowed: true, retryAfterSec: 0 };
+}
+
+// Limpeza periódica do mapa para evitar vazamento de memória em instâncias longas
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap.entries()) {
+    if (now - entry.windowStart >= RATE_WINDOW_MS * 2) rateLimitMap.delete(ip);
+  }
+}, RATE_WINDOW_MS * 5);
+
 const SYSTEM_PROMPT = `Você é Au, o assistente virtual do Aumigão Walk — uma plataforma premium de passeios pet com operação auditável, matching inteligente e White Label para empresas.
 
 Seu papel: responder dúvidas de visitantes do site com clareza, simpatia e objetividade. Você conhece o produto a fundo.
@@ -74,6 +113,26 @@ function isValidMessage(msg: unknown): msg is ChatMessage {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // A4: verificar rate limit antes de qualquer processamento
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "unknown";
+  const { allowed, retryAfterSec } = checkRateLimit(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Muitas requisições. Tente novamente em instantes." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(retryAfterSec),
+          "X-RateLimit-Limit": String(RATE_MAX_REQ),
+          "X-RateLimit-Window": "60",
+        },
+      }
+    );
+  }
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
