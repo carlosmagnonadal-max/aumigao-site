@@ -26,8 +26,8 @@ export default function TermosPasseadorPage() {
       <article className={s.legal}>
         <div className={s.sec}>
           <p className={s.meta}>
-            <strong>Empresa:</strong> C3X Intermediação e Agenciamento de Serviços e Negócios Ltda. &nbsp;·&nbsp;
-            <strong>CNPJ:</strong> 49.617.734/0001-03 &nbsp;·&nbsp;
+            <strong>Empresa:</strong> Aumigão Walk Tecnologia (Carlos Magno Nadal Sant&apos;Ana Sobrinho LTDA) &nbsp;·&nbsp;
+            <strong>CNPJ:</strong> 67.562.337/0001-63 &nbsp;·&nbsp;
             <strong>Última atualização:</strong> 11 de junho de 2026
           </p>
           <p>
@@ -38,7 +38,7 @@ export default function TermosPasseadorPage() {
 
         <div className={s.sec}>
           <h2>1. Quem é o Passeador</h2>
-          <p>Passeador é a pessoa física maior de 18 anos que: (i) se cadastra e passa pelo processo de verificação da Plataforma; (ii) é aprovado pela C3X ou pela empresa parceira (tenant) para prestar serviços de passeio; e (iii) recebe e executa solicitações de passeio originadas por tutores através da Plataforma.</p>
+          <p>Passeador é a pessoa física maior de 18 anos que: (i) se cadastra e passa pelo processo de verificação da Plataforma; (ii) é aprovado pela Aumigão Walk Tecnologia ou pela empresa parceira (tenant) para prestar serviços de passeio; e (iii) recebe e executa solicitações de passeio originadas por tutores através da Plataforma.</p>
         </div>
 
         <div className={s.sec}>
@@ -50,10 +50,10 @@ export default function TermosPasseadorPage() {
             <li>Envio de documento de identidade (RG ou CNH) e selfie para verificação de identidade.</li>
             <li>Envio de comprovante de residência.</li>
             <li>Aceite dos presentes Termos e dos Termos Gerais da Plataforma.</li>
-            <li>Análise e aprovação pela equipe operacional da C3X ou da empresa parceira.</li>
+            <li>Análise e aprovação pela equipe operacional da Aumigão Walk Tecnologia ou da empresa parceira.</li>
           </ul>
           <h3>2.2. Critérios de aprovação</h3>
-          <p>A aprovação do cadastro é critério exclusivo da C3X ou da empresa parceira e pode ser negada sem necessidade de justificativa, especialmente em casos de: (i) inconsistências ou falsidade nos documentos enviados; (ii) histórico de condutas inadequadas em outras plataformas; (iii) impedimentos legais. A reprovação não gera direito a indenização.</p>
+          <p>A aprovação do cadastro é critério exclusivo da Aumigão Walk Tecnologia ou da empresa parceira e pode ser negada sem necessidade de justificativa, especialmente em casos de: (i) inconsistências ou falsidade nos documentos enviados; (ii) histórico de condutas inadequadas em outras plataformas; (iii) impedimentos legais. A reprovação não gera direito a indenização.</p>
           <h3>2.3. Atualização obrigatória de dados</h3>
           <p>O Passeador deve manter seus dados e documentos de verificação sempre atualizados. A desatualização que impacte a prestação do serviço pode ensejar a suspensão temporária do perfil até a regularização.</p>
         </div>
@@ -61,11 +61,11 @@ export default function TermosPasseadorPage() {
         <div className={s.sec}>
           <h2>★ Cláusula 3 — Natureza do Vínculo com a Plataforma</h2>
           <p>
-            [ACEITE ESPECÍFICO] Esta cláusula define a natureza jurídica da relação entre o Passeador e a C3X. Leia com atenção.
+            [ACEITE ESPECÍFICO] Esta cláusula define a natureza jurídica da relação entre o Passeador e a Aumigão Walk Tecnologia. Leia com atenção.
           </p>
 
           <h3>3.1. Prestador autônomo e independente</h3>
-          <p>O Passeador que utiliza a Plataforma atua como <strong>prestador de serviço autônomo e independente</strong>, sem qualquer vínculo empregatício, societário, de subordinação, de exclusividade ou de qualquer outra natureza com a C3X ou com as empresas parceiras (tenants).</p>
+          <p>O Passeador que utiliza a Plataforma atua como <strong>prestador de serviço autônomo e independente</strong>, sem qualquer vínculo empregatício, societário, de subordinação, de exclusividade ou de qualquer outra natureza com a Aumigão Walk Tecnologia ou com as empresas parceiras (tenants).</p>
 
           <h3>3.2. Ausência de relação de emprego</h3>
           <p>Não decorrem do uso da Plataforma: (i) vínculo empregatício; (ii) obrigação de exclusividade; (iii) subordinação jurídica ou pessoal; (iv) controle de jornada; (v) direito a benefícios trabalhistas (férias, 13º salário, FGTS, etc.). O Passeador é livre para prestar serviços a outras plataformas ou por meios próprios simultaneamente.</p>
@@ -74,7 +74,7 @@ export default function TermosPasseadorPage() {
           <p>O Passeador define livremente seus próprios horários de disponibilidade, aceita ou recusa solicitações de passeio conforme sua conveniência, e utiliza seus próprios recursos e equipamentos para a prestação do serviço. A Plataforma fornece apenas ferramentas tecnológicas de intermediação.</p>
 
           <h3>3.4. Responsabilidade tributária e previdenciária</h3>
-          <p>O Passeador é o único responsável pelo recolhimento de impostos, contribuições previdenciárias (INSS como autônomo ou MEI) e demais obrigações fiscais decorrentes de sua atividade. A C3X não efetua qualquer retenção ou recolhimento em nome do Passeador, salvo quando expressamente exigido por lei.</p>
+          <p>O Passeador é o único responsável pelo recolhimento de impostos, contribuições previdenciárias (INSS como autônomo ou MEI) e demais obrigações fiscais decorrentes de sua atividade. A Aumigão Walk Tecnologia não efetua qualquer retenção ou recolhimento em nome do Passeador, salvo quando expressamente exigido por lei.</p>
 
           <p>
             <strong>[ ] LI E ACEITO A NATUREZA AUTÔNOMA DA MINHA RELAÇÃO COM A PLATAFORMA, RECONHECENDO A INEXISTÊNCIA DE VÍNCULO EMPREGATÍCIO</strong>
@@ -101,13 +101,13 @@ export default function TermosPasseadorPage() {
           <h3>5.1. Formação do valor</h3>
           <p>O valor do passeio é definido pela Plataforma ou pela empresa parceira (tenant) e apresentado ao Passeador antes da aceitação da solicitação.</p>
           <h3>5.2. Comissão da Plataforma</h3>
-          <p>A C3X ou a empresa parceira retém comissão sobre o valor de cada passeio executado, cuja alíquota é informada no aplicativo. O Passeador recebe o valor líquido (valor bruto menos a comissão).</p>
+          <p>A Aumigão Walk Tecnologia ou a empresa parceira retém comissão sobre o valor de cada passeio executado, cuja alíquota é informada no aplicativo. O Passeador recebe o valor líquido (valor bruto menos a comissão).</p>
           <h3>5.3. Repasses</h3>
-          <p>Os repasses são realizados pelo provedor de pagamentos (Asaas) conforme o cronograma informado na Plataforma. Atrasos decorrentes de falhas do provedor de pagamentos ou de erros bancários não são de responsabilidade da C3X.</p>
+          <p>Os repasses são realizados pelo provedor de pagamentos (Asaas) conforme o cronograma informado na Plataforma. Atrasos decorrentes de falhas do provedor de pagamentos ou de erros bancários não são de responsabilidade da Aumigão Walk Tecnologia.</p>
           <h3>5.4. Gorjetas</h3>
-          <p>Gorjetas pagas pelo Tutor são integralmente repassadas ao Passeador, sem retenção de comissão pela C3X.</p>
+          <p>Gorjetas pagas pelo Tutor são integralmente repassadas ao Passeador, sem retenção de comissão pela Aumigão Walk Tecnologia.</p>
           <h3>5.5. Bloqueio de repasse por disputa</h3>
-          <p>Em caso de ocorrência, reclamação ou investigação relacionada a um passeio, a C3X pode reter temporariamente o repasse referente àquele serviço até a conclusão da apuração. O Passeador será comunicado sobre o bloqueio e seu motivo.</p>
+          <p>Em caso de ocorrência, reclamação ou investigação relacionada a um passeio, a Aumigão Walk Tecnologia pode reter temporariamente o repasse referente àquele serviço até a conclusão da apuração. O Passeador será comunicado sobre o bloqueio e seu motivo.</p>
         </div>
 
         <div className={s.sec}>
@@ -123,7 +123,7 @@ export default function TermosPasseadorPage() {
           <p>O Passeador deve verificar as informações do animal antes do início do passeio. Caso identifique sinais de doença, comportamento agressivo não informado ou condição que represente risco, deve comunicar o Tutor e, se necessário, recusar o serviço. A aceitação do passeio mesmo diante de sinais de risco visíveis implica assunção de responsabilidade pelo Passeador.</p>
 
           <h3>6.3. Cobertura de seguros</h3>
-          <p>A C3X não mantém cobertura de seguro para os passeios realizados pelo Passeador. É recomendável que o Passeador contrate, por sua conta, seguro de responsabilidade civil que cubra danos causados a terceiros durante a prestação do serviço. A ausência de seguro é de responsabilidade exclusiva do Passeador.</p>
+          <p>A Aumigão Walk Tecnologia não mantém cobertura de seguro para os passeios realizados pelo Passeador. É recomendável que o Passeador contrate, por sua conta, seguro de responsabilidade civil que cubra danos causados a terceiros durante a prestação do serviço. A ausência de seguro é de responsabilidade exclusiva do Passeador.</p>
 
           <p>
             <strong>[ ] LI E ACEITO SER O ÚNICO RESPONSÁVEL PELA EXECUÇÃO DO PASSEIO E PELAS SUAS CONSEQUÊNCIAS</strong>
@@ -133,20 +133,20 @@ export default function TermosPasseadorPage() {
         <div className={s.sec}>
           <h2>★ Cláusula 7 — Indenidade (Hold-Harmless)</h2>
           <p>
-            [ACEITE ESPECÍFICO] Esta cláusula estabelece obrigação de indenizar a C3X em certas situações. Leia com atenção.
+            [ACEITE ESPECÍFICO] Esta cláusula estabelece obrigação de indenizar a Aumigão Walk Tecnologia em certas situações. Leia com atenção.
           </p>
 
           <h3>7.1. Obrigação de indenidade</h3>
-          <p>O Passeador obriga-se a <strong>manter a C3X livre e indene</strong> de toda e qualquer reclamação, perda, dano, despesa, condenação ou demanda — inclusive honorários advocatícios razoáveis e custas processuais — que a C3X venha a suportar de tutores, terceiros ou autoridades em decorrência de: (i) atos ou omissões do Passeador na execução dos passeios; (ii) violação pelo Passeador destes Termos ou da legislação aplicável; (iii) informações falsas fornecidas pelo Passeador no cadastro ou durante o uso da Plataforma; (iv) danos causados pelo animal sob guarda do Passeador.</p>
+          <p>O Passeador obriga-se a <strong>manter a Aumigão Walk Tecnologia livre e indene</strong> de toda e qualquer reclamação, perda, dano, despesa, condenação ou demanda — inclusive honorários advocatícios razoáveis e custas processuais — que a Aumigão Walk Tecnologia venha a suportar de tutores, terceiros ou autoridades em decorrência de: (i) atos ou omissões do Passeador na execução dos passeios; (ii) violação pelo Passeador destes Termos ou da legislação aplicável; (iii) informações falsas fornecidas pelo Passeador no cadastro ou durante o uso da Plataforma; (iv) danos causados pelo animal sob guarda do Passeador.</p>
 
           <h3>7.2. Procedimento</h3>
-          <p>Em caso de demanda contra a C3X que possa ativar esta cláusula, a C3X comunicará o Passeador assim que possível, dando-lhe a oportunidade de participar da defesa. O Passeador não poderá celebrar acordo em nome da C3X sem autorização prévia e por escrito.</p>
+          <p>Em caso de demanda contra a Aumigão Walk Tecnologia que possa ativar esta cláusula, a Aumigão Walk Tecnologia comunicará o Passeador assim que possível, dando-lhe a oportunidade de participar da defesa. O Passeador não poderá celebrar acordo em nome da Aumigão Walk Tecnologia sem autorização prévia e por escrito.</p>
 
           <h3>7.3. Limites</h3>
-          <p>Esta cláusula não se aplica a danos decorrentes de ato exclusivo da C3X, de terceiros alheios ao passeio, ou de caso fortuito ou força maior.</p>
+          <p>Esta cláusula não se aplica a danos decorrentes de ato exclusivo da Aumigão Walk Tecnologia, de terceiros alheios ao passeio, ou de caso fortuito ou força maior.</p>
 
           <p>
-            <strong>[ ] LI E ACEITO A OBRIGAÇÃO DE MANTER A C3X INDENE DE RECLAMAÇÕES DECORRENTES DOS PASSEIOS QUE REALIZAR</strong>
+            <strong>[ ] LI E ACEITO A OBRIGAÇÃO DE MANTER A Aumigão Walk Tecnologia INDENE DE RECLAMAÇÕES DECORRENTES DOS PASSEIOS QUE REALIZAR</strong>
           </p>
         </div>
 
@@ -157,7 +157,7 @@ export default function TermosPasseadorPage() {
           </p>
 
           <h3>8.1. Motivos de suspensão ou desativação</h3>
-          <p>A C3X pode suspender temporariamente ou desativar definitivamente o perfil do Passeador nos seguintes casos:</p>
+          <p>A Aumigão Walk Tecnologia pode suspender temporariamente ou desativar definitivamente o perfil do Passeador nos seguintes casos:</p>
           <ul>
             <li>Violação dos presentes Termos ou dos Termos Gerais da Plataforma.</li>
             <li>Recebimento de reclamações graves ou recorrentes de tutores.</li>
@@ -174,10 +174,10 @@ export default function TermosPasseadorPage() {
           <p>A comunicação será realizada pelo e-mail cadastrado no prazo de até 5 (cinco) dias úteis após a suspensão ou desativação, exceto nas exceções previstas acima.</p>
 
           <h3>8.3. Direito de revisão</h3>
-          <p>O Passeador pode solicitar a revisão da decisão de suspensão ou desativação pelo e-mail contato@aumigaowalk.com.br no prazo de 15 (quinze) dias corridos a contar da comunicação. A C3X responderá no prazo de 10 (dez) dias úteis, podendo manter, rever ou reverter a decisão, com fundamentação.</p>
+          <p>O Passeador pode solicitar a revisão da decisão de suspensão ou desativação pelo e-mail contato@aumigaowalk.com.br no prazo de 15 (quinze) dias corridos a contar da comunicação. A Aumigão Walk Tecnologia responderá no prazo de 10 (dez) dias úteis, podendo manter, rever ou reverter a decisão, com fundamentação.</p>
 
           <h3>8.4. Suspensão cautelar imediata</h3>
-          <p>Nos casos de risco imediato e comprovado à segurança de animais, tutores ou terceiros, a C3X pode suspender o perfil de forma imediata e cautelar, comunicando o motivo ao Passeador tão logo a situação o permita.</p>
+          <p>Nos casos de risco imediato e comprovado à segurança de animais, tutores ou terceiros, a Aumigão Walk Tecnologia pode suspender o perfil de forma imediata e cautelar, comunicando o motivo ao Passeador tão logo a situação o permita.</p>
 
           <h3>8.5. Desativação definitiva</h3>
           <p>A desativação definitiva encerra o acesso do Passeador à Plataforma e aos seus dados de atividade. O Passeador receberá confirmação por e-mail e poderá solicitar cópia dos dados pessoais tratados nos termos da <Link href="/privacidade">Política de Privacidade</Link>.</p>
@@ -194,7 +194,7 @@ export default function TermosPasseadorPage() {
           </p>
 
           <h3>9.1. Dados coletados do Passeador</h3>
-          <p>A C3X coleta os seguintes dados pessoais do Passeador: nome completo, e-mail, telefone, CPF, data de nascimento, endereço, senha (cifrada), documento de identidade (RG/CNH), selfie, comprovante de residência, histórico de passeios, avaliações recebidas, registros de acesso, localização durante os passeios e token de notificação push.</p>
+          <p>A Aumigão Walk Tecnologia coleta os seguintes dados pessoais do Passeador: nome completo, e-mail, telefone, CPF, data de nascimento, endereço, senha (cifrada), documento de identidade (RG/CNH), selfie, comprovante de residência, histórico de passeios, avaliações recebidas, registros de acesso, localização durante os passeios e token de notificação push.</p>
           <p>Os documentos de identidade e selfie (dados de verificação/KYC) são armazenados em volume de disco nos servidores da Plataforma (Railway, conforme <Link href="/privacidade">Política de Privacidade</Link>) e utilizados exclusivamente para fins de verificação de identidade e prevenção a fraudes.</p>
 
           <h3>9.2. Finalidades do tratamento</h3>
@@ -216,12 +216,12 @@ export default function TermosPasseadorPage() {
 
         <div className={s.sec}>
           <h2>10. Kit do Passeador</h2>
-          <p>Conforme disponível na operação ativa, o Passeador pode receber ou ter acesso a um kit operacional (coleira, identificação, capa de chuva, etc.) para padronização e segurança na prestação do serviço. As condições de fornecimento, uso e devolução do kit são informadas pela C3X ou pela empresa parceira no momento da aprovação do cadastro.</p>
+          <p>Conforme disponível na operação ativa, o Passeador pode receber ou ter acesso a um kit operacional (coleira, identificação, capa de chuva, etc.) para padronização e segurança na prestação do serviço. As condições de fornecimento, uso e devolução do kit são informadas pela Aumigão Walk Tecnologia ou pela empresa parceira no momento da aprovação do cadastro.</p>
         </div>
 
         <div className={s.sec}>
           <h2>11. Disposições finais</h2>
-          <p>Estes Termos do Passeador integram, juntamente com os <Link href="/termos/gerais">Termos Gerais da Plataforma</Link> e a <Link href="/privacidade">Política de Privacidade</Link>, o contrato entre o Passeador e a C3X. Em caso de conflito, prevalece o Termo mais específico. Lei aplicável: Brasil. Foro: Salvador/BA, ressalvada competência legal do domicílio do consumidor quando aplicável.</p>
+          <p>Estes Termos do Passeador integram, juntamente com os <Link href="/termos/gerais">Termos Gerais da Plataforma</Link> e a <Link href="/privacidade">Política de Privacidade</Link>, o contrato entre o Passeador e a Aumigão Walk Tecnologia. Em caso de conflito, prevalece o Termo mais específico. Lei aplicável: Brasil. Foro: Salvador/BA, ressalvada competência legal do domicílio do consumidor quando aplicável.</p>
         </div>
       </article>
 

@@ -36,7 +36,7 @@ export function EditorialFooter() {
           </div>
         </div>
         <div className={s.footerBottom}>
-          <span>© 2026 Aumigão Walk · CNPJ 49.617.734/0001-03</span>
+          <span>© 2026 Aumigão Walk · CNPJ 67.562.337/0001-63</span>
           <nav className={s.footerLegal}>
             <Link href="/termos">Termos</Link>
             <Link href="/privacidade">Privacidade · LGPD</Link>

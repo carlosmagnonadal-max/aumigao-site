@@ -26,8 +26,8 @@ export default function TermosTutorPage() {
       <article className={s.legal}>
         <div className={s.sec}>
           <p className={s.meta}>
-            <strong>Empresa:</strong> C3X Intermediação e Agenciamento de Serviços e Negócios Ltda. &nbsp;·&nbsp;
-            <strong>CNPJ:</strong> 49.617.734/0001-03 &nbsp;·&nbsp;
+            <strong>Empresa:</strong> Aumigão Walk Tecnologia (Carlos Magno Nadal Sant&apos;Ana Sobrinho LTDA) &nbsp;·&nbsp;
+            <strong>CNPJ:</strong> 67.562.337/0001-63 &nbsp;·&nbsp;
             <strong>Última atualização:</strong> 11 de junho de 2026
           </p>
           <p>
@@ -83,7 +83,7 @@ export default function TermosTutorPage() {
           <h3>5.2. Comissão da Plataforma</h3>
           <p>A Plataforma e/ou a empresa parceira (tenant) podem reter comissão sobre o valor do serviço, cuja alíquota é informada ao Tutor antes da conclusão do agendamento.</p>
           <h3>5.3. Gorjetas</h3>
-          <p>Gorjetas são voluntárias e integralmente destinadas ao passeador. A C3X não retém qualquer valor a título de gorjeta.</p>
+          <p>Gorjetas são voluntárias e integralmente destinadas ao passeador. A Aumigão Walk Tecnologia não retém qualquer valor a título de gorjeta.</p>
           <h3>5.4. Contestação de cobrança</h3>
           <p>Dúvidas ou contestações sobre cobranças devem ser encaminhadas ao e-mail contato@aumigaowalk.com.br no prazo de 30 dias após a data da transação.</p>
         </div>
@@ -132,7 +132,7 @@ export default function TermosTutorPage() {
           <p>Reembolsos devidos são processados pelo mesmo meio de pagamento utilizado, observados os prazos do provedor de pagamentos (Asaas): PIX em até 1 dia útil; demais modalidades em até 10 dias úteis.</p>
 
           <h3>6.5. Casos de força maior</h3>
-          <p>Em situações de caso fortuito ou força maior devidamente comprovadas (emergências médicas, desastres naturais, etc.), a C3X pode, a seu critério, aplicar condições diferenciadas de cancelamento e reembolso.</p>
+          <p>Em situações de caso fortuito ou força maior devidamente comprovadas (emergências médicas, desastres naturais, etc.), a Aumigão Walk Tecnologia pode, a seu critério, aplicar condições diferenciadas de cancelamento e reembolso.</p>
 
           <p>
             <strong>[ ] LI E ACEITO OS TERMOS DE CANCELAMENTO E REEMBOLSO</strong>
@@ -142,11 +142,11 @@ export default function TermosTutorPage() {
         <div className={s.sec}>
           <h2>7. Relacionamento com o passeador</h2>
           <h3>7.1. Intermediação</h3>
-          <p>A C3X atua como intermediadora entre o Tutor e o passeador. O vínculo jurídico para a prestação do serviço de passeio se estabelece entre o Tutor e o passeador, sendo a C3X alheia à execução do serviço.</p>
+          <p>A Aumigão Walk Tecnologia atua como intermediadora entre o Tutor e o passeador. O vínculo jurídico para a prestação do serviço de passeio se estabelece entre o Tutor e o passeador, sendo a Aumigão Walk Tecnologia alheia à execução do serviço.</p>
           <h3>7.2. Avaliações</h3>
           <p>Após cada passeio, o Tutor poderá avaliar o passeador por meio da Plataforma. As avaliações devem ser honestas, objetivas e baseadas na experiência real. Avaliações falsas ou maliciosas são vedadas e podem resultar no encerramento da conta.</p>
           <h3>7.3. Contato direto</h3>
-          <p>O compartilhamento de dados de contato pessoal entre Tutor e passeador fora dos canais da Plataforma é permitido, mas a C3X não se responsabiliza por combinações, acordos ou conflitos realizados fora do ambiente da Plataforma.</p>
+          <p>O compartilhamento de dados de contato pessoal entre Tutor e passeador fora dos canais da Plataforma é permitido, mas a Aumigão Walk Tecnologia não se responsabiliza por combinações, acordos ou conflitos realizados fora do ambiente da Plataforma.</p>
         </div>
 
         <div className={s.sec}>
@@ -156,7 +156,7 @@ export default function TermosTutorPage() {
           </p>
 
           <h3>8.1. Dados coletados do Tutor</h3>
-          <p>A C3X coleta os seguintes dados pessoais do Tutor: nome completo, e-mail, telefone, CPF, senha (cifrada), dados dos animais, endereço de coleta e dados de localização durante o passeio, dados de pagamento (processados pelo provedor Asaas), histórico de passeios, avaliações e registros de acesso.</p>
+          <p>A Aumigão Walk Tecnologia coleta os seguintes dados pessoais do Tutor: nome completo, e-mail, telefone, CPF, senha (cifrada), dados dos animais, endereço de coleta e dados de localização durante o passeio, dados de pagamento (processados pelo provedor Asaas), histórico de passeios, avaliações e registros de acesso.</p>
 
           <h3>8.2. Finalidades do tratamento</h3>
           <p>Os dados do Tutor são utilizados para: (i) viabilizar o agendamento, a execução e o acompanhamento dos passeios; (ii) processar pagamentos; (iii) prevenir fraudes e garantir a segurança; (iv) enviar comunicações operacionais sobre o serviço; (v) melhorar a Plataforma; (vi) cumprir obrigações legais. O envio de comunicações de marketing depende de consentimento separado.</p>
@@ -179,8 +179,8 @@ export default function TermosTutorPage() {
         </div>
 
         <div className={s.sec}>
-          <h2>9. Limitações e isenções de responsabilidade da C3X</h2>
-          <p><strong>A C3X NÃO é responsável:</strong></p>
+          <h2>9. Limitações e isenções de responsabilidade da Aumigão Walk Tecnologia</h2>
+          <p><strong>A Aumigão Walk Tecnologia NÃO é responsável:</strong></p>
           <ul>
             <li>Pela qualidade, segurança ou resultado da execução do passeio, que é de responsabilidade exclusiva do passeador.</li>
             <li>Por atos, omissões, danos ou lesões causados pelo passeador ao animal, ao Tutor ou a terceiros durante o passeio.</li>
@@ -188,12 +188,12 @@ export default function TermosTutorPage() {
             <li>Por eventos de caso fortuito ou força maior.</li>
             <li>Por indisponibilidade temporária da Plataforma.</li>
           </ul>
-          <p>Na máxima extensão permitida pela lei aplicável, a C3X não responde por danos indiretos, lucros cessantes ou perda de oportunidade decorrentes do uso da Plataforma. Esta limitação não afasta responsabilidades que não possam ser excluídas pela lei.</p>
+          <p>Na máxima extensão permitida pela lei aplicável, a Aumigão Walk Tecnologia não responde por danos indiretos, lucros cessantes ou perda de oportunidade decorrentes do uso da Plataforma. Esta limitação não afasta responsabilidades que não possam ser excluídas pela lei.</p>
         </div>
 
         <div className={s.sec}>
           <h2>10. Disposições finais</h2>
-          <p>Estes Termos do Tutor integram, juntamente com os <Link href="/termos/gerais">Termos Gerais da Plataforma</Link> e a <Link href="/privacidade">Política de Privacidade</Link>, o contrato entre o Tutor e a C3X. Em caso de conflito, prevalece o Termo mais específico. Lei aplicável: Brasil. Foro: Salvador/BA, ressalvada competência legal do domicílio do consumidor.</p>
+          <p>Estes Termos do Tutor integram, juntamente com os <Link href="/termos/gerais">Termos Gerais da Plataforma</Link> e a <Link href="/privacidade">Política de Privacidade</Link>, o contrato entre o Tutor e a Aumigão Walk Tecnologia. Em caso de conflito, prevalece o Termo mais específico. Lei aplicável: Brasil. Foro: Salvador/BA, ressalvada competência legal do domicílio do consumidor.</p>
         </div>
       </article>
 

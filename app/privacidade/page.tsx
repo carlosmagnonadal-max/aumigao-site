@@ -20,8 +20,8 @@ export default function PrivacidadePage() {
       <article className={s.legal}>
         <div className={s.sec}>
           <p className={s.meta}>
-            <strong>Empresa:</strong> C3X Intermediação e Agenciamento de Serviços e Negócios Ltda. &nbsp;·&nbsp;
-            <strong>CNPJ:</strong> 49.617.734/0001-03 &nbsp;·&nbsp;
+            <strong>Empresa:</strong> Aumigão Walk Tecnologia (Carlos Magno Nadal Sant&apos;Ana Sobrinho LTDA) &nbsp;·&nbsp;
+            <strong>CNPJ:</strong> 67.562.337/0001-63 &nbsp;·&nbsp;
             <strong>DPO:</strong> Carlos Magno Nadal Sant&apos;Ana Sobrinho &nbsp;·&nbsp;
             <strong>Contato DPO:</strong> contato@aumigaowalk.com.br &nbsp;·&nbsp;
             <strong>Última atualização:</strong> 11 de junho de 2026
@@ -30,7 +30,7 @@ export default function PrivacidadePage() {
 
         <div className={s.sec}>
           <h2>1. Quem trata os seus dados</h2>
-          <p>A Aumigão Walk é operada por <strong>C3X Intermediação e Agenciamento de Serviços e Negócios Ltda.</strong> (CNPJ 49.617.734/0001-03), que é a <strong>controladora</strong> dos dados pessoais tratados na Plataforma.</p>
+          <p>A Aumigão Walk é operada por <strong>Aumigão Walk Tecnologia (Carlos Magno Nadal Sant&apos;Ana Sobrinho LTDA)</strong> (CNPJ 67.562.337/0001-63), que é a <strong>controladora</strong> dos dados pessoais tratados na Plataforma.</p>
           <p>No modelo White Label, a <strong>empresa parceira (tenant)</strong> que opera sob sua própria marca pode atuar como controladora ou co-controladora dos dados dos Tutores e Passeadores de sua Operação, conforme previsto no <Link href="/termos/white-label">Contrato White Label</Link>. Nesses casos, a empresa parceira é identificada no respectivo aplicativo.</p>
         </div>
 
@@ -305,12 +305,12 @@ export default function PrivacidadePage() {
           </table>
 
           <h3>8.1. Encerramento de conta e solicitação de eliminação</h3>
-          <p>O titular pode solicitar a eliminação de seus dados a qualquer momento pelo e-mail contato@aumigaowalk.com.br. A solicitação é atendida no prazo de até 15 (quinze) dias úteis, ressalvados os dados que a C3X deva reter por: (i) obrigação legal ou fiscal; (ii) exercício regular de direitos em processos; (iii) prevenção a fraudes.</p>
+          <p>O titular pode solicitar a eliminação de seus dados a qualquer momento pelo e-mail contato@aumigaowalk.com.br. A solicitação é atendida no prazo de até 15 (quinze) dias úteis, ressalvados os dados que a Aumigão Walk Tecnologia deva reter por: (i) obrigação legal ou fiscal; (ii) exercício regular de direitos em processos; (iii) prevenção a fraudes.</p>
         </div>
 
         <div className={s.sec}>
           <h2>9. Segurança da informação</h2>
-          <p>A C3X adota as seguintes medidas técnicas e organizacionais para proteger os dados pessoais:</p>
+          <p>A Aumigão Walk Tecnologia adota as seguintes medidas técnicas e organizacionais para proteger os dados pessoais:</p>
           <ul>
             <li>Controle de acesso baseado em papéis (RBAC) — cada usuário acessa apenas os dados necessários para sua função.</li>
             <li>Cifragem de senhas com algoritmo seguro (bcrypt/argon2).</li>
@@ -320,7 +320,7 @@ export default function PrivacidadePage() {
             <li>Comunicação via HTTPS em todos os canais.</li>
             <li>Ambientes de produção separados dos ambientes de desenvolvimento.</li>
           </ul>
-          <p>Em caso de violação de dados que possa gerar risco relevante aos titulares, a C3X atuará conforme a LGPD: comunicação à ANPD e, quando necessário, aos titulares afetados, no prazo legal.</p>
+          <p>Em caso de violação de dados que possa gerar risco relevante aos titulares, a Aumigão Walk Tecnologia atuará conforme a LGPD: comunicação à ANPD e, quando necessário, aos titulares afetados, no prazo legal.</p>
         </div>
 
         <div className={s.sec}>
@@ -337,7 +337,7 @@ export default function PrivacidadePage() {
             <li><strong>Revisão de decisão automatizada:</strong> solicitar revisão humana de decisões tomadas com base exclusivamente em tratamento automatizado (ex.: suspensão de perfil por algoritmo) — art. 20 LGPD.</li>
             <li><strong>Oposição:</strong> opor-se a tratamento realizado com base em legítimo interesse em situações de desconformidade.</li>
           </ul>
-          <p>A C3X responderá às solicitações no prazo de até 15 (quinze) dias úteis.</p>
+          <p>A Aumigão Walk Tecnologia responderá às solicitações no prazo de até 15 (quinze) dias úteis.</p>
         </div>
 
         <div className={s.sec}>
@@ -361,9 +361,9 @@ export default function PrivacidadePage() {
           <h2>14. Contato</h2>
           <p>Para dúvidas, solicitações ou exercício de direitos relacionados ao tratamento de dados pessoais:</p>
           <p><strong>E-mail:</strong> contato@aumigaowalk.com.br</p>
-          <p><strong>Controladora:</strong> C3X Intermediação e Agenciamento de Serviços e Negócios Ltda.</p>
-          <p><strong>CNPJ:</strong> 49.617.734/0001-03</p>
-          <p><strong>Endereço:</strong> Rua Doutor José Peroba, nº 297, Sala 1105, STIEP, Salvador/BA, CEP 41.770-235</p>
+          <p><strong>Controladora:</strong> Aumigão Walk Tecnologia (Carlos Magno Nadal Sant&apos;Ana Sobrinho LTDA)</p>
+          <p><strong>CNPJ:</strong> 67.562.337/0001-63</p>
+          <p><strong>Endereço:</strong> Av. Tancredo Neves, nº 1485, Edif. Esplanada Trade Center, Caixa Postal 9133, Caminho das Árvores, Salvador/BA, CEP 41.820-021</p>
         </div>
       </article>
 
