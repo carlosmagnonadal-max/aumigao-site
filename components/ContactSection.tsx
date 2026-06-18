@@ -2,9 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import s from "./editorial-home.module.css";
+import { WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/contact";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.aumigaowalk.com.br";
-const WHATSAPP = "5571000000000"; // TODO: número real do comercial
 const interests = ["Quero contratar White Label", "Quero ser passeador", "Quero suporte", "Quero parceria comercial"];
 const businessTypes = ["Pet shop", "Clínica veterinária", "Creche ou hotel pet", "Rede ou franquia", "Outro"];
 
@@ -39,7 +39,7 @@ export function ContactSection() {
     <div className={s.contactGrid}>
       <div className={s.contactAside}>
         <p className={s.lead} style={{ marginTop: 0 }}>Conte sobre o seu negócio e a gente mostra, num diagnóstico gratuito, como lançar passeios com a sua marca — em semanas, não meses.</p>
-        <a className={s.waBtn} href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noopener noreferrer">💬 Falar no WhatsApp</a>
+        <a className={s.waBtn} href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">💬 Falar no WhatsApp {WHATSAPP_DISPLAY}</a>
         <div className={s.contactMeta}>
           E-mail: <a href="mailto:contato@aumigaowalk.com.br">contato@aumigaowalk.com.br</a><br />
           Retorno em até 1 dia útil · seus dados ficam protegidos (LGPD).
