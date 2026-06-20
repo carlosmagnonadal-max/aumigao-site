@@ -165,7 +165,7 @@ export default function TermosTutorPage() {
           <p>Os dados necessários à execução do passeio (nome, endereço de coleta, informações do animal) são compartilhados com o passeador designado. O Tutor está ciente e concorda com esse compartilhamento.</p>
 
           <h3>8.4. Transferência internacional</h3>
-          <p>Parte do processamento ocorre em servidores nos Estados Unidos (Railway, US West), conforme previsto na <Link href="/privacidade">Política de Privacidade</Link> e nos arts. 33 a 36 da LGPD.</p>
+          <p>O processamento principal ocorre em servidores no Brasil (Google Cloud Run, região São Paulo), conforme previsto na <Link href="/privacidade">Política de Privacidade</Link> e nos arts. 33 a 36 da LGPD.</p>
 
           <h3>8.5. Direitos do titular</h3>
           <p>O Tutor pode, a qualquer tempo, solicitar acesso, correção, portabilidade, eliminação ou bloqueio de seus dados, bem como revogar consentimentos, pelo e-mail contato@aumigaowalk.com.br.</p>

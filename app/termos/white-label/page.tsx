@@ -88,7 +88,7 @@ export default function TermosWhiteLabelPage() {
           </p>
 
           <h3>5.1. Disponibilidade garantida</h3>
-          <p>A Aumigão Walk Tecnologia garante disponibilidade mínima da Plataforma de <strong>99,0% ao mês</strong> (equivalente a aproximadamente 7,3 horas de indisponibilidade mensal tolerada), excluídas: (i) manutenções programadas notificadas com antecedência; (ii) indisponibilidades decorrentes de falhas de provedores de infraestrutura terceirizados (Railway, Neon, Vercel) fora do controle da Aumigão Walk Tecnologia; (iii) eventos de força maior ou caso fortuito.</p>
+          <p>A Aumigão Walk Tecnologia garante disponibilidade mínima da Plataforma de <strong>99,0% ao mês</strong> (equivalente a aproximadamente 7,3 horas de indisponibilidade mensal tolerada), excluídas: (i) manutenções programadas notificadas com antecedência; (ii) indisponibilidades decorrentes de falhas de provedores de infraestrutura terceirizados (Google Cloud Run, Neon, Vercel) fora do controle da Aumigão Walk Tecnologia; (iii) eventos de força maior ou caso fortuito.</p>
 
           <h3>5.2. Medição</h3>
           <p>A disponibilidade é medida mensalmente com base nos registros de monitoramento da Aumigão Walk Tecnologia. A Empresa Parceira pode solicitar o relatório mensal de disponibilidade pelo e-mail contato@aumigaowalk.com.br.</p>
@@ -162,7 +162,7 @@ export default function TermosWhiteLabelPage() {
           <p>A Empresa Parceira obriga-se a: (i) tratar os dados pessoais dos usuários de sua Operação exclusivamente para as finalidades previstas em seus próprios termos de uso e política de privacidade, alinhados aos documentos da Plataforma; (ii) implementar medidas técnicas e organizacionais adequadas para proteção dos dados; (iii) não transferir dados pessoais dos usuários a terceiros sem base legal adequada; (iv) responder diretamente às solicitações de titulares relacionadas à sua Operação; (v) notificar a Aumigão Walk Tecnologia no prazo de 24 horas sobre qualquer incidente de segurança que afete dados pessoais tratados na Plataforma.</p>
 
           <h3>8.3. Transferência internacional</h3>
-          <p>Os dados são processados em parte em servidores nos Estados Unidos (Railway, US West), conforme informado na <Link href="/privacidade">Política de Privacidade</Link> da Plataforma. A Empresa Parceira deve informar essa transferência nos seus próprios documentos de privacidade destinados aos usuários finais.</p>
+          <p>O processamento principal ocorre em servidores no Brasil (Google Cloud Run, região São Paulo), conforme informado na <Link href="/privacidade">Política de Privacidade</Link> da Plataforma. Outros provedores (Resend, Expo, Vercel) processam dados fora do Brasil; a Empresa Parceira deve informar essas transferências nos seus próprios documentos de privacidade destinados aos usuários finais.</p>
 
           <h3>8.4. Suboperadores</h3>
           <p>A Aumigão Walk Tecnologia utiliza suboperadores de dados (Asaas para pagamentos, Resend para e-mails, Expo para notificações push, Neon para banco de dados). A Empresa Parceira autoriza o uso desses suboperadores para a operação da Plataforma.</p>

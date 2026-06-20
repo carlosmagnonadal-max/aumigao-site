@@ -222,9 +222,9 @@ export default function PrivacidadePage() {
                 <td>Brasil</td>
               </tr>
               <tr>
-                <td><strong>Railway</strong></td>
+                <td><strong>Google Cloud Run</strong></td>
                 <td>Hospedagem da aplicação e armazenamento de uploads (fotos, documentos KYC)</td>
-                <td>EUA (US West)</td>
+                <td>Brasil (sa-east-1, São Paulo)</td>
               </tr>
               <tr>
                 <td><strong>Neon</strong></td>
@@ -255,7 +255,7 @@ export default function PrivacidadePage() {
 
         <div className={s.sec}>
           <h2>6. Transferência internacional de dados</h2>
-          <p>A aplicação da Plataforma é hospedada em servidores nos <strong>Estados Unidos</strong> (Railway, região US West), onde dados pessoais são processados durante o uso do serviço. O banco de dados relacional está hospedado no <strong>Brasil</strong> (Neon, região de São Paulo). Outros provedores (Resend, Expo, Vercel) também processam dados fora do Brasil.</p>
+          <p>A aplicação da Plataforma é hospedada em servidores no <strong>Brasil</strong> (Google Cloud Run, região São Paulo). O banco de dados relacional está hospedado igualmente no <strong>Brasil</strong> (Neon, região de São Paulo). Outros provedores (Resend, Expo, Vercel) processam dados fora do Brasil.</p>
           <p>Essas transferências internacionais observam as bases e salvaguardas previstas nos arts. 33 a 36 da LGPD, incluindo cláusulas contratuais com garantias adequadas de proteção, e se limitam ao estritamente necessário para a prestação do serviço.</p>
         </div>
 
@@ -296,6 +296,10 @@ export default function PrivacidadePage() {
               <tr>
                 <td>Dados do formulário de contato do site</td>
                 <td>Até 2 anos após o último contato, salvo conversão em cliente</td>
+              </tr>
+              <tr>
+                <td>Dados de geolocalização (pings de GPS durante o passeio)</td>
+                <td>Até 7 dias após o encerramento do passeio, com expurgo automático; retidos para fins de segurança e rastreabilidade do serviço</td>
               </tr>
               <tr>
                 <td>Dados após exercício de direito de eliminação</td>

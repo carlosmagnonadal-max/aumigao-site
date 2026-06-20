@@ -195,7 +195,7 @@ export default function TermosPasseadorPage() {
 
           <h3>9.1. Dados coletados do Passeador</h3>
           <p>A Aumigão Walk Tecnologia coleta os seguintes dados pessoais do Passeador: nome completo, e-mail, telefone, CPF, data de nascimento, endereço, senha (cifrada), documento de identidade (RG/CNH), selfie, comprovante de residência, histórico de passeios, avaliações recebidas, registros de acesso, localização durante os passeios e token de notificação push.</p>
-          <p>Os documentos de identidade e selfie (dados de verificação/KYC) são armazenados em volume de disco nos servidores da Plataforma (Railway, conforme <Link href="/privacidade">Política de Privacidade</Link>) e utilizados exclusivamente para fins de verificação de identidade e prevenção a fraudes.</p>
+          <p>Os documentos de identidade e selfie (dados de verificação/KYC) são armazenados em servidores da Plataforma no Brasil (Google Cloud Run, região São Paulo, conforme <Link href="/privacidade">Política de Privacidade</Link>) e utilizados exclusivamente para fins de verificação de identidade e prevenção a fraudes.</p>
 
           <h3>9.2. Finalidades do tratamento</h3>
           <p>Os dados do Passeador são utilizados para: (i) verificação de identidade e prevenção a fraudes (KYC); (ii) gerenciamento de perfil e atividades na Plataforma; (iii) processamento de repasses; (iv) avaliação de desempenho e gestão de qualidade; (v) comunicações operacionais; (vi) cumprimento de obrigações legais; (vii) decisões sobre suspensão e desativação (dados tratados com base no art. 20 da LGPD, com garantia do direito de revisão previsto na Cláusula 8).</p>
