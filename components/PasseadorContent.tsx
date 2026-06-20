@@ -7,6 +7,7 @@ import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
+import { WHATSAPP_LINK } from "../lib/contact";
 
 function qr(url: string) {
   return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=15111d&bgcolor=ffffff&data=${encodeURIComponent(url)}`;
@@ -225,16 +226,16 @@ export function PasseadorContent() {
                 <p style={{ marginTop: 18, fontSize: 15.5, lineHeight: 1.55, color: "#cfc6e0", maxWidth: "46ch" }}>
                   Ganhos, agenda, score e passeios num app só. Cadastre-se uma vez e receba demanda de várias empresas pet parceiras.
                 </p>
-                <div style={{ display: "flex", gap: 10, marginTop: 20, flexWrap: "wrap" }}>
-                  <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 20px", borderRadius: 12, background: "#fff", color: "#15111d", textDecoration: "none", fontWeight: 700, fontSize: 13.5 }}> App Store</a>
-                  <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 20px", borderRadius: 12, background: "#fff", color: "#15111d", textDecoration: "none", fontWeight: 700, fontSize: 13.5 }}>▶ Google Play</a>
+                <div style={{ display: "flex", gap: 10, marginTop: 20, flexWrap: "wrap", alignItems: "center" }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 18px", borderRadius: 12, background: "rgba(255,255,255,.08)", color: "#cfc6e0", fontWeight: 700, fontSize: 13.5, border: "1px solid rgba(255,255,255,.16)" }}>Em breve nas lojas</span>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 48, padding: "0 20px", borderRadius: 12, background: "#fff", color: "#15111d", textDecoration: "none", fontWeight: 700, fontSize: 13.5 }}>Entrar na lista de espera</a>
                 </div>
               </div>
               <div style={{ flex: "none", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
                 <div style={{ background: "#fff", padding: 9, borderRadius: 16 }}>
-                  <img src={qr("https://www.aumigaowalk.com.br")} alt="QR para baixar o Walk" style={{ width: 132, height: 132, display: "block" }} />
+                  <img src={qr(WHATSAPP_LINK)} alt="QR para entrar na lista de espera do Walk" style={{ width: 132, height: 132, display: "block" }} />
                 </div>
-                <span style={{ fontSize: 11.5, color: "#a99fc0" }}>Aponte a câmera do celular</span>
+                <span style={{ fontSize: 11.5, color: "#a99fc0" }}>Aponte a câmera para entrar na lista</span>
               </div>
             </div>
           </Reveal>

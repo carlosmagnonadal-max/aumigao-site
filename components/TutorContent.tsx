@@ -8,6 +8,7 @@ import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
+import { WHATSAPP_LINK } from "../lib/contact";
 
 function qr(url: string) {
   return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=1c1611&bgcolor=fffdf8&data=${encodeURIComponent(url)}`;
@@ -187,9 +188,9 @@ export function TutorContent() {
       <section className={`${e.section} ${e.alt}`} id="baixar">
         <div className={e.container}>
           <Reveal>
-            <div className={e.eyebrow}><i /> Baixe o app</div>
+            <div className={e.eyebrow}><i /> Em breve nas lojas</div>
             <h2 className={e.h2}>Acompanhe os passeios na <em>palma da mão.</em></h2>
-            <p className={e.lead}>Aponte a câmera no QR ou baixe pela loja: agende, acompanhe ao vivo no mapa e avalie cada passeio.</p>
+            <p className={e.lead}>O app chega em breve às lojas. Entre na lista de espera para ser avisado no lançamento — agende, acompanhe ao vivo no mapa e avalie cada passeio.</p>
           </Reveal>
           <Reveal>
             <div className={e.dl} style={{ marginTop: "clamp(20px,4vh,36px)" }}>
@@ -198,11 +199,12 @@ export function TutorContent() {
                 <div className={e.dlTitle}>Agende e acompanhe ao vivo</div>
                 <p className={e.dlDesc}>Mapa em tempo real, fotos do passeio e avaliação — tudo no seu celular.</p>
                 <div className={e.dlBadges}>
-                  <a className={e.dlBadge} href="#"> Baixar na<small>App Store</small></a>
-                  <a className={e.dlBadge} href="#">▶ Disponível no<small>Google Play</small></a>
+                  <span className={e.dlBadge} style={{ opacity: .72, cursor: "default" }}> App Store<small>Em breve</small></span>
+                  <span className={e.dlBadge} style={{ opacity: .72, cursor: "default" }}>▶ Google Play<small>Em breve</small></span>
                 </div>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={e.dlBadge} style={{ marginTop: 12 }}>✦ Entrar na<small>lista de espera</small></a>
               </div>
-              <div className={e.dlQR}><img src={qr("https://www.aumigaowalk.com.br")} alt="QR para baixar o app do tutor" /></div>
+              <div className={e.dlQR}><img src={qr(WHATSAPP_LINK)} alt="QR para entrar na lista de espera do app do tutor" /></div>
             </div>
           </Reveal>
           <Reveal>
