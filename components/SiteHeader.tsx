@@ -10,12 +10,12 @@ export function SiteHeader() {
         </a>
         <nav className={s.nav}>
           <span className={s.navLinks}>
-            <a href="/#plataforma-por-dentro">Como funciona</a>
-            <a href="/#planos">Planos</a>
-            <a href="/#white-label">White Label</a>
+            <a href="/#portas">Como funciona</a>
+            <a href="/para-empresas#planos">Planos</a>
+            <a href="/para-empresas">White Label</a>
           </span>
           <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost}>Portal do parceiro</a>
-          <a href="/#contato" className={s.navCta}>Solicitar diagnóstico</a>
+          <a href="/contato?perfil=empresa" className={s.navCta}>Solicitar diagnóstico</a>
         </nav>
       </div>
     </header>

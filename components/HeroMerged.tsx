@@ -25,7 +25,7 @@ export function HeroMerged() {
       <div className={s.grain} />
 
       <header className={s.topbar}>
-        <a href="#" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
+        <a href="/" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
         <nav className={s.nav}>
           <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost} style={{ border: "1.5px solid var(--roxo)", borderRadius: 40, padding: "10px 18px", color: "var(--roxo)", fontWeight: 700 }}>Portal do parceiro ↗</a>
           <a href="/contato?perfil=empresa" className={s.navCta}>Solicitar diagnóstico</a>

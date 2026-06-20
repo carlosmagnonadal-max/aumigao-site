@@ -1,24 +1,56 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 
-// ─── A4: Rate limit simples por IP (in-memory, janela deslizante) ─────────────
-// Limite: 10 requisições por janela de 60 segundos por IP.
-// NOTA: este controle é por instância de servidor (processo Node). Em produção com
-// múltiplas instâncias (Vercel Serverless), cada função tem seu próprio mapa.
-// Para rate limit global cross-instância, migrar para Vercel KV ou Vercel Firewall
-// (regra de WAF por rota). Este controle já protege contra uso casual/acidental.
-const RATE_WINDOW_MS = 60_000; // 1 minuto
-const RATE_MAX_REQ = 10;       // requisições por janela
+// ─── A4: Rate limit por IP ─────────────────────────────────────────────────────
+// Estratégia em dois níveis:
+//   1. Upstash Redis (sliding window, cross-instância) — preferencial em produção.
+//      Requer UPSTASH_REDIS_REST_URL e UPSTASH_REDIS_REST_TOKEN no ambiente.
+//   2. Fallback in-memory — ativo quando as envs do Upstash não estão configuradas.
+//      Protege contra abuso casual, mas não é compartilhado entre instâncias Vercel.
+//
+// Limite: 10 req/min por IP (sliding window).
 
+const RATE_WINDOW_MS = 60_000; // 1 minuto
+const RATE_MAX_REQ = 10;
+
+// ── Nível 1: Upstash (carregado lazily só se as envs existirem) ──────────────
+let upstashLimiter: import("@upstash/ratelimit").Ratelimit | null = null;
+
+async function getUpstashLimiter() {
+  if (upstashLimiter !== null) return upstashLimiter;
+
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return null; // fallback in-memory
+
+  try {
+    const { Redis } = await import("@upstash/redis");
+    const { Ratelimit } = await import("@upstash/ratelimit");
+    upstashLimiter = new Ratelimit({
+      redis: new Redis({ url, token }),
+      limiter: Ratelimit.slidingWindow(RATE_MAX_REQ, "60 s"),
+      analytics: false,
+      prefix: "aw_chat_rl",
+    });
+  } catch {
+    // Se a importação falhar por qualquer razão, cai no fallback
+    upstashLimiter = null;
+  }
+
+  return upstashLimiter;
+}
+
+// ── Nível 2: Fallback in-memory ───────────────────────────────────────────────
+// NOTA: controle por instância Node (não cross-instância em Vercel Serverless).
+// Protege contra uso casual/acidental. Configure Upstash para proteção global.
 interface RateEntry { count: number; windowStart: number }
 const rateLimitMap = new Map<string, RateEntry>();
 
-function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number } {
+function checkRateLimitMemory(ip: string): { allowed: boolean; retryAfterSec: number } {
   const now = Date.now();
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now - entry.windowStart >= RATE_WINDOW_MS) {
-    // Nova janela
     rateLimitMap.set(ip, { count: 1, windowStart: now });
     return { allowed: true, retryAfterSec: 0 };
   }
@@ -32,13 +64,30 @@ function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number }
   return { allowed: true, retryAfterSec: 0 };
 }
 
-// Limpeza periódica do mapa para evitar vazamento de memória em instâncias longas
+// Limpeza periódica do mapa in-memory para evitar vazamento de memória
 setInterval(() => {
   const now = Date.now();
   for (const [ip, entry] of rateLimitMap.entries()) {
     if (now - entry.windowStart >= RATE_WINDOW_MS * 2) rateLimitMap.delete(ip);
   }
 }, RATE_WINDOW_MS * 5);
+
+// ── Checagem unificada ────────────────────────────────────────────────────────
+async function checkRateLimit(ip: string): Promise<{ allowed: boolean; retryAfterSec: number }> {
+  const limiter = await getUpstashLimiter();
+
+  if (limiter) {
+    try {
+      const { success, reset } = await limiter.limit(ip);
+      const retryAfterSec = success ? 0 : Math.ceil((reset - Date.now()) / 1000);
+      return { allowed: success, retryAfterSec };
+    } catch {
+      // Se o Redis estiver indisponível, cai no fallback silenciosamente
+    }
+  }
+
+  return checkRateLimitMemory(ip);
+}
 
 const SYSTEM_PROMPT = `Você é Au, o assistente virtual do Aumigão Walk — uma plataforma premium de passeios pet com operação auditável, matching inteligente e White Label para empresas.
 
@@ -121,7 +170,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     request.headers.get("x-real-ip") ??
     "unknown";
-  const { allowed, retryAfterSec } = checkRateLimit(ip);
+  const { allowed, retryAfterSec } = await checkRateLimit(ip);
   if (!allowed) {
     return NextResponse.json(
       { error: "Muitas requisições. Tente novamente em instantes." },

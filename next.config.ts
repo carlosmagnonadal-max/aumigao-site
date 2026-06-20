@@ -1,28 +1,11 @@
 import type { NextConfig } from "next";
 
 // ─── A3: Headers de segurança ────────────────────────────────────────────────
-// CSP usa 'unsafe-inline'/'unsafe-eval' no script-src porque o Next.js injeta
-// runtime inline sem nonce; manter permissivo aqui é o mesmo padrão do admin-web.
-// connect-src: 'self' para /api/chat + https://api.anthropic.com (SDK chama direto
-// do servidor, mas incluso por precaução) + https://api.aumigaowalk.com.br para o
-// formulário de contato. img-src: data: e https: para avatares e imagens externas.
-// TODO (pós-lançamento): migrar script-src para nonce/hash quando Next suportar
-// nonce via middleware estável, removendo 'unsafe-inline'/'unsafe-eval'.
-const CSP = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
-  "connect-src 'self' https://api.aumigaowalk.com.br https://api.anthropic.com",
-  "frame-ancestors 'none'",
-  "base-uri 'self'",
-  "form-action 'self' https://api.aumigaowalk.com.br",
-  "object-src 'none'",
-].join("; ");
-
+// Content-Security-Policy NÃO está aqui — é gerada por request no middleware.ts
+// com nonce por request (elimina 'unsafe-inline'/'unsafe-eval' do script-src).
+// Os demais headers de segurança continuam aplicados aqui para todas as rotas,
+// inclusive as que o middleware não cobre (assets estáticos, /api/*).
 const securityHeaders = [
-  { key: "Content-Security-Policy", value: CSP },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },

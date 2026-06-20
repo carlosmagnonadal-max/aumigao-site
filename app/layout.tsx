@@ -8,7 +8,6 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { RevealInit } from "@/components/RevealInit";
 import { AuWidget } from "@/components/AuWidget";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -43,6 +42,8 @@ const fraunces = Fraunces({
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aumigaowalk.com.br"),
@@ -106,7 +107,6 @@ export default function RootLayout({
       <body>
         <ScrollProgress />
         <RevealInit />
-        <Header />
         <main>{children}</main>
         <Footer />
         <AuWidget />

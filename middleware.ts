@@ -1,0 +1,78 @@
+import { NextRequest, NextResponse } from "next/server";
+
+// sec-CSP — nonce-based CSP por request.
+// Elimina 'unsafe-inline' e 'unsafe-eval' do script-src.
+// Um nonce base64url de 128 bits é gerado a cada request, incluído no CSP via
+// 'nonce-<value>' + 'strict-dynamic' (permite que scripts carregados pelo nonce
+// propaguem confiança — necessário para o runtime/chunks do Next.js).
+// O nonce é repassado ao layout via header interno x-nonce.
+//
+// style-src mantém 'unsafe-inline': Next.js, Tailwind, framer-motion e o AuWidget
+// injetam estilos inline via JSX — não há nonce de stylesheet estável ainda.
+// O ganho de segurança real está em script-src (vetor XSS); style-src inline é
+// um risco menor e geralmente aceito em arquiteturas Next.js.
+//
+// connect-src inclui qrserver.com (QR codes gerados externamente nos sub-sites).
+// img-src inclui data:/blob:/https: para avatares, QR codes e imagens externas.
+
+/** Gera um nonce criptograficamente aleatório (base64url, 16 bytes = 128 bits). */
+function generateNonce(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return btoa(String.fromCharCode(...bytes))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
+
+/** Monta o valor do header Content-Security-Policy com nonce. */
+function buildCsp(nonce: string): string {
+  return [
+    "default-src 'self'",
+    // 'strict-dynamic' permite que scripts autorizados pelo nonce carreguem outros
+    // scripts (runtime/chunks do Next.js). 'self' é mantido como fallback para
+    // browsers que não entendem strict-dynamic.
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    // style-src mantém 'unsafe-inline' (ver comentário no topo do arquivo).
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https:",
+    "font-src 'self' data:",
+    // connect-src: /api/chat + backend + qrserver (QR codes nos sub-sites)
+    "connect-src 'self' https://api.aumigaowalk.com.br https://api.qrserver.com",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self' https://api.aumigaowalk.com.br",
+    "object-src 'none'",
+  ].join("; ");
+}
+
+export function middleware(req: NextRequest) {
+  const nonce = generateNonce();
+  const csp = buildCsp(nonce);
+
+  // Repassa o nonce ao layout via header de request interno (lido pelo Server Component)
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-nonce", nonce);
+  // CRÍTICO: o Next.js lê o nonce do header Content-Security-Policy da REQUEST para
+  // aplicá-lo automaticamente nos seus próprios <script> inline de bootstrap/streaming.
+  // Sem isto, com 'strict-dynamic' + sem 'unsafe-inline', os scripts do Next são
+  // bloqueados e a página não hidrata. (Padrão oficial do Next.js para CSP com nonce.)
+  requestHeaders.set("Content-Security-Policy", csp);
+
+  const res = NextResponse.next({ request: { headers: requestHeaders } });
+
+  // Aplica o CSP no response (substitui o valor estático do next.config para todas as rotas)
+  res.headers.set("Content-Security-Policy", csp);
+
+  return res;
+}
+
+export const config = {
+  // Aplica a todas as rotas exceto: internals do Next, assets estáticos e API.
+  // A rota /api/chat não precisa de CSP (é JSON puro, sem HTML).
+  // Os outros headers de segurança (HSTS, X-Frame-Options, etc.) continuam sendo
+  // aplicados pelo next.config.ts para todas as rotas.
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|webmanifest)$).*)",
+  ],
+};
