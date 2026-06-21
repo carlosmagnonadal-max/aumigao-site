@@ -6,6 +6,7 @@ import {
   JetBrains_Mono,
   Schibsted_Grotesk,
 } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { RevealInit } from "@/components/RevealInit";
@@ -86,11 +87,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Lê o nonce injetado pelo middleware (x-nonce) para uso futuro em <Script nonce={nonce}>
+  const nonce = (await headers()).get("x-nonce") ?? "";
+  void nonce; // disponível para <Script nonce={nonce}> futuros; suprime warning de não-uso
   return (
     <html
       lang="pt-BR"

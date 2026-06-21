@@ -43,7 +43,7 @@ export function ContactSection() {
             tabIndex={-1}
             autoComplete="off"
             aria-hidden="true"
-            style={{ display: "none" }}
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
           />
           <div className={s.fgrid}>
             <label className={s.field}><span>Nome</span><input required className={s.finput} value={form.name} onChange={setField("name")} placeholder="Seu nome" maxLength={MAX_SHORT} /></label>

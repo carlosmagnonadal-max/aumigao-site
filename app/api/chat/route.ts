@@ -166,6 +166,13 @@ function isValidMessage(msg: unknown): msg is ChatMessage {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // Verificação de Origin — protege custo Anthropic contra uso externo
+  const origin = request.headers.get("origin") ?? "";
+  const allowedOrigins = ["https://aumigaowalk.com.br", "https://www.aumigaowalk.com.br"];
+  if (origin && !allowedOrigins.some((o) => origin === o)) {
+    return NextResponse.json({ error: "Origem não permitida." }, { status: 403 });
+  }
+
   // A4: verificar rate limit antes de qualquer processamento
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -241,6 +248,22 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 
   const validMessages = messages as ChatMessage[];
+
+  // Validação de estrutura da conversa: primeira msg deve ser 'user' e roles devem alternar
+  if (validMessages[0].role !== "user") {
+    return NextResponse.json(
+      { error: "A primeira mensagem deve ter role 'user'." },
+      { status: 400 }
+    );
+  }
+  for (let i = 1; i < validMessages.length; i++) {
+    if (validMessages[i].role === validMessages[i - 1].role) {
+      return NextResponse.json(
+        { error: "Roles das mensagens devem alternar entre 'user' e 'assistant'." },
+        { status: 400 }
+      );
+    }
+  }
 
   try {
     const client = new Anthropic({ apiKey });

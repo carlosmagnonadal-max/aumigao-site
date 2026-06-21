@@ -78,6 +78,34 @@ export function useContactForm(): UseContactFormReturn {
       setStatus("sent");
       return;
     }
+    // Validação client-side independente do HTML (defesa em profundidade)
+    const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    if (!form.name.trim() || form.name.length > 200) {
+      setError("Nome é obrigatório e deve ter no máximo 200 caracteres.");
+      setStatus("error");
+      return;
+    }
+    if (!EMAIL_RE.test(form.email)) {
+      setError("E-mail inválido.");
+      setStatus("error");
+      return;
+    }
+    if (form.message.length > 2000) {
+      setError("Mensagem deve ter no máximo 2000 caracteres.");
+      setStatus("error");
+      return;
+    }
+    if (form.business_type && !BUSINESS_TYPES.includes(form.business_type)) {
+      setError("Tipo de negócio inválido.");
+      setStatus("error");
+      return;
+    }
+    if (form.interest && !INTERESTS.includes(form.interest)) {
+      setError("Interesse inválido.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
     setError("");
 
