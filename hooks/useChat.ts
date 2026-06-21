@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type Role = "user" | "assistant";
 
@@ -25,7 +25,7 @@ export function useChat(): UseChatReturn {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function send(): Promise<void> {
+  const send = useCallback(async (): Promise<void> => {
     const text = input.trim();
     if (!text || loading) return;
 
@@ -92,7 +92,7 @@ export function useChat(): UseChatReturn {
     } finally {
       setLoading(false);
     }
-  }
+  }, [input, messages, loading]);
 
   return { messages, input, setInput, loading, send };
 }

@@ -72,11 +72,20 @@ export function AuWidget() {
     }
   }, [messages, loading, open]);
 
-  // Foca o textarea ao abrir
+  // Foca o textarea ao abrir (RAF duplo: aguarda frame de pintura antes de focar)
   useEffect(() => {
-    if (open) {
-      setTimeout(() => textareaRef.current?.focus(), 80);
-    }
+    if (!open) return;
+    let raf1: number;
+    let raf2: number;
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        textareaRef.current?.focus();
+      });
+    });
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
   }, [open]);
 
   function toggleOpen() {
