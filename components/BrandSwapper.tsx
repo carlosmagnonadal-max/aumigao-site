@@ -118,13 +118,24 @@ export function BrandSwapper() {
               <div className={s.statc}><div className={s.statcV}>Nível 1</div><div className={s.statcL}>começando a rotina</div></div>
             </div>
 
-            <div className={s.nav}>
-              {[["🏠", "Início", true], ["🐾", "Passeios", false], ["❤️", "Pet", false], ["👤", "Conta", false], ["📋", "Planos", false]].map(([ic, lb, act]) => (
-                <div key={lb as string} className={act ? `${s.navI} ${s.navActive}` : s.navI}>
-                  <span className={s.navDot} />{lb}
+            {(() => {
+              const navItems: [string, string, boolean][] = [
+                ["🏠", "Início", true],
+                ["🐾", "Passeios", false],
+                ["❤️", "Pet", false],
+                ["👤", "Conta", false],
+                ["📋", "Planos", false],
+              ];
+              return (
+                <div className={s.nav}>
+                  {navItems.map(([ic, lb, act]) => (
+                    <div key={lb} className={act ? `${s.navI} ${s.navActive}` : s.navI}>
+                      <span className={s.navDot} />{lb}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           </div>
         </div>
       </div>
