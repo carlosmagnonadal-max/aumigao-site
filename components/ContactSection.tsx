@@ -28,11 +28,30 @@ export function ContactSection() {
     // M9: campo honeypot preenchido → bot detectado; abortar silenciosamente
     if (honeypot) { setStatus("sent"); return; }
     setStatus("sending"); setError("");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15_000);
+
     try {
-      const res = await fetch(`${API_URL}/api/contact`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
       if (!res.ok) { const d = (await res.json().catch(() => null)) as { detail?: string } | null; throw new Error(d?.detail || "Não foi possível enviar agora."); }
       setStatus("sent"); setForm(EMPTY);
-    } catch (err) { setStatus("error"); setError(err instanceof Error ? err.message : "Falha no envio."); }
+    } catch (err) {
+      clearTimeout(timeoutId);
+      if (err instanceof Error && err.name === "AbortError") {
+        setStatus("error");
+        setError("O servidor demorou demais. Tente novamente ou use o WhatsApp.");
+      } else {
+        setStatus("error");
+        setError(err instanceof Error ? err.message : "Falha no envio.");
+      }
+    }
   }
 
   return (
@@ -76,7 +95,7 @@ export function ContactSection() {
           </div>
           <div className={s.fsubmit}>
             <button type="submit" className={s.btn} disabled={status === "sending"}>{status === "sending" ? "Enviando…" : "Solicitar diagnóstico"} →</button>
-            {status === "error" ? <span className={s.ferr}>{error}</span> : <span className={s.fnote}>Retorno em até 1 dia útil</span>}
+            {status === "error" ? <span className={s.ferr} role="alert" aria-live="polite">{error}</span> : <span className={s.fnote}>Retorno em até 1 dia útil</span>}
           </div>
         </form>
       )}

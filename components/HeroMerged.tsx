@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { LiveMap } from "./LiveMap";
+import { useProtoClean } from "@/hooks/useProtoClean";
+import { ADMIN_PORTAL_URL } from "@/lib/contact";
 import s from "./hero-merged.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -12,10 +13,7 @@ const item: Variants = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0
 
 export function HeroMerged() {
   const reduce = useReducedMotion();
-  useEffect(() => {
-    document.documentElement.classList.add("proto-clean");
-    return () => document.documentElement.classList.remove("proto-clean");
-  }, []);
+  useProtoClean();
 
   return (
     <section className={s.hero}>
@@ -25,9 +23,9 @@ export function HeroMerged() {
       <div className={s.grain} />
 
       <header className={s.topbar}>
-        <a href="/" className={s.brand}><img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk</a>
+        <a href="/" className={s.brand}><Image className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" width={40} height={40} /> Aumigão Walk</a>
         <nav className={s.nav}>
-          <a href="https://aumigao-admin-web.vercel.app" target="_blank" rel="noopener noreferrer" className={s.navGhost} style={{ border: "1.5px solid var(--roxo)", borderRadius: 40, padding: "10px 18px", color: "var(--roxo)", fontWeight: 700 }}>Portal do parceiro ↗</a>
+          <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener noreferrer" className={s.navGhost} style={{ border: "1.5px solid var(--roxo)", borderRadius: 40, padding: "10px 18px", color: "var(--roxo)", fontWeight: 700 }}>Portal do parceiro ↗</a>
           <a href="/contato?perfil=empresa" className={s.navCta}>Solicitar diagnóstico</a>
         </nav>
       </header>

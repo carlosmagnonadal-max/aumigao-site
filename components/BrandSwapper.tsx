@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties, type ChangeEvent } from "react";
+import { useState, useEffect, type CSSProperties, type ChangeEvent } from "react";
 import s from "./BrandSwapper.module.css";
 
 const examples = [
@@ -17,12 +17,20 @@ function initials(name: string) {
 export function BrandSwapper() {
   const [name, setName] = useState("Aumigão Walk");
   const [color, setColor] = useState("#ff6a2b");
-  const [logo, setLogo] = useState<string | null>(null);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [logoUrl, setLogoUrl] = useState<string | null>(null);
   const style = { "--b": color } as CSSProperties;
 
+  // Cria e revoga a objectURL dentro do mesmo efeito, garantindo ciclo de vida coeso.
+  useEffect(() => {
+    if (!logoFile) { setLogoUrl(null); return; }
+    const url = URL.createObjectURL(logoFile);
+    setLogoUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [logoFile]);
+
   function onLogo(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (file) setLogo(URL.createObjectURL(file));
+    setLogoFile(e.target.files?.[0] ?? null);
   }
 
   return (
@@ -41,7 +49,7 @@ export function BrandSwapper() {
               📷 Enviar logo
               <input type="file" accept="image/*" onChange={onLogo} />
             </label>
-            {logo && <button className={s.removeLogo} onClick={() => setLogo(null)}>remover</button>}
+            {logoUrl && <button className={s.removeLogo} onClick={() => setLogoFile(null)}>remover</button>}
           </div>
         </div>
 
@@ -56,7 +64,7 @@ export function BrandSwapper() {
         <div className={s.examples}>
           Exemplos:
           {examples.map((ex) => (
-            <button key={ex.name} className={s.exChip} onClick={() => { setName(ex.name); setColor(ex.color); setLogo(null); }}>{ex.name}</button>
+            <button key={ex.name} className={s.exChip} onClick={() => { setName(ex.name); setColor(ex.color); setLogoFile(null); }}>{ex.name}</button>
           ))}
         </div>
       </div>
@@ -69,9 +77,9 @@ export function BrandSwapper() {
 
             <div className={s.appHead}>
               <div className={s.logoBox}>
-                {logo
+                {logoUrl
                   ? <>
-                      <span className={s.logoIcon}><img src={logo} alt="logo" /></span>
+                      <span className={s.logoIcon}><img src={logoUrl} alt="logo" /></span>
                       <span className={s.logoName}>{name}<small>passeios pet</small></span>
                     </>
                   : <>

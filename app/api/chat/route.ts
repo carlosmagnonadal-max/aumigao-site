@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/contact";
 
 // ─── A4: Rate limit por IP ─────────────────────────────────────────────────────
 // Estratégia em dois níveis:
@@ -142,7 +143,7 @@ Prestativo, direto, leve. Sem exageros. Respostas curtas (2-4 parágrafos max). 
 ## Escalada
 Se não souber responder ou o visitante pedir para falar com alguém: ofereça as duas opções de contato comercial —
 1. Formulário em aumigaowalk.com.br/contato (retorno em até 1 dia útil).
-2. WhatsApp comercial: (71) 3599-9983 — https://wa.me/557135999983 (canal de contato comercial; não é suporte técnico para clientes já cadastrados).
+2. WhatsApp comercial: ${WHATSAPP_DISPLAY} — ${WHATSAPP_LINK} (canal de contato comercial; não é suporte técnico para clientes já cadastrados).
 Encerre com "Posso te ajudar com mais alguma coisa?".`;
 
 const MAX_MESSAGES = 20;
@@ -252,8 +253,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     const replyBlock = response.content.find((block) => block.type === "text");
-    const reply =
+    const rawReply =
       replyBlock && replyBlock.type === "text" ? replyBlock.text : "";
+    // Garante que o cliente nunca receba bolha vazia se a API não retornar texto
+    const reply =
+      rawReply.trim().length > 0
+        ? rawReply
+        : "Não consegui gerar uma resposta. Tente novamente.";
 
     return NextResponse.json({ reply });
   } catch {

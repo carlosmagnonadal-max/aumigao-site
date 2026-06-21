@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { SubHero } from "./SubHero";
 import { WalkPhoneDark } from "./WalkPhoneDark";
@@ -8,10 +6,7 @@ import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
 import { WHATSAPP_LINK } from "../lib/contact";
-
-function qr(url: string) {
-  return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=15111d&bgcolor=ffffff&data=${encodeURIComponent(url)}`;
-}
+import { qrCodeUrl } from "../lib/qr";
 
 const appBullets = [
   ["Ganhos transparentes.", "Veja repasse, gorjetas e incentivos passeio a passeio — e saque fácil."],
@@ -233,7 +228,7 @@ export function PasseadorContent() {
               </div>
               <div style={{ flex: "none", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
                 <div style={{ background: "#fff", padding: 9, borderRadius: 16 }}>
-                  <img src={qr(WHATSAPP_LINK)} alt="QR para entrar na lista de espera do Walk" style={{ width: 132, height: 132, display: "block" }} />
+                  <img src={qrCodeUrl(WHATSAPP_LINK, { fg: "15111d", bg: "ffffff" })} alt="QR para entrar na lista de espera do Walk" style={{ width: 132, height: 132, display: "block" }} />
                 </div>
                 <span style={{ fontSize: 11.5, color: "#a99fc0" }}>Aponte a câmera para entrar na lista</span>
               </div>

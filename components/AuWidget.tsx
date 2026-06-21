@@ -6,6 +6,7 @@ type Role = "user" | "assistant";
 interface Message {
   role: Role;
   content: string;
+  isError?: boolean;
 }
 
 const MAX_MESSAGES = 20;
@@ -38,6 +39,8 @@ function Bubble({ msg }: { msg: Message }) {
       }}
     >
       <div
+        role={msg.isError ? "alert" : undefined}
+        aria-live={msg.isError ? "polite" : undefined}
         style={{
           maxWidth: "82%",
           borderRadius: isUser ? "18px 18px 4px 18px" : "18px 18px 18px 4px",
@@ -101,30 +104,58 @@ export function AuWidget() {
     setInput("");
     setLoading(true);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 20_000);
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history }),
+        signal: controller.signal,
       });
 
-      if (!res.ok) throw new Error("non-ok");
+      clearTimeout(timeoutId);
+
+      if (!res.ok) {
+        // Tenta extrair a mensagem de erro da API (ex.: rate-limit 429)
+        let errMsg = "Desculpe, tive um problema técnico. Tente novamente em instantes.";
+        try {
+          const d = (await res.json()) as { error?: string };
+          if (d.error) errMsg = d.error;
+        } catch {
+          // body não-JSON — mantém fallback
+        }
+        throw new Error(errMsg);
+      }
 
       const data = (await res.json()) as { reply?: string };
-      const reply = data.reply ?? "Não entendi. Pode reformular?";
+      // Fallback para reply vazio (bloco de texto ausente na resposta da API)
+      const reply =
+        data.reply && data.reply.trim().length > 0
+          ? data.reply
+          : "Não consegui gerar uma resposta. Tente novamente.";
 
       setMessages((prev) =>
         [...prev, { role: "assistant" as Role, content: reply }].slice(-MAX_MESSAGES)
       );
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId);
+
+      let content = "Desculpe, tive um problema técnico. Tente novamente em instantes.";
+
+      if (err instanceof Error) {
+        if (err.name === "AbortError") {
+          content = "O servidor demorou demais. Tente novamente ou use o WhatsApp.";
+        } else {
+          content = err.message;
+        }
+      }
+
       setMessages((prev) =>
         [
           ...prev,
-          {
-            role: "assistant" as Role,
-            content:
-              "Desculpe, tive um problema técnico. Tente novamente em instantes.",
-          },
+          { role: "assistant" as Role, content, isError: true },
         ].slice(-MAX_MESSAGES)
       );
     } finally {
@@ -326,7 +357,7 @@ export function AuWidget() {
           }}
         >
           {displayed.map((msg, i) => (
-            <Bubble key={i} msg={msg} />
+            <Bubble key={`${msg.role}-${i}`} msg={msg} />
           ))}
 
           {/* Loading indicator */}

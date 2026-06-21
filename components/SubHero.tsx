@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { LiveMap } from "./LiveMap";
 import type { AudienceKey } from "@/lib/audiences";
+import { useProtoClean } from "@/hooks/useProtoClean";
 import s from "./hero-merged.module.css";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -32,10 +33,7 @@ export type SubHeroProps = {
  */
 export function SubHero({ eyebrow, title, sub, primary, ghost, stats, image, imageAlt, showMap = true }: SubHeroProps) {
   const reduce = useReducedMotion();
-  useEffect(() => {
-    document.documentElement.classList.add("proto-clean");
-    return () => document.documentElement.classList.remove("proto-clean");
-  }, []);
+  useProtoClean();
 
   return (
     <section className={s.hero}>
@@ -46,7 +44,7 @@ export function SubHero({ eyebrow, title, sub, primary, ghost, stats, image, ima
 
       <header className={s.topbar}>
         <Link href="/" className={s.brand}>
-          <img className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" /> Aumigão Walk
+          <Image className={s.brandMark} src="/icon-rounded-512.png" alt="Aumigão Walk" width={40} height={40} /> Aumigão Walk
         </Link>
         <nav className={s.nav}>
           <Link href={primary.href} className={s.navCta}>{primary.label}</Link>

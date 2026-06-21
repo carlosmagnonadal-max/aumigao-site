@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { SubHero } from "./SubHero";
@@ -9,10 +7,7 @@ import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
 import { WHATSAPP_LINK } from "../lib/contact";
-
-function qr(url: string) {
-  return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=0&color=1c1611&bgcolor=fffdf8&data=${encodeURIComponent(url)}`;
-}
+import { qrCodeUrl } from "../lib/qr";
 
 const seguranca = [
   { icon: "⛉", role: "Verificação", title: "Passeador verificado (KYC)", desc: "Documento, identidade e credenciamento conferidos antes de pegar o seu cão. Só passeia quem passou pela operação." },
@@ -204,7 +199,7 @@ export function TutorContent() {
                 </div>
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={e.dlBadge} style={{ marginTop: 12 }}>✦ Entrar na<small>lista de espera</small></a>
               </div>
-              <div className={e.dlQR}><img src={qr(WHATSAPP_LINK)} alt="QR para entrar na lista de espera do app do tutor" /></div>
+              <div className={e.dlQR}><img src={qrCodeUrl(WHATSAPP_LINK)} alt="QR para entrar na lista de espera do app do tutor" width={132} height={132} /></div>
             </div>
           </Reveal>
           <Reveal>

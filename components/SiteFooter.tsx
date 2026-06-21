@@ -1,3 +1,4 @@
+import Image from "next/image";
 import s from "./editorial-home.module.css";
 
 /** Footer reutilizável (mesmo da home) para as páginas internas. */
@@ -7,7 +8,7 @@ export function SiteFooter() {
       <div className={s.container}>
         <div className={s.footerTop}>
           <div>
-            <a href="/" className={s.footerLogo}><img src="/icon-rounded-512.png" alt="" /><span>Aumigão Walk</span></a>
+            <a href="/" className={s.footerLogo}><Image src="/icon-rounded-512.png" alt="" width={40} height={40} /><span>Aumigão Walk</span></a>
             <p className={s.footerTagline}>Infraestrutura de passeios pet: operação auditável, rede credenciada e White Label — com a sua marca.</p>
           </div>
           <div className={s.footerCol}>
