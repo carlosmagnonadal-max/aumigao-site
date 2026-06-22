@@ -19,6 +19,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false, // remove o header X-Powered-By: Next.js (reduz fingerprinting)
   distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {
     return [
