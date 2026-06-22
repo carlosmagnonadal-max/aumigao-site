@@ -51,6 +51,8 @@ function buildCsp(nonce: string): string {
     "base-uri 'self'",
     "form-action 'self' https://api.aumigaowalk.com.br",
     "object-src 'none'",
+    // Sobe http->https em qualquer subrecurso acidental (anti mixed-content/downgrade).
+    "upgrade-insecure-requests",
   ].join("; ");
 }
 
