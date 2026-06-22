@@ -28,7 +28,10 @@ function generateNonce(): string {
 /** Monta o valor do header Content-Security-Policy com nonce. */
 function buildCsp(nonce: string): string {
   return [
-    "default-src 'self'",
+    // 'none' = deny-by-default: tudo que não estiver explicitamente liberado abaixo
+    // é bloqueado. Por isso enumeramos manifest/worker/media (antes pegavam carona
+    // no fallback 'self'). Endurece o CSP (Observatory: "deny by default").
+    "default-src 'none'",
     // 'strict-dynamic' permite que scripts autorizados pelo nonce carreguem outros
     // scripts (runtime/chunks do Next.js). 'self' é mantido como fallback para
     // browsers que não entendem strict-dynamic.
@@ -39,6 +42,11 @@ function buildCsp(nonce: string): string {
     "font-src 'self' data:",
     // connect-src: /api/chat + backend + qrserver (QR codes nos sub-sites)
     "connect-src 'self' https://api.aumigaowalk.com.br https://api.qrserver.com",
+    // Necessários explicitamente sob default-src 'none':
+    "manifest-src 'self'", // webmanifest
+    "worker-src 'self' blob:", // web workers do Next (blob:)
+    "media-src 'self'", // áudio/vídeo
+    "frame-src 'none'", // sem iframes
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self' https://api.aumigaowalk.com.br",
