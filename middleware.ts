@@ -47,12 +47,18 @@ function buildCsp(nonce: string): string {
 }
 
 export function middleware(req: NextRequest) {
+  // Propagate or generate a requestId for end-to-end log correlation.
+  // crypto.randomUUID() is Web Crypto API — Edge-safe.
+  const requestId =
+    req.headers.get("x-request-id") ?? crypto.randomUUID();
+
   const nonce = generateNonce();
   const csp = buildCsp(nonce);
 
-  // Repassa o nonce ao layout via header de request interno (lido pelo Server Component)
+  // Repassa o nonce, requestId ao layout via headers de request internos
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("x-request-id", requestId);
   // CRÍTICO: o Next.js lê o nonce do header Content-Security-Policy da REQUEST para
   // aplicá-lo automaticamente nos seus próprios <script> inline de bootstrap/streaming.
   // Sem isto, com 'strict-dynamic' + sem 'unsafe-inline', os scripts do Next são
@@ -63,6 +69,8 @@ export function middleware(req: NextRequest) {
 
   // Aplica o CSP no response (substitui o valor estático do next.config para todas as rotas)
   res.headers.set("Content-Security-Policy", csp);
+  // Expose requestId to client for correlation (non-sensitive)
+  res.headers.set("x-request-id", requestId);
 
   return res;
 }

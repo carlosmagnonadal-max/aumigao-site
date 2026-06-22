@@ -1,6 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 import { WHATSAPP_DISPLAY, WHATSAPP_LINK } from "@/lib/contact";
+import { getLogger } from "@/lib/logger";
+
+const log = getLogger("api/chat");
 
 // ─── A4: Rate limit por IP ─────────────────────────────────────────────────────
 // Estratégia em dois níveis:
@@ -33,8 +36,10 @@ async function getUpstashLimiter() {
       analytics: false,
       prefix: "aw_chat_rl",
     });
-  } catch {
+  } catch (err) {
     // Se a importação falhar por qualquer razão, cai no fallback
+    const cause = err instanceof Error ? err.message : String(err);
+    log.warn({ cause }, "Upstash rate-limiter init failed — falling back to in-memory (no cross-instance protection)");
     upstashLimiter = null;
   }
 
@@ -82,8 +87,10 @@ async function checkRateLimit(ip: string): Promise<{ allowed: boolean; retryAfte
       const { success, reset } = await limiter.limit(ip);
       const retryAfterSec = success ? 0 : Math.ceil((reset - Date.now()) / 1000);
       return { allowed: success, retryAfterSec };
-    } catch {
-      // Se o Redis estiver indisponível, cai no fallback silenciosamente
+    } catch (err) {
+      // Redis indisponível: cai no fallback in-memory (sem proteção cross-instância)
+      const cause = err instanceof Error ? err.message : String(err);
+      log.warn({ cause }, "Upstash Redis unavailable for rate-limit check — falling back to in-memory");
     }
   }
 
@@ -166,6 +173,10 @@ function isValidMessage(msg: unknown): msg is ChatMessage {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // Accept requestId from upstream (e.g. middleware) or generate one
+  const requestId =
+    request.headers.get("x-request-id") ?? crypto.randomUUID();
+
   // Verificação de Origin — protege custo Anthropic contra uso externo
   const origin = request.headers.get("origin") ?? "";
   const allowedOrigins = ["https://aumigaowalk.com.br", "https://www.aumigaowalk.com.br"];
@@ -180,6 +191,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     "unknown";
   const { allowed, retryAfterSec } = await checkRateLimit(ip);
   if (!allowed) {
+    log.warn({ requestId, ip, retryAfterSec }, "chat rate-limit hit");
     return NextResponse.json(
       { error: "Muitas requisições. Tente novamente em instantes." },
       {
@@ -285,7 +297,25 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         : "Não consegui gerar uma resposta. Tente novamente.";
 
     return NextResponse.json({ reply });
-  } catch {
+  } catch (err) {
+    // Log structured error — NEVER include apiKey or any credential value.
+    // Extract safe fields from Anthropic SDK errors (status, error.type, message).
+    const status =
+      typeof (err as Record<string, unknown>).status === "number"
+        ? (err as Record<string, unknown>).status
+        : undefined;
+    const errorType =
+      typeof (err as Record<string, unknown>).error === "object" &&
+      (err as Record<string, unknown>).error !== null
+        ? (
+            (err as Record<string, unknown>).error as Record<string, unknown>
+          ).type
+        : undefined;
+    const message = err instanceof Error ? err.message : String(err);
+    log.error(
+      { requestId, ip, status, errorType, message },
+      "chat: Anthropic API call failed",
+    );
     return NextResponse.json(
       { error: "Chat temporariamente indisponível." },
       { status: 503 }
