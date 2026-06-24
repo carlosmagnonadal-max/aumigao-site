@@ -27,6 +27,24 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      // ── Deep Link verification files (PASSO 5) ──────────────────────────────
+      // iOS Universal Links: AASA precisa de Content-Type: application/json
+      // SEM redirect (301/302 invalida a verificação do OS).
+      // Android App Links: assetlinks.json também precisa de application/json.
+      // O middleware.ts não cobre assets estáticos (ver matcher), então o header
+      // deve vir aqui (next.config.ts headers).
+      {
+        source: "/.well-known/apple-app-site-association",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+        ],
+      },
+      {
+        source: "/.well-known/assetlinks.json",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+        ],
+      },
     ];
   },
   async redirects() {

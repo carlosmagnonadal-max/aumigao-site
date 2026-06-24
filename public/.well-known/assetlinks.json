@@ -1,0 +1,26 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aumigao.beta",
+      "sha256_cert_fingerprints": ["<SHA256_PLAY_APP_SIGNING>"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aumigao.walker",
+      "sha256_cert_fingerprints": ["<SHA256_PLAY_APP_SIGNING_WALKER>"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aumigao.tutor",
+      "sha256_cert_fingerprints": ["<SHA256_PLAY_APP_SIGNING_TUTOR>"]
+    }
+  }
+]
