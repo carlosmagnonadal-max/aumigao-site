@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "<APPLE_TEAM_ID>.com.aumigao.beta",
+        "paths": ["/c/*"]
+      },
+      {
+        "appID": "<APPLE_TEAM_ID>.com.aumigao.walker",
+        "paths": ["/c/*"]
+      },
+      {
+        "appID": "<APPLE_TEAM_ID>.com.aumigao.tutor",
+        "paths": ["/c/*"]
+      }
+    ]
+  }
+}
