@@ -50,10 +50,11 @@ export default async function TenantInvitePage({ params }: Props) {
     >
       <TenantInviteLanding slug={slug} />
 
-      <div className={s.note} style={{ marginTop: 48 }}>
-        Já tem o app?{" "}
-        <a href={`aumigao://c/${slug}`}>Abrir diretamente →</a>
-      </div>
+      {/* Já tem o app instalado? O Universal Link (https://app.aumigao.com.br/c/:slug)
+          é tentado automaticamente pelo componente acima. Não usamos custom-scheme
+          aqui porque "aumigao://" só funciona no build combinado; os apps reais
+          do tutor e do walker usam "aumigaotutor://" e "aumigaowalker://" — e
+          o site não sabe qual está instalado. O link universal cobre ambos. */}
     </InnerPage>
   );
 }
