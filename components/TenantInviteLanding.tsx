@@ -21,7 +21,7 @@ type Props = {
 
 // URL do Universal Link — mesmo esquema do app (scheme "aumigao" + rota /c/:slug).
 // iOS/Android interceptam antes de chegar ao browser se o app estiver instalado.
-const UNIVERSAL_BASE = "https://app.aumigao.com.br/c";
+const UNIVERSAL_BASE = "https://app.aumigaowalk.com.br/c";
 
 // Links de download do app. TestFlight para iOS (beta); Play Store quando publicado.
 const IOS_DOWNLOAD = "https://testflight.apple.com/join/aumigao"; // substituir pelo link real quando publicar

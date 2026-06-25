@@ -2,7 +2,7 @@
  * /c/[slug] — landing page de convite para o tenant (Modelo B).
  *
  * Este é o fallback do Universal Link / App Link para
- *   https://app.aumigao.com.br/c/:slug
+ *   https://app.aumigaowalk.com.br/c/:slug
  *
  * Quando o app está instalado, o SO intercepta o link antes de chegar aqui
  * e abre diretamente app/c/[slug].tsx. Esta página é exibida apenas quando:
@@ -15,10 +15,10 @@
  *   - Mostra links para baixar o app (TestFlight / Play Store quando disponível).
  *
  * Nota de deploy (PASSO 5):
- *   Para que os Universal Links / App Links funcionem, o domínio app.aumigao.com.br
+ *   Para que os Universal Links / App Links funcionem, o domínio app.aumigaowalk.com.br
  *   precisa servir:
- *     iOS:     https://app.aumigao.com.br/.well-known/apple-app-site-association
- *     Android: https://app.aumigao.com.br/.well-known/assetlinks.json
+ *     iOS:     https://app.aumigaowalk.com.br/.well-known/apple-app-site-association
+ *     Android: https://app.aumigaowalk.com.br/.well-known/assetlinks.json
  *   Esses arquivos são hospedados no PASSO 5, não aqui.
  */
 import type { Metadata } from "next";
@@ -50,7 +50,7 @@ export default async function TenantInvitePage({ params }: Props) {
     >
       <TenantInviteLanding slug={slug} />
 
-      {/* Já tem o app instalado? O Universal Link (https://app.aumigao.com.br/c/:slug)
+      {/* Já tem o app instalado? O Universal Link (https://app.aumigaowalk.com.br/c/:slug)
           é tentado automaticamente pelo componente acima. Não usamos custom-scheme
           aqui porque "aumigao://" só funciona no build combinado; os apps reais
           do tutor e do walker usam "aumigaotutor://" e "aumigaowalker://" — e
