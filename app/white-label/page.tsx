@@ -162,7 +162,7 @@ export default function WhiteLabelPage() {
         <div className={s.blockHead}>
           <p className={s.blockEye}><i /> Vamos começar</p>
           <h2 className={s.h2}>Vamos mapear o potencial <em>White Label</em> da sua empresa.</h2>
-          <p className={s.blockLead}>O diagnóstico analisa público, região, unidades, marca, operação e plano de lançamento.</p>
+          <p className={s.blockLead}>O diagnóstico analisa público, região, unidades, marca, operação e plano de lançamento. Conheça os planos Pro e Enterprise em{" "}<Link href="/para-empresas#planos" style={{ color: "var(--accent)", fontWeight: 600 }}>Para Empresas →</Link></p>
         </div>
         <ContactSection />
       </div>
