@@ -11,7 +11,7 @@ const painelBullets = [
   ["Operação ao vivo no mapa.", "Acompanhe todos os passeios em tempo real, do seu jeito, com a sua marca."],
   ["Rede de passeadores.", "Convide, credencie e gerencie a rede — sem recrutar ninguém do zero."],
   ["Financeiro rastreável.", "Repasses, comissões e relatórios com a sua marca, auditáveis ponta a ponta."],
-  ["Tudo white-label.", "App do tutor, app do passeador e painel — com a sua identidade."],
+  ["Marca própria no app e no painel.", "Logo, cores, nome e splash aplicados em runtime — sem builds separados. App publicado nas lojas é add-on (Pro) ou já incluído (Enterprise)."],
 ];
 
 const modules = [
@@ -24,9 +24,39 @@ const modules = [
 ];
 
 const plans = [
-  { name: "Starter", price: "R$197", per: "/mês", desc: "Pra começar a operar com marca própria.", feats: ["1 unidade", "Módulos essenciais", "Setup grátis", "Comissão 12% por passeio"], cta: "Solicitar diagnóstico", feat: false },
-  { name: "Business", price: "R$597", per: "/mês", desc: "Pra escalar a operação e fidelizar.", feats: ["2 unidades (+ extra)", "Habilitado a usar a rede de passeadores", "Recorrência + Pet Tour", "Comissão 8% por passeio"], cta: "Falar com a gente", feat: true },
-  { name: "Enterprise", price: "Sob consulta", per: "", desc: "Pra redes e multiunidades.", feats: ["Unidades sob medida", "Todos os módulos", "Comissão 5% por passeio", "Governança dedicada"], cta: "Solicitar proposta", feat: false },
+  {
+    name: "Pro",
+    price: "R$129,90",
+    per: "/mês",
+    desc: "Pra lançar e crescer com a sua marca.",
+    feats: [
+      "Marca própria no app e no painel (runtime)",
+      "Até 2 unidades",
+      "Rede de passeadores Aumigão disponível",
+      "Assinatura recorrente, Pet Tour e produtos próprios",
+      "Comissão 10% por passeio (operação própria)",
+      "App próprio nas lojas: add-on disponível",
+      "Onboarding assistido / prioridade alta",
+    ],
+    cta: "Solicitar diagnóstico",
+    feat: true,
+  },
+  {
+    name: "Enterprise",
+    price: "A partir de R$1.199,90",
+    per: "/mês",
+    desc: "Pra redes, multiunidades e projetos customizados.",
+    feats: [
+      "Tudo do Pro, mais:",
+      "App próprio nas lojas incluído (ícone e nome)",
+      "Até 4 unidades (acima disso, sob consulta)",
+      "Comissão 5% por passeio (operação própria)",
+      "Projetos customizados",
+      "Suporte dedicado / prioridade máxima",
+    ],
+    cta: "Solicitar proposta",
+    feat: false,
+  },
 ];
 
 const rollout = [
@@ -37,9 +67,10 @@ const rollout = [
 ];
 
 const faq = [
-  { q: "Quanto custa e quando começo a ganhar?", a: "Os planos vão de R$197 a R$597/mês (Enterprise sob consulta), com comissão por passeio conforme o plano (12% / 8% / 5%). Você lança com a sua marca e o passeio vira receita recorrente — o plano ideal sai do diagnóstico gratuito." },
+  { q: "Quanto custa e quando começo a ganhar?", a: "Os planos vão de R$129,90/mês (Pro) a R$1.199,90/mês (Enterprise). A comissão por passeio na operação própria é 10% no Pro e 5% no Enterprise. Você lança com a sua marca e o passeio vira receita recorrente — o plano ideal sai do diagnóstico gratuito." },
   { q: "Preciso de equipe técnica?", a: "Não. Você não monta tecnologia do zero nem contrata time de TI. A plataforma já existe: você escolhe o plano, personaliza com a sua marca e a operação roda com a nossa governança." },
-  { q: "Eu uso a rede pronta de passeadores?", a: "A partir do plano Business você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
+  { q: "Eu uso a rede pronta de passeadores?", a: "Em ambos os planos você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
+  { q: "E o app com a minha marca nas lojas?", a: "A marca própria (logo, cores, nome, splash) aparece no app em runtime desde o plano Pro, sem builds separados. Publicar um app com o seu ícone e nome nas lojas (App Store / Google Play) é um add-on no Pro e já vem incluído no Enterprise. Os detalhes saem no diagnóstico." },
   { q: "A base de tutores é minha?", a: "Sim. Os tutores são da sua empresa, com a sua marca e a sua carteira. Você opera; a Aumigão sustenta a tecnologia, a rede e os pagamentos por trás." },
 ];
 
