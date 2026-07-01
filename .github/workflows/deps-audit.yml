@@ -17,3 +17,11 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm audit --omit=dev --audit-level=high
+      - name: Gera SBOM (CycloneDX)
+        run: npm sbom --sbom-format cyclonedx --omit dev > sbom.json
+      - name: Publica SBOM como artifact
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6
+        with:
+          name: sbom-site
+          path: sbom.json
+          retention-days: 90
