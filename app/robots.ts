@@ -5,7 +5,14 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/api/",
+      disallow: [
+        "/api/",
+        "/live/",
+        "/pet/",
+        "/referral/",
+        "/tutor-referral/",
+        "/c/",
+      ],
     },
     sitemap: "https://aumigaowalk.com.br/sitemap.xml",
   };
