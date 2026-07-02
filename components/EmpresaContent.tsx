@@ -25,21 +25,53 @@ const modules = [
 
 const plans = [
   {
+    name: "Começar",
+    price: "R$0",
+    per: "/mês",
+    desc: "Para provar que funciona.",
+    feats: [
+      "Passeios avulsos individuais",
+      "Agenda, matching e GPS ao vivo",
+      "Perfil Vivo do Pet e relatórios ao tutor",
+      "Cobrança integrada",
+      "Comissão de 20% por passeio",
+      "Até 40 passeios/mês",
+      "Todo cadastro começa com 21 dias de Pro grátis",
+    ],
+    note: "Comissão de 20% sobre cada passeio. Apenas passeios avulsos individuais. Sem rede Aumigão. Limite de 40 passeios/mês.",
+    cta: "Criar conta grátis",
+    feat: false,
+    badge: null,
+    notIncluded: [
+      "Passeios compartilhados e Pet Tour",
+      "Planos mensais recorrentes",
+      "Cupons e indicações",
+      "Rede de passeadores Aumigão",
+      "White-label completo",
+    ],
+  },
+  {
     name: "Pro",
     price: "R$129,90",
     per: "/mês",
     desc: "Pra lançar e crescer com a sua marca.",
     feats: [
+      "Tudo do Começar, sem limites de passeios",
+      "Passeios compartilhados e Pet Tour",
+      "Planos mensais recorrentes e assinaturas",
+      "Cupons, indicações e boosts",
+      "Rede de passeadores Aumigão (comissão 18%)",
+      "Comissão 10% por passeio (operação própria)",
       "Marca própria no app e no painel (runtime)",
       "Até 2 unidades",
-      "Rede de passeadores Aumigão disponível",
-      "Assinatura recorrente, Pet Tour e produtos próprios",
-      "Comissão 10% por passeio (operação própria)",
       "App próprio nas lojas: add-on disponível",
       "Onboarding assistido / prioridade alta",
     ],
+    note: null,
     cta: "Solicitar diagnóstico",
     feat: true,
+    badge: "Mais popular",
+    notIncluded: null,
   },
   {
     name: "Enterprise",
@@ -51,11 +83,15 @@ const plans = [
       "App próprio nas lojas incluído (ícone e nome)",
       "Até 4 unidades (acima disso, sob consulta)",
       "Comissão 5% por passeio (operação própria)",
+      "Rede de passeadores (comissão 10%)",
       "Projetos customizados",
       "Suporte dedicado / prioridade máxima",
     ],
+    note: null,
     cta: "Solicitar proposta",
     feat: false,
+    badge: null,
+    notIncluded: null,
   },
 ];
 
@@ -67,7 +103,8 @@ const rollout = [
 ];
 
 const faq = [
-  { q: "Quanto custa e quando começo a ganhar?", a: "Os planos vão de R$129,90/mês (Pro) a R$1.199,90/mês (Enterprise). A comissão por passeio na operação própria é 10% no Pro e 5% no Enterprise. Você lança com a sua marca e o passeio vira receita recorrente — o plano ideal sai do diagnóstico gratuito." },
+  { q: "O plano Começar é grátis mesmo?", a: "Sim, R$0 de mensalidade. A plataforma cobra apenas 20% por passeio realizado — você só paga quando opera. Ao crescer, o Pro fica mais barato: com 10% de comissão e acesso à rede Aumigão, o custo por passeio cai rápido e as features de recorrência e cupons multiplicam a receita." },
+  { q: "Quanto custa e quando começo a ganhar?", a: "O Começar é gratuito (20% por passeio, até 40/mês). O Pro custa R$129,90/mês com comissão de 10% e acesso à rede. O Enterprise a partir de R$1.199,90/mês com 5% e app dedicado. Todo cadastro começa com 21 dias de Pro completo grátis — o plano ideal sai do diagnóstico gratuito." },
   { q: "Preciso de equipe técnica?", a: "Não. Você não monta tecnologia do zero nem contrata time de TI. A plataforma já existe: você escolhe o plano, personaliza com a sua marca e a operação roda com a nossa governança." },
   { q: "Eu uso a rede pronta de passeadores?", a: "Em ambos os planos você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
   { q: "E o app com a minha marca nas lojas?", a: "A marca própria (logo, cores, nome, splash) aparece no app em runtime desde o plano Pro, sem builds separados. Publicar um app com o seu ícone e nome nas lojas (App Store / Google Play) é um add-on no Pro e já vem incluído no Enterprise. Os detalhes saem no diagnóstico." },
@@ -177,22 +214,32 @@ export function EmpresaContent() {
         <div className={e.container}>
           <Reveal>
             <div className={e.eyebrow}><i /> Planos</div>
-            <h2 className={e.h2}>Comece pequeno. Cresça com a <em>operação.</em></h2>
-            <p className={e.lead}>Você não monta tecnologia do zero nem contrata time técnico. Escolhe o plano, lança com a sua marca e a operação roda.</p>
+            <h2 className={e.h2}>Comece <em>grátis.</em> Cresça com a operação.</h2>
+            <p className={e.lead}>Três planos para cada momento da sua empresa. Todo cadastro começa com 21 dias de Pro completo — sem cartão.</p>
           </Reveal>
           <Stagger className={e.plans}>
             {plans.map((p) => (
               <RevealItem key={p.name} className={`${e.plan} ${p.feat ? e.planFeat : ""}`}>
-                {p.feat && <span className={e.planBadge}>Mais indicado</span>}
+                {p.badge && <span className={e.planBadge}>{p.badge}</span>}
                 <div className={e.planName}>{p.name}</div>
                 <div className={e.planPrice}>{p.price}<small>{p.per}</small></div>
                 <p className={e.planDesc}>{p.desc}</p>
                 <ul className={e.planUl}>{p.feats.map((f) => <li key={f} className={e.planLi}><span>✓</span> {f}</li>)}</ul>
-                <Link href="/contato?perfil=empresa" className={`${e.planCta} ${p.feat ? e.planCtaFill : ""}`}>{p.cta}</Link>
+                {p.notIncluded && (
+                  <ul className={e.planUl} style={{ marginTop: 0 }}>
+                    {p.notIncluded.map((f) => (
+                      <li key={f} className={e.planLi} style={{ opacity: 0.45 }}>
+                        <span style={{ color: "var(--muted)" }}>✗</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {p.note && <p className={e.plansNote} style={{ marginTop: 12, marginBottom: 0 }}>{p.note}</p>}
+                <Link href="/contato?perfil=empresa" className={`${e.planCta} ${p.feat ? e.planCtaFill : ""}`} style={{ marginTop: 20 }}>{p.cta}</Link>
               </RevealItem>
             ))}
           </Stagger>
-          <p className={e.plansNote}>Valores de referência — o plano e a configuração ideais saem do diagnóstico gratuito. Comissão por passeio conforme o plano.</p>
+          <p className={e.plansNote}>Plano Começar sem mensalidade; comissão de 20% por passeio realizado. Pro e Enterprise: comissão conforme o plano. O diagnóstico gratuito define a configuração ideal.</p>
         </div>
       </section>
 
