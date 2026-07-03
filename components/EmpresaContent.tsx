@@ -41,7 +41,7 @@ const plans = [
     cta: "Criar conta grátis",
     feat: false,
     badge: "Comece sem risco",
-    trialChip: "21 dias de Pro grátis",
+    trialChip: "Primeiros 7 dias com Pro completo",
     notIncluded: [
       "Evolução do Pet (linha do tempo e gráficos)",
       "Passeios compartilhados e Pet Tour",
@@ -108,7 +108,7 @@ const rollout = [
 
 const faq = [
   { q: "O plano Começar é grátis mesmo?", a: "Sim, R$0 de mensalidade. A plataforma cobra apenas 20% por passeio realizado — você só paga quando opera. Ao crescer, o Pro fica mais barato: com 10% de comissão e acesso à rede Aumigão, o custo por passeio cai rápido e as features de recorrência e cupons multiplicam a receita." },
-  { q: "Quanto custa e quando começo a ganhar?", a: "O Começar é gratuito (20% por passeio, até 40/mês). O Pro custa R$129,90/mês com comissão de 10% e acesso à rede. O Enterprise a partir de R$1.199,90/mês com 5% e app dedicado. Todo cadastro começa com 21 dias de Pro completo grátis — o plano ideal sai do diagnóstico gratuito." },
+  { q: "Quanto custa e quando começo a ganhar?", a: "O Começar é gratuito (20% por passeio, até 40/mês). O Pro custa R$129,90/mês com comissão de 10% e acesso à rede. O Enterprise a partir de R$1.199,90/mês com 5% e app dedicado. Todo cadastro começa com 7 dias de Pro completo grátis — o plano ideal sai do diagnóstico gratuito." },
   { q: "Preciso de equipe técnica?", a: "Não. Você não monta tecnologia do zero nem contrata time de TI. A plataforma já existe: você escolhe o plano, personaliza com a sua marca e a operação roda com a nossa governança." },
   { q: "Eu uso a rede pronta de passeadores?", a: "Em ambos os planos você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
   { q: "E o app com a minha marca nas lojas?", a: "A marca própria (logo, cores, nome, splash) aparece no app em runtime desde o plano Pro, sem builds separados. Publicar um app com o seu ícone e nome nas lojas (App Store / Google Play) é um add-on no Pro e já vem incluído no Enterprise. Os detalhes saem no diagnóstico." },
@@ -219,7 +219,7 @@ export function EmpresaContent() {
           <Reveal>
             <div className={e.eyebrow}><i /> Planos</div>
             <h2 className={e.h2}>Comece <em>grátis.</em> Cresça com a operação.</h2>
-            <p className={e.lead}>Três planos para cada momento da sua empresa. Todo cadastro começa com 21 dias de Pro completo — sem cartão.</p>
+            <p className={e.lead}>Três planos para cada momento da sua empresa. Todo cadastro começa com 7 dias de Pro completo — sem cartão.</p>
           </Reveal>
           <Stagger className={e.plans}>
             {plans.map((p) => (
