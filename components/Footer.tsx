@@ -5,18 +5,18 @@ const groups = [
   {
     title: "Plataforma",
     links: [
-      { href: "/#funciona", label: "Como funciona" },
-      { href: "/#confianca", label: "Confiança" },
-      { href: "/#whitelabel", label: "White Label" },
-      { href: "/#cta", label: "Contato" },
+      { href: "/#portas", label: "Como funciona" },
+      { href: "/para-empresas", label: "White Label" },
+      { href: "/para-empresas#planos", label: "Planos" },
+      { href: "/contato", label: "Contato" },
     ],
   },
   {
     title: "Participantes",
     links: [
-      { href: "/#jornada", label: "Para tutores" },
-      { href: "/#passeadores", label: "Seja passeador" },
-      { href: "/#whitelabel", label: "Para empresas" },
+      { href: "/tutor", label: "Para tutores" },
+      { href: "/seja-passeador", label: "Seja passeador" },
+      { href: "/para-empresas", label: "Para empresas" },
     ],
   },
   {
