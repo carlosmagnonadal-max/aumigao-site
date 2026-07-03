@@ -36,12 +36,12 @@ const plans = [
       "Comissão de 20% por passeio",
       "Até 40 passeios/mês",
       "Até 2 pets por tutor",
-      "Todo cadastro começa com 21 dias de Pro grátis",
     ],
     note: "Comissão de 20% sobre cada passeio. Apenas passeios avulsos individuais. Sem rede Aumigão. Limite de 40 passeios/mês e 2 pets por tutor.",
     cta: "Criar conta grátis",
     feat: false,
-    badge: null,
+    badge: "Comece sem risco",
+    trialChip: "21 dias de Pro grátis",
     notIncluded: [
       "Evolução do Pet (linha do tempo e gráficos)",
       "Passeios compartilhados e Pet Tour",
@@ -73,6 +73,7 @@ const plans = [
     cta: "Solicitar diagnóstico",
     feat: true,
     badge: "Mais popular",
+    trialChip: null,
     notIncluded: null,
   },
   {
@@ -93,6 +94,7 @@ const plans = [
     cta: "Solicitar proposta",
     feat: false,
     badge: null,
+    trialChip: null,
     notIncluded: null,
   },
 ];
@@ -221,9 +223,10 @@ export function EmpresaContent() {
           </Reveal>
           <Stagger className={e.plans}>
             {plans.map((p) => (
-              <RevealItem key={p.name} className={`${e.plan} ${p.feat ? e.planFeat : ""}`}>
-                {p.badge && <span className={e.planBadge}>{p.badge}</span>}
+              <RevealItem key={p.name} className={`${e.plan} ${p.feat ? e.planFeat : ""} ${!p.feat && p.badge ? e.planEntry : ""}`}>
+                {p.badge && <span className={p.feat ? e.planBadge : e.planEntryBadge}>{p.badge}</span>}
                 <div className={e.planName}>{p.name}</div>
+                {p.trialChip && <span className={e.planTrialChip}>✦ {p.trialChip}</span>}
                 <div className={e.planPrice}>{p.price}<small>{p.per}</small></div>
                 <p className={e.planDesc}>{p.desc}</p>
                 <ul className={e.planUl}>{p.feats.map((f) => <li key={f} className={e.planLi}><span>✓</span> {f}</li>)}</ul>
