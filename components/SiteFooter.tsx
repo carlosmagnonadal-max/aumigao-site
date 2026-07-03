@@ -16,7 +16,7 @@ export function SiteFooter() {
             <a href="/#plataforma-por-dentro">Como funciona</a>
             <a href="/#plataforma">Módulos</a>
             <a href="/#white-label">White Label</a>
-            <a href="/#planos">Planos</a>
+            <a href="/para-empresas#planos">Planos</a>
           </div>
           <div className={s.footerCol}>
             <h4>Participantes</h4>
