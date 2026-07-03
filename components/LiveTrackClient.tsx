@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import s from "./inner.module.css";
+import lm from "./LiveMap.module.css";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.aumigaowalk.com.br";
 
@@ -15,6 +19,9 @@ type LivePayload = {
 };
 
 type UiState = "loading" | "active" | "ended" | "notfound";
+
+// Roxo da marca (Calor Editorial) — usado na trilha e no marcador do mapa.
+const BRAND_PURPLE = "#6d2bbd";
 
 export function LiveTrackClient({ token }: { token: string }) {
   const [state, setState] = useState<UiState>("loading");
@@ -66,62 +73,131 @@ export function LiveTrackClient({ token }: { token: string }) {
         }).addTo(leafletMap.current);
       }
       if (trail.current) trail.current.remove();
-      trail.current = L.polyline(pts, { color: "#f97316", weight: 4 }).addTo(leafletMap.current);
+      trail.current = L.polyline(pts, { color: BRAND_PURPLE, weight: 4 }).addTo(leafletMap.current);
       if (marker.current) marker.current.remove();
-      marker.current = L.circleMarker(last, { radius: 8, color: "#f97316", fillOpacity: 1 }).addTo(leafletMap.current);
+      marker.current = L.circleMarker(last, {
+        radius: 8,
+        color: BRAND_PURPLE,
+        fillColor: BRAND_PURPLE,
+        fillOpacity: 1,
+      }).addTo(leafletMap.current);
       leafletMap.current.setView(last, leafletMap.current.getZoom());
     })();
     return () => { cancelled = true; };
   }, [state, data]);
 
-  if (state === "loading") return <Centered>Carregando…</Centered>;
-  if (state === "notfound") return <Centered>Link inválido.</Centered>;
+  if (state === "loading") {
+    return (
+      <LiveShell tenantName={null} tenantLogo={null}>
+        <p className={s.lead} style={{ textAlign: "center", marginInline: "auto" }}>Carregando…</p>
+      </LiveShell>
+    );
+  }
+  if (state === "notfound") {
+    return (
+      <LiveShell tenantName={null} tenantLogo={null}>
+        <div style={{ textAlign: "center" }}>
+          <h1 className={s.h1} style={{ fontSize: "clamp(24px,4vw,38px)", marginInline: "auto" }}>Link inválido</h1>
+          <p className={s.lead} style={{ marginInline: "auto" }}>
+            Esse link de acompanhamento não existe ou foi digitado errado.
+          </p>
+        </div>
+      </LiveShell>
+    );
+  }
   if (state === "ended") {
     return (
-      <Centered>
-        <h1>Esse passeio já terminou 🐾</h1>
-        <p>Quer acompanhar seu pet ao vivo também?</p>
-        <Cta slug={null} />
-      </Centered>
+      <LiveShell tenantName={data?.tenant.name ?? null} tenantLogo={data?.tenant.logo_url ?? null}>
+        <div style={{ textAlign: "center" }}>
+          <h1 className={s.h1} style={{ fontSize: "clamp(24px,4vw,38px)", marginInline: "auto" }}>
+            Esse passeio já terminou 🐾
+          </h1>
+          <p className={s.lead} style={{ margin: "16px auto 28px" }}>Quer acompanhar seu pet ao vivo também?</p>
+          <Cta slug={data?.tenant.slug || null} />
+        </div>
+      </LiveShell>
     );
   }
 
   const petName = data?.pet_first_name || "o pet";
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: 16 }}>
-      <header style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-        {data?.tenant.logo_url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={data.tenant.logo_url} alt={data.tenant.name || ""} height={40} />
-        ) : null}
-        <strong>{data?.tenant.name || "Aumigão"}</strong>
-      </header>
-      <h1 style={{ fontSize: 20 }}>🐕 {petName} está passeando ao vivo</h1>
-      <div ref={mapRef} style={{ height: 360, borderRadius: 12, overflow: "hidden", margin: "12px 0" }} />
-      <Cta slug={data?.tenant.slug || null} />
-      <p style={{ fontSize: 12, color: "#666", marginTop: 16 }}>
+    <LiveShell tenantName={data?.tenant.name ?? null} tenantLogo={data?.tenant.logo_url ?? null}>
+      <div className={lm.head} style={{ marginBottom: 4 }}>
+        <h1
+          style={{
+            margin: 0,
+            fontFamily: "var(--font-fraunces), serif",
+            fontWeight: 600,
+            fontSize: "clamp(22px,3.4vw,32px)",
+            letterSpacing: "-.01em",
+            color: "var(--ink)",
+          }}
+        >
+          🐕 {petName} está passeando
+        </h1>
+        <span className={lm.badge}>
+          <span className={lm.dot} />
+          <span>Ao vivo</span>
+        </span>
+      </div>
+      <div
+        ref={mapRef}
+        style={{
+          height: 380,
+          borderRadius: 18,
+          overflow: "hidden",
+          border: "1px solid var(--hair)",
+          margin: "16px 0 22px",
+          boxShadow: "0 26px 54px -30px rgba(80,40,10,.4)",
+        }}
+      />
+      <div style={{ textAlign: "center" }}>
+        <Cta slug={data?.tenant.slug || null} />
+      </div>
+      <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 18, textAlign: "center", lineHeight: 1.5 }}>
         Localização aproximada, exibida apenas durante o passeio.
       </p>
-    </main>
+    </LiveShell>
+  );
+}
+
+/** Shell editorial claro com header da marca (padrão das páginas internas). */
+function LiveShell({
+  tenantName,
+  tenantLogo,
+  children,
+}: {
+  tenantName: string | null;
+  tenantLogo: string | null;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={s.page}>
+      <header className={s.header}>
+        <div className={s.headInner}>
+          <Link href="/" className={s.brand}>
+            {tenantLogo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={tenantLogo} alt="" width={34} height={34} className={s.brandMark} style={{ objectFit: "cover" }} />
+            ) : (
+              <Image src="/icon-rounded-512.png" alt="" width={34} height={34} className={s.brandMark} />
+            )}
+            <span>{tenantName || "Aumigão Walk"}</span>
+          </Link>
+        </div>
+      </header>
+      <div className={s.mainNarrow} style={{ maxWidth: 680, paddingBlock: "clamp(28px,5vh,56px)" }}>
+        {children}
+      </div>
+    </div>
   );
 }
 
 function Cta({ slug }: { slug: string | null }) {
   const href = slug ? `/c/${slug}` : "/";
   return (
-    <a href={href} style={{
-      display: "inline-block", background: "#f97316", color: "#fff",
-      padding: "12px 20px", borderRadius: 10, textDecoration: "none", fontWeight: 600,
-    }}>
+    <Link href={href} className={`${s.btn} ${s.btnPrimary}`}>
       Agende passeios para seu pet
-    </a>
-  );
-}
-
-function Centered({ children }: { children: React.ReactNode }) {
-  return (
-    <main style={{ minHeight: "60vh", display: "grid", placeItems: "center", textAlign: "center", padding: 24 }}>
-      <div>{children}</div>
-    </main>
+    </Link>
   );
 }
