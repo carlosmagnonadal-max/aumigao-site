@@ -2,7 +2,6 @@ import Link from "next/link";
 import { SubHero } from "./SubHero";
 import { AdminBrowser } from "./PlatformPeek";
 import { BrandSwapper } from "./BrandSwapper";
-import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
@@ -303,8 +302,6 @@ export function EmpresaContent() {
           </div>
         </div>
       </section>
-
-      <EditorialFooter />
     </div>
   );
 }

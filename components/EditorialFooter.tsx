@@ -6,7 +6,7 @@ import { ADMIN_PORTAL_URL } from "@/lib/contact";
 /** Rodapé dos sub-sites — mesmo visual da home, com links reais para os 3 mundos. */
 export function EditorialFooter() {
   return (
-    <footer className={s.footer}>
+    <footer className={`${s.page} ${s.footer}`}>
       <div className={s.container}>
         <div className={s.footerTop}>
           <div>

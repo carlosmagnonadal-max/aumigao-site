@@ -8,7 +8,7 @@ import {
 } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
-import { Footer } from "@/components/Footer";
+import { EditorialFooter } from "@/components/EditorialFooter";
 import { RevealInit } from "@/components/RevealInit";
 import { AuWidget } from "@/components/AuWidget";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -112,7 +112,7 @@ export default async function RootLayout({
         <ScrollProgress />
         <RevealInit />
         <main>{children}</main>
-        <Footer />
+        <EditorialFooter />
         <AuWidget />
       </body>
     </html>

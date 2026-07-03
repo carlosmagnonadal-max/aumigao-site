@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SubHero } from "./SubHero";
 import { TutorPhone } from "./PlatformPeek";
-import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
@@ -210,8 +209,6 @@ export function TutorContent() {
           </Reveal>
         </div>
       </section>
-
-      <EditorialFooter />
     </div>
   );
 }
