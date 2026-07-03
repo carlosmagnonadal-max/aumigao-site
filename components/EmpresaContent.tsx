@@ -88,6 +88,8 @@ const plans = [
       "Até 4 unidades (acima disso, sob consulta)",
       "Comissão 5% por passeio (operação própria)",
       "Rede de passeadores (comissão 10%)",
+      "Vitrine de destaques e promoções no app do tutor",
+      "Avaliação multi-equipe no perfil do pet (creche, banho e tosa, adestramento)",
       "Projetos customizados",
       "Suporte dedicado / prioridade máxima",
     ],
@@ -114,6 +116,7 @@ const faq = [
   { q: "Eu uso a rede pronta de passeadores?", a: "Em ambos os planos você fica habilitado a usar a rede: pode convidar passeadores de uma rede credenciada e avaliada pela Aumigão, em vez de recrutar e gerir do zero. Habilitação não é obrigação de uso — você convida quando e se quiser, e cada passeador decide se topa trabalhar com a sua marca. As condições de uso da rede são definidas no diagnóstico." },
   { q: "E o app com a minha marca nas lojas?", a: "A marca própria (logo, cores, nome, splash) aparece no app em runtime desde o plano Pro, sem builds separados. Publicar um app com o seu ícone e nome nas lojas (App Store / Google Play) é um add-on no Pro e já vem incluído no Enterprise. Os detalhes saem no diagnóstico." },
   { q: "A base de tutores é minha?", a: "Sim. Os tutores são da sua empresa, com a sua marca e a sua carteira. Você opera; a Aumigão sustenta a tecnologia, a rede e os pagamentos por trás." },
+  { q: "Qual a diferença real entre o Pro e o Enterprise?", a: "O Pro é para o profissional: sua marca no app, operação sem limites e acesso à rede. O Enterprise é a operação completa — seu negócio inteiro dentro do app: sua equipe (creche, banho e tosa, adestrador) registrando avaliações no perfil do pet, e sua vitrine de produtos e promoções visível ao tutor dentro do app. Além disso: app dedicado nas lojas, comissão de 5% e suporte dedicado." },
 ];
 
 export function EmpresaContent() {
@@ -212,8 +215,10 @@ export function EmpresaContent() {
               ["Ficha viva do pet", "Perfil rico, carteira de saúde e vacinas, e briefing de cada passeio entregue automaticamente ao passeador — com a cara da sua marca."],
               ["Diário do passeio", "As observações do passeador viram linha do tempo do pet: fotos, notas e registros de cada saída, organizados no app do tutor."],
               ["Índice de bem-estar", "Calculado dos passeios e observações, mostra ao tutor como o pet está evoluindo — e dá um motivo a mais para continuar agendando."],
-              ["Conquistas e ofertas", "Gamificação do pet e espaço para as próprias ofertas do tenant no perfil — tudo dentro do seu app, sem depender de canais externos."],
+              ["Conquistas e amiguinhos", "Gamificação do pet e registro de convivência com outros cães — tudo dentro do seu app, visível na linha do tempo. Disponível no Pro e Enterprise."],
               ["GPS ao vivo compartilhável", "O tutor acompanha o passeio em tempo real e pode compartilhar o link com quem quiser. Disponível em todos os planos."],
+              ["Avaliação multi-equipe · Enterprise", "A creche, o banho e tosa e o adestrador registram avaliações estruturadas diretamente no perfil do pet. Incidentes notificam o tutor na hora. Exclusivo Enterprise."],
+              ["Vitrine de destaques e promoções · Enterprise", "Seu negócio cura até 6 produtos ou serviços em destaque que aparecem no app do tutor com a sua marca — canal de oferta dentro do próprio app, sem depender de redes externas. Exclusivo Enterprise."],
             ].map(([tag, desc]) => (
               <RevealItem key={tag} className={e.module}>
                 <span className={e.moduleTag} style={{ color: "var(--accent)" }}>{tag}</span>
@@ -223,7 +228,7 @@ export function EmpresaContent() {
           </Stagger>
           <Reveal>
             <p className={e.plansNote} style={{ marginTop: "clamp(18px,3vh,28px)" }}>
-              Ficha do pet disponível no plano Começar. Evolução do Pet completa (linha do tempo, bem-estar, diário, conquistas, amiguinhos) disponível nos planos Pro e Enterprise.
+              Ficha do pet disponível no plano Começar. Evolução completa (linha do tempo, bem-estar, diário, conquistas, amiguinhos) disponível no Pro e Enterprise. Avaliação multi-equipe e vitrine de destaques são exclusivos do Enterprise.
             </p>
           </Reveal>
         </div>
