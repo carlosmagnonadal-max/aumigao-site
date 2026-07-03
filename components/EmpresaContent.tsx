@@ -30,9 +30,10 @@ const plans = [
     desc: "Para provar que funciona.",
     feats: [
       "Passeios avulsos individuais",
-      "Agenda, matching e GPS ao vivo",
-      "Perfil do pet e relatórios ao tutor",
-      "Cobrança integrada",
+      "Agenda, matching e cobrança integrada",
+      "Ficha do pet + briefing ao passeador",
+      "GPS ao vivo compartilhável (tutor acompanha e compartilha por link)",
+      "Evolução do Pet — teaser com cadeado (recurso Pro e Enterprise)",
       "Comissão de 20% por passeio",
       "Até 40 passeios/mês",
       "Até 2 pets por tutor",
@@ -43,7 +44,7 @@ const plans = [
     badge: "Comece sem risco",
     trialChip: "Primeiros 7 dias com Pro completo",
     notIncluded: [
-      "Evolução do Pet (linha do tempo e gráficos)",
+      "Evolução do Pet completa (linha do tempo, bem-estar, diário, conquistas, amiguinhos)",
       "Passeios compartilhados e Pet Tour",
       "Planos mensais recorrentes",
       "Cupons e indicações",
@@ -58,7 +59,7 @@ const plans = [
     desc: "Pra lançar e crescer com a sua marca.",
     feats: [
       "Tudo do Começar, sem limites de passeios ou pets",
-      "Evolução do Pet completa (linha do tempo e gráficos)",
+      "Perfil Vivo + Evolução do Pet completos no app do tutor (linha do tempo, bem-estar, diário, conquistas, amiguinhos)",
       "Passeios compartilhados e Pet Tour",
       "Planos mensais recorrentes e assinaturas",
       "Cupons, indicações e boosts",
@@ -191,6 +192,40 @@ export function EmpresaContent() {
             <p className={e.lead}>Troque nome, logo e cor e veja o app reskinar na hora. É assim que o tutor vai ver a sua empresa.</p>
           </Reveal>
           <Reveal><BrandSwapper /></Reveal>
+        </div>
+      </section>
+
+      {/* PERFIL VIVO DO PET — DIFERENCIAL WHITE LABEL */}
+      <section className={e.section} id="perfil-vivo">
+        <div className={e.container}>
+          <Reveal>
+            <div className={e.eyebrow}><i /> Retenção do tutor</div>
+            <h2 className={e.h2}>O tutor vê o pet evoluir — com a <em>sua marca.</em></h2>
+            <p className={e.lead}>
+              O histórico do pet mora no app do tenant. Quando o tutor abre para ver a
+              linha do tempo do cão, está abrindo o app da sua empresa. Isso é retenção
+              real: o dado cria o hábito e o hábito cria a receita recorrente.
+            </p>
+          </Reveal>
+          <Stagger className={e.modules}>
+            {[
+              ["Ficha viva do pet", "Perfil rico, carteira de saúde e vacinas, e briefing de cada passeio entregue automaticamente ao passeador — com a cara da sua marca."],
+              ["Diário do passeio", "As observações do passeador viram linha do tempo do pet: fotos, notas e registros de cada saída, organizados no app do tutor."],
+              ["Índice de bem-estar", "Calculado dos passeios e observações, mostra ao tutor como o pet está evoluindo — e dá um motivo a mais para continuar agendando."],
+              ["Conquistas e ofertas", "Gamificação do pet e espaço para as próprias ofertas do tenant no perfil — tudo dentro do seu app, sem depender de canais externos."],
+              ["GPS ao vivo compartilhável", "O tutor acompanha o passeio em tempo real e pode compartilhar o link com quem quiser. Disponível em todos os planos."],
+            ].map(([tag, desc]) => (
+              <RevealItem key={tag} className={e.module}>
+                <span className={e.moduleTag} style={{ color: "var(--accent)" }}>{tag}</span>
+                <span className={e.moduleDesc} style={{ marginTop: 8 }}>{desc}</span>
+              </RevealItem>
+            ))}
+          </Stagger>
+          <Reveal>
+            <p className={e.plansNote} style={{ marginTop: "clamp(18px,3vh,28px)" }}>
+              Ficha do pet disponível no plano Começar. Evolução do Pet completa (linha do tempo, bem-estar, diário, conquistas, amiguinhos) disponível nos planos Pro e Enterprise.
+            </p>
+          </Reveal>
         </div>
       </section>
 
