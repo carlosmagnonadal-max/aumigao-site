@@ -6,7 +6,7 @@ import { ADMIN_PORTAL_URL } from "@/lib/contact";
 /** Rodapé dos sub-sites — mesmo visual da home, com links reais para os 3 mundos. */
 export function EditorialFooter() {
   return (
-    <footer className={s.footer}>
+    <footer className={`${s.page} ${s.footer}`}>
       <div className={s.container}>
         <div className={s.footerTop}>
           <div>
@@ -25,7 +25,7 @@ export function EditorialFooter() {
           </div>
           <div className={s.footerCol}>
             <h4>Plataforma</h4>
-            <Link href="/#plataforma-por-dentro">Como funciona</Link>
+            <Link href="/#portas">Como funciona</Link>
             <Link href="/para-empresas">White Label</Link>
             <Link href="/para-empresas#planos">Planos</Link>
           </div>

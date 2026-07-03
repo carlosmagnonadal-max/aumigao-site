@@ -23,9 +23,9 @@ type Props = {
 // iOS/Android interceptam antes de chegar ao browser se o app estiver instalado.
 const UNIVERSAL_BASE = "https://app.aumigaowalk.com.br/c";
 
-// Links de download do app. TestFlight para iOS (beta); Play Store quando publicado.
-const IOS_DOWNLOAD = "https://testflight.apple.com/join/aumigao"; // substituir pelo link real quando publicar
-const ANDROID_DOWNLOAD = null; // Google Play ainda não publicado (em breve)
+// Links de download do app. Preencher quando os links reais existirem (App Store / Play Store).
+const IOS_DOWNLOAD: string | null = null; // TestFlight/App Store ainda não publicado (em breve)
+const ANDROID_DOWNLOAD: string | null = null; // Google Play ainda não publicado (em breve)
 
 export function TenantInviteLanding({ slug }: Props) {
   // Tenta abrir o app via Universal Link após montagem.
@@ -60,14 +60,23 @@ export function TenantInviteLanding({ slug }: Props) {
 
       {/* Botões de download */}
       <div className={s.btnRow} style={{ marginTop: 28, justifyContent: "center" }}>
-        <a
-          href={IOS_DOWNLOAD}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${s.btn} ${s.btnPrimary}`}
-        >
-          ▶ Baixar para iPhone (TestFlight)
-        </a>
+        {IOS_DOWNLOAD ? (
+          <a
+            href={IOS_DOWNLOAD}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${s.btn} ${s.btnPrimary}`}
+          >
+            ▶ Baixar para iPhone
+          </a>
+        ) : (
+          <span
+            className={`${s.btn} ${s.btnPrimary}`}
+            style={{ opacity: 0.6, cursor: "default" }}
+          >
+            ▶ App Store <small style={{ fontSize: 11 }}>(em breve)</small>
+          </span>
+        )}
         {ANDROID_DOWNLOAD ? (
           <a
             href={ANDROID_DOWNLOAD}

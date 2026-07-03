@@ -3,7 +3,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { HeroMerged } from "./HeroMerged";
-import { EditorialFooter } from "./EditorialFooter";
 import { Reveal, Stagger, RevealItem } from "./Motion";
 import e from "./editorial-home.module.css";
 import sub from "./subsite.module.css";
@@ -49,8 +48,6 @@ export function EditorialHomeV2() {
           </Stagger>
         </div>
       </section>
-
-      <EditorialFooter />
     </div>
   );
 }
