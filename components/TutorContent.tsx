@@ -114,6 +114,34 @@ export function TutorContent() {
         </div>
       </section>
 
+      {/* PERFIL VIVO DO PET */}
+      <section className={e.section} id="perfil-vivo">
+        <div className={e.container}>
+          <Reveal>
+            <div className={e.eyebrow}><i /> Perfil Vivo do Pet</div>
+            <h2 className={e.h2}>O histórico do seu pet, vivo e <em>crescendo.</em></h2>
+            <p className={e.lead}>
+              Cada passeio deixa uma marca. O Aumigão transforma cada saída em dados reais
+              sobre o seu cão — para que você acompanhe a evolução, identifique o que funciona
+              e se conecte com o pet de um jeito que vai além do passeio.
+            </p>
+          </Reveal>
+          <Stagger className={e.trilhas}>
+            {[
+              { tag: "◈ Ficha + saúde", title: "Tudo sobre o seu cão num só lugar", desc: "Perfil completo com carteira de vacinação, cuidados especiais e briefing enviado automaticamente ao passeador antes de cada saída. Sem repetir as mesmas informações toda vez." },
+              { tag: "◉ Diário do passeio", title: "Linha do tempo com fotos e observações", desc: "As notas e registros do passeador viram um diário organizado do seu pet — o que ele fez, como reagiu, o que o passeador observou. Passeia e você recebe." },
+              { tag: "◎ Evolução e bem-estar", title: "Veja o pet evoluir passeio a passeio", desc: "Índice de bem-estar calculado dos passeios e observações, gráficos de frequência e linha do tempo multi-fonte. Você tem provas de que está fazendo bem pro seu cão. (Plano Pro e Enterprise.)" },
+            ].map((item) => (
+              <RevealItem key={item.title} className={e.trilha}>
+                <span className={e.trilhaTag} style={{ color: "var(--accent)" }}>{item.tag}</span>
+                <div className={e.trilhaTitle}>{item.title}</div>
+                <p className={e.trilhaPromise}>{item.desc}</p>
+              </RevealItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
       {/* COMO FUNCIONA */}
       <section className={e.section} id="como-funciona">
         <div className={e.container}>
