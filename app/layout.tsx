@@ -106,7 +106,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#7B4DF2" />
+        <meta name="theme-color" content="#6d2bbd" />
       </head>
       <body>
         <ScrollProgress />
