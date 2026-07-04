@@ -20,7 +20,7 @@ export function EditorialFooter() {
           <div className={s.footerCol}>
             <h4>Participantes</h4>
             <Link href="/tutor">Para tutores</Link>
-            <Link href="/passeador">Seja passeador</Link>
+            <Link href="/seja-passeador">Cadastro de passeador</Link>
             <Link href="/para-empresas">Para empresas pet</Link>
           </div>
           <div className={s.footerCol}>

@@ -21,7 +21,7 @@ export function SiteFooter() {
           <div className={s.footerCol}>
             <h4>Participantes</h4>
             <a href="/#plataforma-por-dentro">Para tutores</a>
-            <a href="/#baixar">Seja passeador (Walk)</a>
+            <a href="/seja-passeador">Seja passeador (Walk)</a>
             <a href="/#white-label">Para empresas pet</a>
           </div>
           <div className={s.footerCol}>
