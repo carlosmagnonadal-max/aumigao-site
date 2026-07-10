@@ -1,17 +1,14 @@
 import { test, expect, type Page } from "@playwright/test";
 
 /**
- * Páginas institucionais principais. `white-label` é visitada por URL direta:
- * BUG REAL encontrado — nenhum header/footer do site linka para /white-label
- * (SiteHeader, SiteFooter e EditorialFooter só linkam "White Label" para
- * /para-empresas). A página existe e responde, mas é órfã de navegação.
- * Ver relatório final para detalhes.
+ * Páginas institucionais principais. `/white-label` foi removida (era órfã de
+ * navegação — nenhum header/footer linkava para ela) e agora é um redirect
+ * permanente para /para-empresas — ver teste dedicado mais abaixo.
  */
 const MAIN_ROUTES: { path: string; label: string }[] = [
   { path: "/para-empresas", label: "Para empresas" },
   { path: "/seja-passeador", label: "Seja passeador" },
   { path: "/tutor", label: "Tutor" },
-  { path: "/white-label", label: "White Label (órfã de navegação — ver nota acima)" },
   { path: "/termos", label: "Termos" },
   { path: "/privacidade", label: "Privacidade" },
   { path: "/contato", label: "Contato" },
@@ -49,20 +46,33 @@ test.describe("navegação — páginas principais", () => {
     await expect(page.getByRole("link", { name: /contrato white label/i })).toBeVisible();
   });
 
-  test("BUG REAL: páginas que usam InnerPage renderizam rodapé duplicado", async ({ page }) => {
-    // InnerPage (components/InnerPage.tsx) renderiza <SiteFooter/> internamente, E o
-    // layout raiz (app/layout.tsx) sempre renderiza <EditorialFooter/> depois de
-    // {children}. Toda página que usa InnerPage (contato, seja-passeador, white-label,
-    // termos*, privacidade) acaba com DOIS elementos <footer> visualmente idênticos
-    // na mesma página. Este teste documenta o bug para não regredir silenciosamente —
-    // se alguém corrigir, ele passa a falhar e deve ser atualizado para toHaveCount(1).
+  test("páginas que usam InnerPage renderizam um único rodapé", async ({ page }) => {
+    // Regressão: InnerPage (components/InnerPage.tsx) chegou a renderizar
+    // <SiteFooter/> internamente ALÉM do <EditorialFooter/> que o layout raiz
+    // (app/layout.tsx) sempre renderiza depois de {children} — duplicando o
+    // rodapé em contato, seja-passeador, termos* e privacidade. Corrigido
+    // removendo o <SiteFooter/> redundante de InnerPage.
     await page.goto("/contato");
-    await expect(page.locator("footer")).toHaveCount(2);
+    await expect(page.locator("footer")).toHaveCount(1);
+  });
+});
+
+test.describe("navegação — redirect de /white-label", () => {
+  test("/white-label redireciona permanentemente para /para-empresas", async ({ page }) => {
+    const response = await page.goto("/white-label");
+    expect(response?.ok()).toBeTruthy();
+    await expect(page).toHaveURL(/\/para-empresas$/);
+    await expectRealPage(page);
   });
 });
 
 test.describe("navegação — jornada pelo rodapé a partir da home", () => {
   test("home → tutor → seja-passeador → para-empresas → contato → termos → privacidade", async ({ page }) => {
+    // Este teste visita 7 rotas distintas em sequência; sob `next dev`, cada
+    // primeira visita a uma rota nesta execução dispara compilação sob
+    // demanda (segundos), e com múltiplos workers competindo pelo mesmo dev
+    // server o acumulado pode passar do timeout padrão de 30s.
+    test.setTimeout(60_000);
     await page.goto("/");
 
     // Rodapé da home (EditorialFooter) — instância única na home.

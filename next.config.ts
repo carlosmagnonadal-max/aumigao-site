@@ -53,6 +53,10 @@ const nextConfig: NextConfig = {
       // Páginas redundantes com a nova home (conteúdo coberto por "Por dentro da plataforma").
       { source: "/como-funciona", destination: "/#plataforma-por-dentro", permanent: true },
       { source: "/demo-white-label", destination: "/#plataforma-por-dentro", permanent: true },
+      // /white-label ficou órfã: nenhum link do site aponta para ela, todos os
+      // CTAs "White Label" levam a /para-empresas. Redirect permanente preserva
+      // SEO de quem já indexou/linkou a URL antiga.
+      { source: "/white-label", destination: "/para-empresas", permanent: true },
     ];
   },
 };
