@@ -255,7 +255,7 @@ export default function PrivacidadePage() {
 
         <div className={s.sec}>
           <h2>6. Transferência internacional de dados</h2>
-          <p>A aplicação da Plataforma é hospedada em servidores no <strong>Brasil</strong> (Google Cloud Run, região São Paulo). O banco de dados relacional está hospedado igualmente no <strong>Brasil</strong> (Neon, região de São Paulo). Outros provedores (Resend, Expo, Vercel e Sentry — este último para monitoramento técnico de erros, recebendo apenas dados de diagnóstico com mascaramento de dados pessoais) processam dados fora do Brasil.</p>
+          <p>A aplicação da Plataforma é hospedada em servidores no <strong>Brasil</strong> (Google Cloud Run, região São Paulo). O banco de dados relacional está hospedado igualmente no <strong>Brasil</strong> (Neon, região de São Paulo). Outros provedores (Resend, Expo, Vercel, Sentry — monitoramento técnico de erros, recebendo apenas dados de diagnóstico com mascaramento de dados pessoais — e PostHog — métricas de uso do aplicativo, com identificação apenas por código interno pseudonimizado, sem nome ou dados de contato) processam dados fora do Brasil.</p>
           <p>Essas transferências internacionais observam as bases e salvaguardas previstas nos arts. 33 a 36 da LGPD, incluindo cláusulas contratuais com garantias adequadas de proteção, e se limitam ao estritamente necessário para a prestação do serviço.</p>
         </div>
 
