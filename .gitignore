@@ -14,3 +14,7 @@ next-dev-3000.err.log
 .vercel
 *.tsbuildinfo
 .gstack/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
