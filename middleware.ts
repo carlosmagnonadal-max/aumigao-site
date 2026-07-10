@@ -12,7 +12,8 @@ import { NextRequest, NextResponse } from "next/server";
 // O ganho de segurança real está em script-src (vetor XSS); style-src inline é
 // um risco menor e geralmente aceito em arquiteturas Next.js.
 //
-// connect-src inclui qrserver.com (QR codes gerados externamente nos sub-sites).
+// connect-src inclui qrserver.com (QR codes gerados externamente nos sub-sites)
+// e o ingest do Sentry (error tracking client-side).
 // img-src inclui data:/blob:/https: para avatares, QR codes e imagens externas.
 
 /** Gera um nonce criptograficamente aleatório (base64url, 16 bytes = 128 bits). */
@@ -40,8 +41,8 @@ function buildCsp(nonce: string): string {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    // connect-src: /api/chat + backend + qrserver (QR codes nos sub-sites)
-    "connect-src 'self' https://api.aumigaowalk.com.br https://api.qrserver.com",
+    // connect-src: /api/chat + backend + qrserver (QR codes nos sub-sites) + Sentry ingest
+    "connect-src 'self' https://api.aumigaowalk.com.br https://api.qrserver.com https://o4511710678417408.ingest.us.sentry.io",
     // Necessários explicitamente sob default-src 'none':
     "manifest-src 'self'", // webmanifest
     "worker-src 'self' blob:", // web workers do Next (blob:)

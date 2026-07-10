@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 // ─── A3: Headers de segurança ────────────────────────────────────────────────
 // Content-Security-Policy NÃO está aqui — é gerada por request no middleware.ts
@@ -56,4 +57,19 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// withSentryConfig: apenas o necessário para o SDK funcionar em runtime
+// (instrumentação automática de route handlers, tree-shaking de logs).
+// SEM upload de source maps (não há SENTRY_AUTH_TOKEN configurado) — por
+// isso omitimos org/project e desativamos sourcemaps/upload explicitamente.
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  sourcemaps: {
+    disable: true,
+  },
+  telemetry: false,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
+});
