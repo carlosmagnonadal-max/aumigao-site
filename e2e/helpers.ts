@@ -10,14 +10,6 @@ const BENIGN_CONSOLE_PATTERNS = [
   /\[Fast Refresh\]/i,
   /webpack-hmr/i,
   /HMR/i,
-  // BUG REAL confirmado e reportado (ver formulario-contato.spec.ts e relatório final):
-  // o CSP do middleware não inclui 'unsafe-eval', e o runtime de dev do Next
-  // (webpack/HMR) usa eval() internamente — a exceção sobe como pageerror em TODA
-  // página sob `next dev`. Verificado lado a lado: não ocorre no build de produção
-  // (`next build && next start`), onde a CSP é a mesma mas o bundle não usa eval().
-  // Filtrado aqui só para não afogar os testes de smoke/navegação em ruído — o
-  // impacto real (hidratação quebrada em dev) é tratado explicitamente onde importa.
-  /unsafe-eval/i,
 ];
 
 export function isBenignConsoleMessage(msg: ConsoleMessage): boolean {

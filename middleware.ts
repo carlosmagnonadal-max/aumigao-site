@@ -28,6 +28,15 @@ function generateNonce(): string {
 
 /** Monta o valor do header Content-Security-Policy com nonce. */
 function buildCsp(nonce: string): string {
+  // O runtime de DEV do Next (webpack HMR) chama eval() internamente. Sem
+  // 'unsafe-eval', o CSP quebra a hidratação em `next dev` de forma
+  // determinística (confirmado em e2e/formulario-contato.spec.ts e
+  // e2e/helpers.ts) — o build de produção não usa eval() e não precisa disso.
+  // Isolado ao ambiente de dev: nunca chega em produção.
+  const scriptSrc =
+    process.env.NODE_ENV === "development"
+      ? `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval'`
+      : `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`;
   return [
     // 'none' = deny-by-default: tudo que não estiver explicitamente liberado abaixo
     // é bloqueado. Por isso enumeramos manifest/worker/media (antes pegavam carona
@@ -36,7 +45,7 @@ function buildCsp(nonce: string): string {
     // 'strict-dynamic' permite que scripts autorizados pelo nonce carreguem outros
     // scripts (runtime/chunks do Next.js). 'self' é mantido como fallback para
     // browsers que não entendem strict-dynamic.
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    scriptSrc,
     // style-src mantém 'unsafe-inline' (ver comentário no topo do arquivo).
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",

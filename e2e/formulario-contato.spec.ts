@@ -7,24 +7,12 @@ import { mockContactSuccess, mockContactError } from "./helpers";
  * a rota com `page.route` — nenhuma submissão real é feita nem contra prod nem
  * contra qualquer ambiente. Não remover os mocks.
  *
- * BUG REAL confirmado (bloqueia 3 dos 4 testes deste arquivo sob `next dev`):
- * o CSP do middleware (`script-src 'self' 'nonce-…' 'strict-dynamic'`, sem
- * 'unsafe-eval') quebra a hidratação do React de forma determinística em
- * `next dev`, porque o runtime de desenvolvimento do Next (webpack HMR) chama
- * eval() internamente e o CSP bloqueia essa chamada. Sem hidratação completa,
- * o `onSubmit` do formulário nunca é anexado e o clique no botão "submit"
- * cai no comportamento nativo do navegador: um GET real para a própria URL
- * (`/contato?website=`, o único campo com atributo `name`), recarregando a
- * página e perdendo todo o estado — nenhuma chamada à API acontece.
- * Verificado lado a lado, reproduzido 2/2 vezes mesmo aguardando
- * `networkidle` + 3s extra (não é uma corrida — é permanente por carga de
- * página): funciona perfeitamente no build de produção (`next build && next
- * start`), com a MESMA CSP — lá a hidratação completa normalmente porque o
- * bundle de produção não usa eval(). Ou seja: o problema não é da CSP em si
- * nem do ContactSection, é a combinação específica CSP-sem-unsafe-eval +
- * runtime de DEV do Next. Ver relatório final para a recomendação (permitir
- * 'unsafe-eval' apenas quando NODE_ENV==='development' no middleware —
- * mudança de código de produção, fora do escopo desta tarefa de testes).
+ * Histórico: até aqui 3 dos 4 testes ficavam pulados sob `next dev` porque o
+ * CSP do middleware não incluía 'unsafe-eval', e o runtime de dev do Next
+ * (webpack HMR) usa eval() internamente — a hidratação quebrava e o onSubmit
+ * do formulário nunca era anexado. Corrigido em middleware.ts: 'unsafe-eval'
+ * agora é adicionado ao script-src somente quando NODE_ENV==='development'
+ * (produção mantém a CSP original, sem 'unsafe-eval').
  */
 
 test.describe("formulário de contato — validação e submissão", () => {
@@ -44,10 +32,6 @@ test.describe("formulário de contato — validação e submissão", () => {
   });
 
   test("envio válido com API mockada mostra feedback de sucesso", async ({ page }) => {
-    // BLOQUEADO sob `next dev` — ver bloco de comentário no topo do arquivo
-    // (CSP sem 'unsafe-eval' quebra hidratação em dev; onSubmit nunca é
-    // anexado; confirmado funcionando normalmente em build de produção).
-    test.skip(true, "hidratação quebrada em next dev por CSP sem unsafe-eval — ver comentário no topo do arquivo");
     await mockContactSuccess(page);
 
     await page.goto("/contato");
@@ -62,8 +46,6 @@ test.describe("formulário de contato — validação e submissão", () => {
   });
 
   test("erro do servidor mockado mostra mensagem amigável e não trava o formulário", async ({ page }) => {
-    // BLOQUEADO sob `next dev` — mesma causa raiz do teste anterior (ver topo do arquivo).
-    test.skip(true, "hidratação quebrada em next dev por CSP sem unsafe-eval — ver comentário no topo do arquivo");
     await mockContactError(page);
 
     await page.goto("/contato");
@@ -73,15 +55,18 @@ test.describe("formulário de contato — validação e submissão", () => {
     const submit = page.getByRole("button", { name: /solicitar diagnóstico/i });
     await submit.click();
 
-    await expect(page.getByRole("alert")).toContainText(/erro simulado do servidor/i);
+    // .filter() é necessário: com a hidratação funcionando, o route announcer
+    // interno do Next (#__next-route-announcer__, também role="alert") também
+    // casa com getByRole("alert") — precisamos do alerta específico do formulário.
+    await expect(
+      page.getByRole("alert").filter({ hasText: /erro simulado do servidor/i })
+    ).toBeVisible();
     // Formulário permanece visível e reenviável — não trava em estado de loading.
     await expect(submit).toBeVisible();
     await expect(submit).toBeEnabled();
   });
 
   test("honeypot preenchido finge sucesso sem chamar a API (defesa anti-bot)", async ({ page }) => {
-    // BLOQUEADO sob `next dev` — mesma causa raiz do primeiro teste bloqueado (ver topo do arquivo).
-    test.skip(true, "hidratação quebrada em next dev por CSP sem unsafe-eval — ver comentário no topo do arquivo");
     let calls = 0;
     await page.route("**/api/contact", (route) => {
       calls++;
