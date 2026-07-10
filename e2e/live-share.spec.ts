@@ -70,4 +70,43 @@ test.describe("página pública /live/[token]", () => {
     await expect(page.getByRole("heading", { name: /esse passeio já terminou/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /agende passeios para seu pet/i })).toBeVisible();
   });
+
+  test("R15.3: falha de rede/CORS na API sai do 'Carregando' eterno e mostra erro amigável, recuperando sozinho", async ({ page }) => {
+    // 3 polls (a cada 7s) até o erro + mais 1 poll de recuperação passam do
+    // timeout padrão de 30s do runner — este teste precisa de mais fôlego.
+    test.setTimeout(60_000);
+
+    // Simula exatamente o bug real: a API responde com falha de rede (CORS
+    // bloqueado pelo navegador aparece como request abortada no fetch) em
+    // toda chamada até o mock ser trocado — o polling de 7s do componente faz
+    // isso acontecer ~3x seguidas antes de mostrarmos o estado de erro.
+    await page.route("**/api/public/live/**", (route) => route.abort("failed"));
+
+    await page.goto("/live/token-cors-quebrado-mock");
+
+    // Enquanto não bateu 3 falhas, ainda está em "Carregando…".
+    await expect(page.getByText("Carregando…")).toBeVisible();
+
+    await expect(page.getByText(/não foi possível carregar o passeio/i)).toBeVisible({ timeout: 30_000 });
+
+    // Recupera sozinho: assim que a API volta a responder, o próximo poll (7s) mostra o passeio ativo.
+    await page.unroute("**/api/public/live/**");
+    await mockTiles(page);
+    await page.route("**/api/public/live/**", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          status: "active",
+          pet_first_name: "Bela",
+          pet_photo_url: null,
+          tenant: { name: "Aumigão Walk", slug: "aumigao", logo_url: null },
+          pings: [{ latitude: -12.9777, longitude: -38.5016, recorded_at: "2026-07-10T12:00:00Z" }],
+          count: 1,
+        }),
+      })
+    );
+
+    await expect(page.getByRole("heading", { name: /bela está passeando/i })).toBeVisible({ timeout: 10_000 });
+  });
 });

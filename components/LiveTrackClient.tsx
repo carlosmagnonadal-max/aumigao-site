@@ -18,7 +18,7 @@ type LivePayload = {
   count: number;
 };
 
-type UiState = "loading" | "active" | "ended" | "notfound";
+type UiState = "loading" | "active" | "ended" | "notfound" | "error";
 
 // Roxo da marca (Calor Editorial) — usado na trilha e no marcador do mapa.
 const BRAND_PURPLE = "#6d2bbd";
@@ -36,18 +36,32 @@ export function LiveTrackClient({ token }: { token: string }) {
 
   useEffect(() => {
     let alive = true;
+    // Vars de closure (não state) para não depender de re-render: contam falhas
+    // consecutivas e se algum poll já teve sucesso, sem sofrer do stale-closure
+    // que `state` do componente teria dentro deste efeito de vida única por token.
+    let hasLoadedOnce = false;
+    let consecutiveFailures = 0;
     async function poll() {
       try {
         const res = await fetch(`${API_URL}/api/public/live/${token}`);
         if (!alive) return;
-        if (res.status === 410) { setState("ended"); return; }
-        if (res.status === 404) { setState("notfound"); return; }
-        if (!res.ok) return;
+        if (res.status === 410) { consecutiveFailures = 0; hasLoadedOnce = true; setState("ended"); return; }
+        if (res.status === 404) { consecutiveFailures = 0; hasLoadedOnce = true; setState("notfound"); return; }
+        if (!res.ok) throw new Error(`http ${res.status}`);
         const body: LivePayload = await res.json();
+        consecutiveFailures = 0;
+        hasLoadedOnce = true;
         setData(body);
         setState("active");
       } catch {
-        /* mantém estado atual em erro transitório de rede */
+        if (!alive) return;
+        consecutiveFailures += 1;
+        // R15.3: se a página nunca chegou a carregar (ex.: CORS/rede) e já
+        // falhou ~3x seguidas, sai do "Carregando…" eterno e mostra erro
+        // amigável — o polling continua e recupera sozinho se a API voltar.
+        if (!hasLoadedOnce && consecutiveFailures >= 3) {
+          setState("error");
+        }
       }
     }
     poll();
@@ -90,6 +104,15 @@ export function LiveTrackClient({ token }: { token: string }) {
     return (
       <LiveShell tenantName={null} tenantLogo={null}>
         <p className={s.lead} style={{ textAlign: "center", marginInline: "auto" }}>Carregando…</p>
+      </LiveShell>
+    );
+  }
+  if (state === "error") {
+    return (
+      <LiveShell tenantName={null} tenantLogo={null}>
+        <p className={s.lead} style={{ textAlign: "center", marginInline: "auto" }}>
+          Não foi possível carregar o passeio. Tentando novamente…
+        </p>
       </LiveShell>
     );
   }
