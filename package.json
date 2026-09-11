@@ -19,7 +19,7 @@
     "@upstash/redis": "1.38.0",
     "framer-motion": "12.40.0",
     "leaflet": "1.9.4",
-    "next": "15.5.19",
+    "next": "15.5.25",
     "pino": "9.14.0",
     "react": "19.2.7",
     "react-dom": "19.2.7"
