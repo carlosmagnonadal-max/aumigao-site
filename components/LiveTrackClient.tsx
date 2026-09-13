@@ -13,7 +13,7 @@ type LivePayload = {
   status: string;
   pet_first_name: string;
   pet_photo_url: string | null;
-  tenant: { name: string | null; slug: string | null; logo_url: string | null };
+  tenant: { name: string | null; slug: string | null; logo_url: string | null; primary_color?: string | null };
   pings: Ping[];
   count: number;
 };
@@ -194,14 +194,26 @@ function LiveShell({
   tenantLogo: string | null;
   children: React.ReactNode;
 }) {
+  // Logo do tenant pode falhar ao carregar (URL quebrada/expirada) — nesse
+  // caso cai para a logo padrão em vez de deixar um <img> quebrado no ar.
+  const [logoFailed, setLogoFailed] = useState(false);
+  const showTenantLogo = Boolean(tenantLogo) && !logoFailed;
   return (
     <div className={s.page}>
       <header className={s.header}>
         <div className={s.headInner}>
           <Link href="/" className={s.brand}>
-            {tenantLogo ? (
+            {showTenantLogo ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={tenantLogo} alt="" width={34} height={34} className={s.brandMark} style={{ objectFit: "cover" }} />
+              <img
+                src={tenantLogo ?? undefined}
+                alt=""
+                width={34}
+                height={34}
+                className={s.brandMark}
+                style={{ objectFit: "cover" }}
+                onError={() => setLogoFailed(true)}
+              />
             ) : (
               <Image src="/icon-rounded-512.png" alt="" width={34} height={34} className={s.brandMark} />
             )}

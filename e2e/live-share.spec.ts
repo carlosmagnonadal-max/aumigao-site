@@ -60,6 +60,65 @@ test.describe("página pública /live/[token]", () => {
     );
   });
 
+  test("passeio ativo com logo do tenant mostra a logo do tenant, não a padrão", async ({ page }) => {
+    await mockTiles(page);
+    const TENANT_LOGO = "https://cdn.aumigaowalk.com.br/tenant-branding-images/logo-petx.png";
+    // 1x1 PNG válido — a página não deve tratar isso como erro de carregamento.
+    await page.route(TENANT_LOGO, (route) =>
+      route.fulfill({ status: 200, contentType: "image/png", body: BLANK_PNG })
+    );
+    await page.route("**/api/public/live/**", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          status: "active",
+          pet_first_name: "Bela",
+          pet_photo_url: null,
+          tenant: { name: "Pet Shop X — White Label", slug: "petx", logo_url: TENANT_LOGO, primary_color: "#123456" },
+          pings: [{ latitude: -12.9777, longitude: -38.5016, recorded_at: "2026-07-10T12:00:00Z" }],
+          count: 1,
+        }),
+      })
+    );
+
+    await page.goto("/live/token-com-logo-tenant-mock");
+
+    await expect(page.getByRole("heading", { name: /bela está passeando/i })).toBeVisible();
+    // O nome de exibição do branding aparece no header.
+    await expect(page.getByText("Pet Shop X — White Label")).toBeVisible();
+    // A logo renderizada é a do tenant (não o ícone padrão /icon-rounded-512.png).
+    const brandImg = page.locator("header img").first();
+    await expect(brandImg).toHaveAttribute("src", TENANT_LOGO);
+  });
+
+  test("logo do tenant que falha ao carregar cai para a logo padrão", async ({ page }) => {
+    await mockTiles(page);
+    const BROKEN_LOGO = "https://cdn.aumigaowalk.com.br/tenant-branding-images/logo-quebrada.png";
+    await page.route(BROKEN_LOGO, (route) => route.abort("failed"));
+    await page.route("**/api/public/live/**", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          status: "active",
+          pet_first_name: "Bela",
+          pet_photo_url: null,
+          tenant: { name: "Pet Shop X", slug: "petx", logo_url: BROKEN_LOGO, primary_color: null },
+          pings: [{ latitude: -12.9777, longitude: -38.5016, recorded_at: "2026-07-10T12:00:00Z" }],
+          count: 1,
+        }),
+      })
+    );
+
+    await page.goto("/live/token-logo-quebrada-mock");
+
+    await expect(page.getByRole("heading", { name: /bela está passeando/i })).toBeVisible();
+    // Erro de carregamento da logo do tenant -> cai para a logo padrão do app.
+    const brandImg = page.locator("header img").first();
+    await expect(brandImg).toHaveAttribute("src", /icon-rounded-512\.png/, { timeout: 10_000 });
+  });
+
   test("passeio encerrado mockado mostra mensagem de fim e CTA", async ({ page }) => {
     await page.route("**/api/public/live/**", (route) =>
       route.fulfill({ status: 410, contentType: "application/json", body: "{}" })
